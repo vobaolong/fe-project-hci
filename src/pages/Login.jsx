@@ -46,26 +46,27 @@ const Login = () => {
               >
                 <CustomInput
                   type="email"
+                  id="email"
                   name="email"
-                  placeholder="Email"
+                  label="Email Address *"
                   onChange={formik.handleChange("email")}
                   onBlur={formik.handleBlur("email")}
                   value={formik.values.email}
                 />
-                <div className="error">
+                <span className="error">
                   {formik.touched.email && formik.errors.email}
-                </div>
+                </span>
                 <CustomInput
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  label="Password *"
                   onChange={formik.handleChange("password")}
                   onBlur={formik.handleBlur("password")}
                   value={formik.values.password}
                 />
-                <div className="error">
+                <span className="error">
                   {formik.touched.password && formik.errors.password}
-                </div>
+                </span>
                 <div>
                   <div className="d-flex justify-content-between align-items-center">
                     <div>
@@ -84,13 +85,16 @@ const Login = () => {
                     </Link>
                   </div>
 
-                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0" type="submit">
+                  <div className="mt-3 d-flex flex-column justify-content-center gap-15 align-items-center">
+                    <button className="button border-0 col-12" type="submit">
                       Login
                     </button>
-                    <Link to="/signup" className="button signup">
-                      SignUp
-                    </Link>
+                    <p>
+                      Don't have an account? &nbsp;
+                      <Link to="/signup" className="fw-bolder">
+                        Sign up for free
+                      </Link>
+                    </p>
                   </div>
                 </div>
               </form>

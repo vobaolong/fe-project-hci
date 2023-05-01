@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
@@ -8,10 +8,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../features/user/userSlice";
+// import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const signupSchema = yup.object({
-  firstname: yup.string().required("First Name is required"),
-  lastname: yup.string().required("Last Name is required"),
+  name: yup.string().required("User Name is required"),
   email: yup
     .string()
     .email("Email Should Be Valid")
@@ -21,10 +21,10 @@ const signupSchema = yup.object({
 });
 const Signup = () => {
   const dispatch = useDispatch();
+  // const [show, setShow] = useState(false);
   const formik = useFormik({
     initialValues: {
-      firstname: "",
-      lastname: "",
+      name: "",
       email: "",
       mobile: "",
       password: "",
@@ -34,6 +34,9 @@ const Signup = () => {
       dispatch(registerUser(values));
     },
   });
+  // const handleShowHide = () => {
+  //   setShow(!show);
+  // };
   return (
     <>
       <Meta title={"Sign Up"} />
@@ -50,30 +53,19 @@ const Signup = () => {
               >
                 <CustomInput
                   type="text"
-                  name="firstname"
-                  placeholder="First Name *"
-                  value={formik.values.firstName}
-                  onChange={formik.handleChange("firstname")}
-                  onBur={formik.handleBlur("firstname")}
+                  name="name"
+                  label="User Name *"
+                  value={formik.values.name}
+                  onChange={formik.handleChange("name")}
+                  onBur={formik.handleBlur("name")}
                 />
                 <div className="error">
-                  {formik.touched.firstname && formik.errors.firstname}
-                </div>
-                <CustomInput
-                  type="text"
-                  name="lastname"
-                  placeholder="Last Name"
-                  value={formik.values.lastname}
-                  onChange={formik.handleChange("lastname")}
-                  onBur={formik.handleBlur("lastname")}
-                />
-                <div className="error">
-                  {formik.touched.lastname && formik.errors.lastname}
+                  {formik.touched.name && formik.errors.name}
                 </div>
                 <CustomInput
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  label="Email Address *"
                   value={formik.values.email}
                   onChange={formik.handleChange("email")}
                   onBur={formik.handleBlur("email")}
@@ -84,10 +76,11 @@ const Signup = () => {
                 <CustomInput
                   type="tel"
                   name="mobile"
-                  placeholder="Mobile Number"
+                  label="Phone Number *"
                   value={formik.values.mobile}
                   onChange={formik.handleChange("mobile")}
                   onBur={formik.handleBlur("mobile")}
+                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 />
                 <div className="error">
                   {formik.touched.mobile && formik.errors.mobile}
@@ -95,7 +88,7 @@ const Signup = () => {
                 <CustomInput
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  label="Password *"
                   value={formik.values.password}
                   onChange={formik.handleChange("password")}
                   onBur={formik.handleBlur("password")}
@@ -103,13 +96,14 @@ const Signup = () => {
                 <div className="error">
                   {formik.touched.password && formik.errors.password}
                 </div>
-                <div>
-                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <Link to="/login" className="button border-0">
-                      Sign Up
+                <div className="mt-3 d-flex flex-column justify-content-center gap-15 align-items-center">
+                  <button className="button border-0 col-12">Sign Up</button>
+                  <p>
+                    Already have an account? &nbsp;
+                    <Link to="/login" className="fw-bolder">
+                      Login
                     </Link>
-                    <button className="button border-0">Sign Up</button>
-                  </div>
+                  </p>
                 </div>
               </form>
             </div>

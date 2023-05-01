@@ -14,6 +14,7 @@
   --color-ededed: #ededed;
   --color-777777: #777777;
   --color-1c1c1b: #1c1c1b;
+  --color-c3d4da: #c3d4da;
 }
 
 .section-heading {
@@ -38,10 +39,15 @@ a {
   color: unset;
 }
 
-.form-control:focus {
-  box-shadow: none;
-  border-color: inherit;
+textarea {
+  resize: none;
 }
+
+.form-control {
+  box-shadow: none;
+  border-radius: 10px;
+}
+
 
 .gap-10 {
   gap: 10px;
@@ -71,8 +77,8 @@ a {
   background-color: var(--color-232f3e);
   color: white;
   font-size: 14px;
-  padding: 13px 33px;
-  border-radius: 25px;
+  padding: 10px 30px;
+  border-radius: 8px;
 }
 
 .button:hover {
@@ -585,13 +591,6 @@ footer .input-group-text {
   text-align: left;
 }
 
-.contact-inner-wrapper form .form-control {
-  background-color: var(--color-f5f5f7);
-  border-radius: 10px;
-  border-color: transparent;
-  padding: 10px;
-}
-
 .contact-inner-wrapper ul {
   list-style: none;
 }
@@ -651,7 +650,7 @@ footer .input-group-text {
 .auth-card {
   padding: 20px;
   background-color: white;
-  width: 500px;
+  width: 35%;
   margin: 30px auto;
   border-radius: 10px;
 }
@@ -668,12 +667,14 @@ footer .input-group-text {
 }
 
 .auth-card .form-control {
-  height: 50px;
   background-color: var(--color-f5f5f7);
-  color: var(--color-777777);
   font-size: 14px;
-  border-radius: 10px;
-  border-color: transparent;
+  outline: none;
+  top: 5%;
+}
+
+.form-label {
+  top: -4% !important;
 }
 
 .auth-card a {
@@ -682,30 +683,76 @@ footer .input-group-text {
   color: var(--color-1c1c1b);
 }
 
-.signup {
-  background-color: var(--color-febd69);
-  color: var(--color-131921);
-  border: none;
-}
-
-.signup:hover {
-  background-color: var(--color-131921);
-  color: white;
-}
-
 /*  auth card  ends*/
 
 /* Policy Pages */
 
 .policy {
   background-color: white;
-  padding: 30px;
+  padding: 40px;
+}
+
+.policy .policy-sup>li {
+  list-style: none;
+  margin-top: 10px;
+}
+
+/* .policy-table {
+  border: var(--color-232f3e);
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+*/
+table td {
+  line-height: 30px;
+}
+
+table>tbody>tr>th {
+  font-weight: normal;
+}
+
+table>tbody>tr>td>li {
+  list-style: none;
+}
+
+
+table.rounded-corners {
+  /* Change these properties */
+  --border: 1px solid var(--color-232f3e);
+  border-radius: 10px;
+
+  /* Don't change these properties */
+  border-spacing: 0;
+  border-collapse: separate;
+  border: var(--border);
+  overflow: hidden;
+}
+
+
+/* Apply a border to the right of all but the last column */
+table.rounded-corners th:not(:last-child),
+table.rounded-corners td:not(:last-child) {
+  border-right: var(--border);
+}
+
+/* Apply a border to the bottom of all but the last row */
+table.rounded-corners>thead>tr:not(:last-child)>th,
+table.rounded-corners>thead>tr:not(:last-child)>td,
+table.rounded-corners>tbody>tr:not(:last-child)>th,
+table.rounded-corners>tbody>tr:not(:last-child)>td,
+table.rounded-corners>tfoot>tr:not(:last-child)>th,
+table.rounded-corners>tfoot>tr:not(:last-child)>td,
+table.rounded-corners>tr:not(:last-child)>td,
+table.rounded-corners>tr:not(:last-child)>th,
+table.rounded-corners>thead:not(:last-child),
+table.rounded-corners>tbody:not(:last-child),
+table.rounded-corners>tfoot:not(:last-child) {
+  border-bottom: var(--border);
 }
 
 /* Policy Pages  ends */
-
 /* Main Product Page */
-
 .description-wrapper h4,
 .reviews-wrapper h3 {
   font-size: 26px;
@@ -895,5 +942,5 @@ footer .input-group-text {
 /* Shipping page ends here */
 .error {
   color: red;
-  font-size: 14px;
+  font-size: 13px;
 }

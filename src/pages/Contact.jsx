@@ -4,6 +4,7 @@ import Meta from "../components/Meta";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 import { BiPhoneCall, BiInfoCircle } from "react-icons/bi";
 import Container from "../components/Container";
+import CustomInput from "../components/CustomInput";
 
 const Contact = () => {
   return (
@@ -21,73 +22,66 @@ const Contact = () => {
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
+              title="map"
             ></iframe>
           </div>
           <div className="col-12 mt-5">
             <div className="contact-inner-wrapper d-flex justify-content-between ">
               <div>
                 <h3 className="contact-title mb-4">Contact</h3>
-                <form action="" className="d-flex flex-column gap-15">
-                  <div>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Name"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      placeholder="Mobile Number"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      name=""
-                      id=""
-                      className="w-100 form-control"
-                      cols="30"
-                      rows="4"
-                      placeholder="Comments"
-                    ></textarea>
-                  </div>
+                <form action="submit" className="d-flex flex-column gap-15">
+                  <CustomInput
+                    type="text"
+                    name="Name"
+                    className="form-control"
+                    label="Name"
+                  />
+                  <CustomInput
+                    type="email"
+                    className="form-control"
+                    label="Email"
+                  />
+                  <textarea
+                    name=""
+                    id=""
+                    className="w-100 form-control"
+                    cols="30"
+                    rows="4"
+                    placeholder="Comments"
+                  ></textarea>
                   <div>
                     <button className="button border-0">Submit</button>
                   </div>
                 </form>
               </div>
+              <p className="border-start border-2"></p>
               <div>
                 <h3 className="contact-title mb-4">Get in touch with us</h3>
                 <div>
                   <ul className="ps-0">
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <AiOutlineHome className="fs-5" />
+                      <i class="fa-solid fa-location-dot fs-5"></i>
                       <address className="mb-0">
                         Add: No 1 Vo Van Ngan Street, Linh Chieu Ward, Thu Duc
                         City, Ho Chi Minh City
                       </address>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <BiPhoneCall className="fs-5" />
-                      <a href="tel:+84 348073013">(+84)348 073 013</a>
+                      <i class="fa-solid fa-phone fs-5"></i>
+                      <a href="tel:+84 348073013">(+84) 348 073 013</a>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <AiOutlineMail className="fs-5" />
+                      <i class="fa-solid fa-envelope fs-5"></i>
                       <a href="mailto:baolong01.dev@gmail.com">
                         baolong01.dev@gmail.com
                       </a>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <BiInfoCircle className="fs-5" />
-                      <p className="mb-0">Monday – Friday 10 AM – 8 PM</p>
+                      <i class="fa-solid fa-clock fs-5"></i>
+                      <p className="mb-0">
+                        Monday - Friday <br />
+                        10:00 AM - 8:00 PM
+                      </p>
                     </li>
                   </ul>
                 </div>

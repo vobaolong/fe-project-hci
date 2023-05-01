@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import watch from "../images/products/nike-jordan.png";
 import Container from "../components/Container";
+import CustomInput from "../components/CustomInput";
 
 const Checkout = () => {
   return (
@@ -11,7 +12,7 @@ const Checkout = () => {
         <div className="row">
           <div className="col-7">
             <div className="checkout-left-data">
-              <h3 className="website-name">Dev Corner</h3>
+              <h3 className="website-name">Shoes Store</h3>
               <nav
                 style={{ "--bs-breadcrumb-divider": ">" }}
                 aria-label="breadcrumb"
@@ -22,18 +23,18 @@ const Checkout = () => {
                       Cart
                     </Link>
                   </li>
-                  &nbsp; /&nbsp;
+                  &nbsp;/&nbsp;
                   <li
                     className="breadcrumb-ite total-price active"
                     aria-current="page"
                   >
                     Information
                   </li>
-                  &nbsp; /
+                  &nbsp;/&nbsp;
                   <li className="breadcrumb-item total-price active">
                     Shipping
                   </li>
-                  &nbsp; /
+                  &nbsp;/
                   <li
                     className="breadcrumb-item total-price active"
                     aria-current="page"
@@ -44,66 +45,46 @@ const Checkout = () => {
               </nav>
               <h4 className="title total">Contact Information</h4>
               <p className="user-details total">
-                Navdeep Dahiya (monud0232@gmail.com)
+                Vo Bao Long (vobalong@gmail.com)
               </p>
               <h4 className="mb-3">Shipping Address</h4>
               <form
                 action=""
                 className="d-flex gap-15 flex-wrap justify-content-between"
               >
-                <div className="w-100">
-                  <select name="" className="form-control form-select" id="">
-                    <option value="" selected disabled>
-                      Select Country
-                    </option>
-                  </select>
-                </div>
                 <div className="flex-grow-1">
-                  <input
+                  <CustomInput
                     type="text"
-                    placeholder="First Name"
-                    className="form-control"
-                  />
-                </div>
-                <div className="flex-grow-1">
-                  <input
-                    type="text"
-                    placeholder="Last Name"
+                    label="Full Name"
                     className="form-control"
                   />
                 </div>
                 <div className="w-100">
-                  <input
+                  <CustomInput
                     type="text"
-                    placeholder="Address"
+                    label="Address"
                     className="form-control"
                   />
                 </div>
                 <div className="w-100">
-                  <input
+                  <CustomInput
                     type="text"
-                    placeholder="Apartment, Suite ,etc"
+                    label="Apartment, Suite ,etc"
                     className="form-control"
                   />
                 </div>
                 <div className="flex-grow-1">
-                  <input
+                  <CustomInput
                     type="text"
-                    placeholder="City"
+                    label="City"
                     className="form-control"
                   />
                 </div>
+
                 <div className="flex-grow-1">
-                  <select name="" className="form-control form-select" id="">
-                    <option value="" selected disabled>
-                      Select State
-                    </option>
-                  </select>
-                </div>
-                <div className="flex-grow-1">
-                  <input
+                  <CustomInput
                     type="text"
-                    placeholder="Zipcode"
+                    label="Zipcode"
                     className="form-control"
                   />
                 </div>
@@ -135,8 +116,8 @@ const Checkout = () => {
                     <img className="img-fluid" src={watch} alt="product" />
                   </div>
                   <div>
-                    <h5 className="total-price">gfdhgf</h5>
-                    <p className="total-price">s / #agfgfd</p>
+                    <h5 className="total-price">Vans</h5>
+                    <p className="total-price">Vans Old School</p>
                   </div>
                 </div>
                 <div className="flex-grow-1">
