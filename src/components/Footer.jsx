@@ -88,9 +88,15 @@ const Footer = () => {
             <div className="col-3">
               <h4 className="text-white mb-4">Account</h4>
               <div className="footer-link d-flex flex-column">
-                <Link className="text-white py-2 mb-1">About Us</Link>
-                <Link className="text-white py-2 mb-1">FAQ</Link>
-                <Link className="text-white py-2 mb-1">Contact</Link>
+                <Link to="/about" className="text-white py-2 mb-1">
+                  About Us
+                </Link>
+                <Link to="/faqs" className="text-white py-2 mb-1">
+                  FAQs
+                </Link>
+                <Link to="/contact" className="text-white py-2 mb-1">
+                  Contact
+                </Link>
               </div>
             </div>
             <div className="col-2">
@@ -99,7 +105,7 @@ const Footer = () => {
                 <Link className="text-white py-2 mb-1">Vans</Link>
                 <Link className="text-white py-2 mb-1">Sneaker</Link>
                 <Link className="text-white py-2 mb-1">Run Shoes</Link>
-                <Link className="text-white py-2 mb-1">Sandan</Link>
+                <Link className="text-white py-2 mb-1">Sandal</Link>
               </div>
             </div>
           </div>

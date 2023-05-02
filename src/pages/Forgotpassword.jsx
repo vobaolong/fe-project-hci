@@ -4,7 +4,7 @@ import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import CustomInput from "../components/CustomInput";
-const Forgotpassword = () => {
+const ForgotPassword = () => {
   return (
     <>
       <Meta title={"Forgot Password"} />
@@ -22,7 +22,7 @@ const Forgotpassword = () => {
 
                 <div>
                   <div className="mt-3 d-flex justify-content-center flex-column gap-15 align-items-center">
-                    <button className="button border-0" type="submit">
+                    <button className="button border-0 col-12" type="submit">
                       Submit
                     </button>
                     <Link to="/login">Cancel</Link>
@@ -37,4 +37,4 @@ const Forgotpassword = () => {
   );
 };
 
-export default Forgotpassword;
+export default ForgotPassword;

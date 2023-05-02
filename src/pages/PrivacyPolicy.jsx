@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
       <Container class1="policy-wrapper py-5 home-wrapper-2">
         <div className="row align-items-center justify-content-center">
           <div className="col-9">
-            <div className="policy rounded-3">
+            <div className="policy rounded-3 justify">
               <h3 className="mb-5 d-flex text-capitalize align-items-center justify-content-center">
                 privacy policy
               </h3>

@@ -1,10 +1,9 @@
 import React from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
-import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import CustomInput from "../components/CustomInput";
-const Resetpassword = () => {
+const ResetPassword = () => {
   return (
     <>
       <Meta title={"Reset Password"} />
@@ -18,7 +17,7 @@ const Resetpassword = () => {
                 <CustomInput type="password" name="password" label="Password" />
                 <CustomInput
                   type="password"
-                  name="confpassword"
+                  name="confirmPassword"
                   label="Confirm Password"
                 />
                 <div>
@@ -35,4 +34,4 @@ const Resetpassword = () => {
   );
 };
 
-export default Resetpassword;
+export default ResetPassword;

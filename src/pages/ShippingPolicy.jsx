@@ -18,7 +18,7 @@ const ShippingPolicy = () => {
               <p className="text-decoration-underline fw-bolder">
                 Free Shipping
               </p>
-              <p>
+              <p className="justify">
                 Shoe Store offers FREE Shipping on orders $100 or more,
                 exclusions apply.
                 <br />
@@ -94,7 +94,7 @@ const ShippingPolicy = () => {
                 </tbody>
               </table>
               <br />
-              <p className="policy-sup">
+              <p className="policy-sup justify">
                 <li>
                   <sup>1</sup> Our Flat Rate Shipping is a flat rate independent
                   of the carrier, destination (continental USA vs.
@@ -115,7 +115,7 @@ const ShippingPolicy = () => {
                 Important Shipping Information:
               </p>
               <br />
-              <p>
+              <p className="justify">
                 <strong>COVID-19</strong>
                 <br />
                 <br />

@@ -5,7 +5,7 @@ import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
-import { brands, services } from "../utils/Data.js";
+import { brands, famous, services } from "../utils/Data.js";
 import banner from "../images/catbanner-01.png";
 import mainBanner from "../images/main-banner-1.png";
 import logo1 from "../images/vans.png";
@@ -13,8 +13,6 @@ import logo2 from "../images/run1.png";
 import logo3 from "../images/run3.png";
 import air from "../images/air.png";
 
-import famous1 from "../images/famous/famous-01.png";
-import famous2 from "../images/famous/famous-02.png";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../features/blogs/blogSlice";
@@ -216,64 +214,20 @@ const Home = () => {
       </Container>
       <Container class1="home-wrapper-2 py-5 famous-wrapper">
         <div className="row">
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous1} className="img-fluid" alt="famous" />
-              <div className="famous-content position-absolute ">
-                <h5 className="text-warning">VANS</h5>
-                <h6 className="text-secondary">
-                  VANS SKATE OLD SKOOL OFF WHITE
-                </h6>
-                <button className="rounded p-1 border-2 shopbtn">
-                  Shop Now
-                </button>
+          {famous?.map((index) => {
+            return (
+              <div className="col-3" key={index}>
+                <div className="famous-card position-relative">
+                  <img src={index.img} className="img-fluid" alt="famous" />
+                  <div className="famous-content position-absolute">
+                    <h5 className="text-warning">{index.brand}</h5>
+                    <h6 className="text-secondary">{index.collection}</h6>
+                    <button className="mt-5 p-2 button">Shop Now</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous1} className="img-fluid" alt="famous" />
-              <div className="famous-content position-absolute">
-                <h5 className="text-warning">NIKE</h5>
-                <h6 className="text-secondary">
-                  Nike Dunk High Lunar New Year
-                </h6>
-                <button className="rounded p-1 border-2 shopbtn">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous2} className="img-fluid" alt="famous" />
-
-              <div className="famous-content position-absolute">
-                <h5 className="text-warning">NIKE</h5>
-                <h6 className="text-secondary">
-                  Nike Dunk Low WMNS Next Nature Hemp
-                </h6>
-                <button className="rounded p-1 border-2 shopbtn">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous1} className="img-fluid" alt="famous" />
-
-              <div className="famous-content position-absolute">
-                <h5 className="text-warning">CONVERSE</h5>
-                <h6 className="text-secondary">
-                  Converse Chuck 70 Seasonal Color
-                </h6>
-                <button className="rounded p-1 border-2 shopbtn">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </Container>
       <Container class1="home-wrapper-2 py-5 special-wrapper">

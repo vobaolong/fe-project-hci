@@ -30,6 +30,10 @@
   padding: 15px;
 }
 
+.justify {
+  text-align: justify !important;
+}
+
 body {
   font-family: "Rubik", sans-serif;
 }
@@ -51,18 +55,6 @@ textarea {
 
 .gap-10 {
   gap: 10px;
-}
-
-.shopbtn {
-  background-color: var(--color-232f3e);
-  color: #fff;
-  transition: transform .7s ease-in-out;
-}
-
-.shopbtn:hover {
-  background-color: var(--color-febd69);
-  color: var(--color-1c1c1b);
-  transform: scale(1.1);
 }
 
 .gap-15 {
@@ -424,7 +416,7 @@ footer .input-group-text {
 }
 
 .famous-content h5 {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 20px;
   font-weight: 400px;
   color: white;
@@ -674,7 +666,7 @@ footer .input-group-text {
 }
 
 .form-label {
-  top: -4% !important;
+  top: 2% !important;
 }
 
 .auth-card a {
@@ -943,4 +935,9 @@ table.rounded-corners>tfoot:not(:last-child) {
 .error {
   color: red;
   font-size: 13px;
+}
+
+.about-info>li {
+  list-style: none;
+  font-size: 18px;
 }

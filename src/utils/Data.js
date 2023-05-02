@@ -10,6 +10,9 @@ import brand3 from "../images/brand/brand-03.png";
 import brand4 from "../images/brand/brand-04.png";
 import brand5 from "../images/brand/brand-05.png";
 
+import famous1 from "../images/famous/famous-01.png";
+import famous2 from "../images/famous/famous-02.png";
+
 export const services = [
   {
     tagline: "Free Shipping",
@@ -96,5 +99,105 @@ export const terms = [
     title: "10. Changes to these Terms",
     content:
       "The store reserves the right to change these Terms at any time. Your continued use of the Site after any such changes constitutes your acceptance of the new Terms.",
+  },
+];
+
+export const about = [
+  {
+    content:
+      "Welcome to our Shoes Store store, where we offer the latest and greatest in trendy and stylish footwear at affordable prices.",
+  },
+  {
+    content:
+      "Our mission is to provide our customers with high-quality sneakers that not only look great but feel great too. We believe that everyone should have access to stylish footwear, regardless of their budget. That's why we work hard to source the best products at the most competitive prices.",
+  },
+  {
+    content:
+      "We are a team of passionate sneaker enthusiasts who are dedicated to staying up-to-date with the latest trends and styles. We are always on the lookout for new and exciting brands to add to our inventory, and we take pride in offering our customers a wide range of options to choose from.",
+  },
+  {
+    content:
+      "At Shoes Store, we value our customers and strive to provide them with exceptional service. Our team is always available to answer any questions and assist with any issues that may arise. We want our customers to have a smooth and hassle-free shopping experience, from start to finish.",
+  },
+  {
+    content:
+      "Thank you for choosing Shoes Store as your go-to destination for all your footwear needs. We look forward to serving you and helping you find your perfect pair of sneakers.",
+  },
+];
+
+export const faqs = [
+  {
+    question: "Do you offer exchange?",
+    answer:
+      "Shoes Store does not currently offer online exchanges, but  please contact Customer Service and we'll be happy to help. You may exchange an online order in any Shoes Store store or Shoes Store Outlet. If you choose to exchange in store, we recommend calling your local Shoes Store retail store in advance to confirm they have the item you are looking for.",
+  },
+  {
+    question: "What is your return policy?",
+    answer:
+      "Purchases made on Shoes Store.com can be returned within 60 days of receiving the product(s).​Custom products with uploaded images or embroidery are not subject for return. Purchases made at a Shoes Store retail location currently are unable to be returned via mail and need to be returned to a Shoes Store retail location.",
+  },
+  {
+    question: "How do I cancel or change my order?",
+    answer:
+      "We begin processing your order immediately upon receipt. For this reason, we will not be able to cancel or change your order once you have submitted it. If you decide you do not want the merchandise, you can return your product in-store or by mail.",
+  },
+  {
+    question: "What days do you offer delivery?",
+    answer:
+      "Orders shipped by express or standard shipping deliver on business days only (Monday through Friday), excluding holidays.",
+  },
+  {
+    question: "What do I do if I made an error on my email address?",
+    answer:
+      "Contact customer service and they can manually update your email address.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "Shoes Store.com accepts: Visa, Visa Debit, MasterCard, AMEX, Discover, PayPal and Shoes Store Gift Cards. We do not accept checks, cash, or credit vouchers. All cards that do not participate in the verification process will not be accepted.",
+  },
+];
+
+export const famous = [
+  {
+    img: famous1,
+    brand: "VANS",
+    collection: "VANS SKATE OLD SKOOL OFF WHITE",
+  },
+  {
+    img: famous2,
+    brand: "NIKE",
+    collection: "Nike Dunk High Lunar New Year",
+  },
+  {
+    img: famous1,
+    brand: "NIKE",
+    collection: "Nike Dunk Low WMNS Next Nature Hemp",
+  },
+  {
+    img: famous2,
+    brand: "CONVERSE",
+    collection: "Converse Chuck 70 Seasonal Color",
+  },
+];
+
+export const tags = [
+  {
+    tagname: "run-shoes",
+  },
+  {
+    tagname: "adidas",
+  },
+  {
+    tagname: "vans",
+  },
+  {
+    tagname: "converse",
+  },
+  {
+    tagname: "nike",
+  },
+  {
+    tagname: "mlb",
   },
 ];

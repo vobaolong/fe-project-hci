@@ -19,7 +19,7 @@ const TermAndConditions = () => {
               <p>Last Updated: May 2023</p>
               {terms?.map((index) => {
                 return (
-                  <p key={index}>
+                  <p style={{ textAlign: "justify" }} key={index}>
                     <strong>{index.title}</strong>
                     <br />
                     {index.content}

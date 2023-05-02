@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
-import watch from "../images/products/nike-jordan.png";
+import shoes from "../images/products/nike-jordan.png";
 import Container from "../components/Container";
 import CustomInput from "../components/CustomInput";
 
@@ -113,7 +113,7 @@ const Checkout = () => {
                     >
                       1
                     </span>
-                    <img className="img-fluid" src={watch} alt="product" />
+                    <img className="img-fluid" src={shoes} alt="product" />
                   </div>
                   <div>
                     <h5 className="total-price">Vans</h5>
@@ -128,16 +128,16 @@ const Checkout = () => {
             <div className="border-bottom py-4">
               <div className="d-flex justify-content-between align-items-center">
                 <p className="total">Subtotal</p>
-                <p className="total-price">$ 10000</p>
+                <p className="total-price">$ 100</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p className="mb-0 total">Shipping</p>
-                <p className="mb-0 total-price">$ 10000</p>
+                <p className="mb-0 total-price">$ 10</p>
               </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center border-bootom py-4">
+            <div className="d-flex justify-content-between align-items-center py-4">
               <h4 className="total">Total</h4>
-              <h5 className="total-price">$ 10000</h5>
+              <h5 className="total-price">$ 110</h5>
             </div>
           </div>
         </div>
