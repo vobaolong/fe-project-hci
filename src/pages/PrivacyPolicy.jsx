@@ -23,19 +23,19 @@ const PrivacyPolicy = () => {
               <p>
                 <strong>1. Introduction</strong>
                 <br />
-                We, Shoes Store, reserve the right to modify this privacy policy
-                (the “Policy”) at any time, and we will notify you of any
-                material changes to the Policy by posting the modified Policy
-                here and changing the Effective Date at the top. We encourage
-                you to check this page periodically for any changes. This Policy
-                is incorporated into, and subject to, Shoes Store's Terms &
-                Conditions here. By using or navigating Shoes Store's web site
-                located at www.shoesstore.com or any mobile applications,
-                widgets, plug-ins, or any other products or services offered by
-                Shoes Store (collectively, the “Services”), you acknowledge that
-                you have read, understand, and agree to be bound by this Policy
-                or any modified Policy as posted. If you do not agree to these
-                terms, please do not use or access the Services.
+                We, NALOVA, reserve the right to modify this privacy policy (the
+                “Policy”) at any time, and we will notify you of any material
+                changes to the Policy by posting the modified Policy here and
+                changing the Effective Date at the top. We encourage you to
+                check this page periodically for any changes. This Policy is
+                incorporated into, and subject to, NALOVA's Terms & Conditions
+                here. By using or navigating NALOVA's web site located at
+                www.shoesstore.com or any mobile applications, widgets,
+                plug-ins, or any other products or services offered by NALOVA
+                (collectively, the “Services”), you acknowledge that you have
+                read, understand, and agree to be bound by this Policy or any
+                modified Policy as posted. If you do not agree to these terms,
+                please do not use or access the Services.
               </p>
               <br />
               <p>
@@ -85,8 +85,8 @@ const PrivacyPolicy = () => {
                 information collected to evaluate and improve our Services and
                 analyse traffic to our Services.
                 <br /> <br />
-                Shoes Store is hosted on Shopify Inc. They provide Sneaker State
-                with the online e- commerce platform that allows us to sell our
+                NALOVA is hosted on Shopify Inc. They provide Sneaker State with
+                the online e- commerce platform that allows us to sell our
                 services to you. Your data is stored through Shopify's data
                 storage, databases and the general Shopify application. They
                 collect and store your personal information on a secure server
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
                 other jurisdictions. It is important for you to note that the
                 laws on holding data in any country in which we transfer, store
                 or process your data may be less stringent than the laws of your
-                country, but Shoes Store intends to adhere to the principles set
+                country, but NALOVA intends to adhere to the principles set
                 forth in this Policy, unless otherwise required by applicable
                 laws. By using our Services, you consent to the transfer of your
                 personal information to any country in the world in accordance

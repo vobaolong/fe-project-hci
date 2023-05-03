@@ -120,11 +120,11 @@ const ShippingPolicy = () => {
                 <br />
                 <br />
                 <p>
-                  Shoes Store has greatly reallocated staff to handle the
-                  increased orders from COVID-19. Most orders are processed in 1
-                  to 2 business days, but please allow 3 to 5 business days
-                  before inquiring about your order. We ship Monday through
-                  Friday only, excluding holidays. *PLEASE NOTE: due to COVID-19
+                  NALOVA has greatly reallocated staff to handle the increased
+                  orders from COVID-19. Most orders are processed in 1 to 2
+                  business days, but please allow 3 to 5 business days before
+                  inquiring about your order. We ship Monday through Friday
+                  only, excluding holidays. *PLEASE NOTE: due to COVID-19
                   resources may be limited at certain times causing shipping
                   days to be pushed back. We appreciate your time and patience
                   during these times.
@@ -144,17 +144,17 @@ const ShippingPolicy = () => {
                 <br />
                 <br />
                 <p>
-                  Shoes Store is not responsible for lost or damaged items in
+                  NALOVA is not responsible for lost or damaged items in
                   transit. A shipping confirmation email is sent once your order
                   is shipped. This email includes the order details with the
                   tracking information to track your order. If the shipment
                   tracking status shows 'Delivered' and the shipment is still
                   'lost' for reasons such as if the buyer is not available to
                   receive the package OR if the shipment is left at doorstep,
-                  Shoes Store is not responsible for the shipment becoming lost
-                  or stolen in these conditions. It is the buyer's
-                  responsibility to make proper arrangements for receiving the
-                  expected package.
+                  NALOVA is not responsible for the shipment becoming lost or
+                  stolen in these conditions. It is the buyer's responsibility
+                  to make proper arrangements for receiving the expected
+                  package.
                   <br />
                   <br />
                   In the event of lost shipments, our customer service team will
@@ -172,7 +172,7 @@ const ShippingPolicy = () => {
                   company's policies and procedures.
                   <br />
                   <br />
-                  Shoes Store is not responsible for reimbursing any additional
+                  NALOVA is not responsible for reimbursing any additional
                   amount than what is covered by the shipping carrier.
                 </p>
               </p>

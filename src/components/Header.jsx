@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import cart from "../images/cart.svg";
 import menu from "../images/menu.svg";
 import { menuLinks, menuOptions } from "../utils/Data";
-
+import logo from "../images/logo.png";
 const Header = () => {
   return (
     <>
@@ -33,8 +33,11 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
-                <Link to="/" className="text-white">
-                  Shoes Store
+                <Link
+                  to="/"
+                  className="justify-content-center align-items-center"
+                >
+                  <img src={logo} className="img-fluid" alt="" />
                 </Link>
               </h2>
             </div>

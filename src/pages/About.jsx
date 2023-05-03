@@ -38,7 +38,7 @@ const About = () => {
               />
               <div className="about-info gap-15 d-flex flex-column">
                 <li>
-                  <strong>Shoes Store</strong>
+                  <strong>NALOVA</strong>
                 </li>
                 <li>
                   Phone: <a href="tel:+84 348073013">(+84) 348 073 013</a>

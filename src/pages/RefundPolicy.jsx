@@ -16,9 +16,9 @@ const RefundPolicy = () => {
                 refund policy
               </h3>
               <p>
-                Shoes Store do not accept returns, all sales are final. No
-                refunds will be given for change of mind or incorrect sizing, so
-                please ensure you are ordering the correct product.
+                NALOVA do not accept returns, all sales are final. No refunds
+                will be given for change of mind or incorrect sizing, so please
+                ensure you are ordering the correct product.
               </p>
               <div class="border-bottom my-5"></div>
               <h3 className="mb-5 d-flex text-capitalize align-items-center justify-content-center">

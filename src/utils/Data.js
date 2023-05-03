@@ -146,7 +146,7 @@ export const terms = [
 export const about = [
   {
     content:
-      "Welcome to our Shoes Store store, where we offer the latest and greatest in trendy and stylish footwear at affordable prices.",
+      "Welcome to our NALOVA store, where we offer the latest and greatest in trendy and stylish footwear at affordable prices.",
   },
   {
     content:
@@ -158,11 +158,11 @@ export const about = [
   },
   {
     content:
-      "At Shoes Store, we value our customers and strive to provide them with exceptional service. Our team is always available to answer any questions and assist with any issues that may arise. We want our customers to have a smooth and hassle-free shopping experience, from start to finish.",
+      "At NALOVA, we value our customers and strive to provide them with exceptional service. Our team is always available to answer any questions and assist with any issues that may arise. We want our customers to have a smooth and hassle-free shopping experience, from start to finish.",
   },
   {
     content:
-      "Thank you for choosing Shoes Store as your go-to destination for all your footwear needs. We look forward to serving you and helping you find your perfect pair of sneakers.",
+      "Thank you for choosing NALOVA as your go-to destination for all your footwear needs. We look forward to serving you and helping you find your perfect pair of sneakers.",
   },
 ];
 
@@ -170,12 +170,12 @@ export const faqs = [
   {
     question: "Do you offer exchange?",
     answer:
-      "Shoes Store does not currently offer online exchanges, but  please contact Customer Service and we'll be happy to help. You may exchange an online order in any Shoes Store store or Shoes Store Outlet. If you choose to exchange in store, we recommend calling your local Shoes Store retail store in advance to confirm they have the item you are looking for.",
+      "NALOVA does not currently offer online exchanges, but  please contact Customer Service and we'll be happy to help. You may exchange an online order in any NALOVA store or NALOVA Outlet. If you choose to exchange in store, we recommend calling your local NALOVA retail store in advance to confirm they have the item you are looking for.",
   },
   {
     question: "What is your return policy?",
     answer:
-      "Purchases made on Shoes Store.com can be returned within 60 days of receiving the product(s).​Custom products with uploaded images or embroidery are not subject for return. Purchases made at a Shoes Store retail location currently are unable to be returned via mail and need to be returned to a Shoes Store retail location.",
+      "Purchases made on NALOVA.com can be returned within 60 days of receiving the product(s).​Custom products with uploaded images or embroidery are not subject for return. Purchases made at a NALOVA retail location currently are unable to be returned via mail and need to be returned to a NALOVA retail location.",
   },
   {
     question: "How do I cancel or change my order?",
@@ -195,7 +195,7 @@ export const faqs = [
   {
     question: "What payment methods do you accept?",
     answer:
-      "Shoes Store.com accepts: Visa, Visa Debit, MasterCard, AMEX, Discover, PayPal and Shoes Store Gift Cards. We do not accept checks, cash, or credit vouchers. All cards that do not participate in the verification process will not be accepted.",
+      "NALOVA.com accepts: Visa, Visa Debit, MasterCard, AMEX, Discover, PayPal and NALOVA Gift Cards. We do not accept checks, cash, or credit vouchers. All cards that do not participate in the verification process will not be accepted.",
   },
 ];
 
