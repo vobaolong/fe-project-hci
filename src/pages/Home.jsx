@@ -48,7 +48,9 @@ const Home = () => {
                   <strike className="text-secondary">$86.21</strike> &nbsp;
                   <span className="text-danger">$43.10</span>
                 </p>
-                <Link className="button">BUY NOW</Link>
+                <Link to="/product" className="button">
+                  BUY NOW
+                </Link>
               </div>
             </div>
           </div>
@@ -222,7 +224,9 @@ const Home = () => {
                   <div className="famous-content position-absolute">
                     <h5 className="text-warning">{index.brand}</h5>
                     <h6 className="text-secondary">{index.collection}</h6>
-                    <button className="mt-5 p-2 button">Shop Now</button>
+                    <Link to="/product" className="mt-5 p-2 button">
+                      Shop Now
+                    </Link>
                   </div>
                 </div>
               </div>

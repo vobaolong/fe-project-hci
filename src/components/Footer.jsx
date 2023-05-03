@@ -33,23 +33,29 @@ const Footer = () => {
       <footer className="py-4">
         <div className="container-xxl">
           <div className="row">
-            <div className="col-4">
+            <div className="col-3 footer-contact">
               <h4 className="text-white mb-4">Contact Us</h4>
-              <div>
-                <address className="text-white fs-6">
-                  Add: No 1 Vo Van Ngan Street, Linh Chieu Ward, Thu Duc City,
-                  Ho Chi Minh City
-                </address>
+              <address>
+                <a
+                  href="https://goo.gl/maps/WTbcMkfgpwhBH96k9"
+                  className="text-white fs-6"
+                >
+                  <i class="fa-solid fa-location-dot me-2"></i>
+                  No 1 Vo Van Ngan Street, Linh Chieu Ward, Thu Duc City, Ho Chi
+                  Minh City
+                </a>
                 <a
                   href="tel:+84 348073013"
                   className="mt-3 d-block mb-1 text-white"
                 >
+                  <i class="fa-solid fa-phone me-2"></i>
                   (+84) 348 073 013
                 </a>
                 <a
                   href="mailto:baolong01.dev@gmail.com"
                   className="mt-2 d-block mb-0 text-white"
                 >
+                  <i class="fa-solid fa-envelope me-2"></i>
                   baolong01.dev@gmail.com
                 </a>
                 <div className="social_icons d-flex align-items-center gap-30 mt-4">
@@ -63,24 +69,30 @@ const Footer = () => {
                     <i class="fa-brands fa-youtube fs-3"></i>
                   </a>
                 </div>
-              </div>
+              </address>
             </div>
             <div className="col-3">
               <h4 className="text-white mb-4">Information</h4>
               <div className="footer-link d-flex flex-column">
-                <Link to="/privacy-policy" className="text-white py-2 mb-1">
+                <Link to="/privacy-policy" className="text-secondary py-2 mb-1">
                   Privacy Policy
                 </Link>
-                <Link to="/refund-policy" className="text-white py-2 mb-1">
+                <Link to="/refund-policy" className="text-secondary py-2 mb-1">
                   Refund Policy
                 </Link>
-                <Link to="/shipping-policy" className="text-white py-2 mb-1">
+                <Link
+                  to="/shipping-policy"
+                  className="text-secondary py-2 mb-1"
+                >
                   Shipping Policy
                 </Link>
-                <Link to="/term-conditions" className="text-white py-2 mb-1">
+                <Link
+                  to="/term-conditions"
+                  className="text-secondary py-2 mb-1"
+                >
                   Terms & Conditions
                 </Link>
-                <Link to="blogs" className="text-white py-2 mb-1">
+                <Link to="blogs" className="text-secondary py-2 mb-1">
                   Blogs
                 </Link>
               </div>
@@ -88,24 +100,24 @@ const Footer = () => {
             <div className="col-3">
               <h4 className="text-white mb-4">Account</h4>
               <div className="footer-link d-flex flex-column">
-                <Link to="/about" className="text-white py-2 mb-1">
+                <Link to="/about" className="text-secondary py-2 mb-1">
                   About Us
                 </Link>
-                <Link to="/faqs" className="text-white py-2 mb-1">
+                <Link to="/faqs" className="text-secondary py-2 mb-1">
                   FAQs
                 </Link>
-                <Link to="/contact" className="text-white py-2 mb-1">
+                <Link to="/contact" className="text-secondary py-2 mb-1">
                   Contact
                 </Link>
               </div>
             </div>
-            <div className="col-2">
+            <div className="col-3">
               <h4 className="text-white mb-4">Quick Links</h4>
               <div className="footer-link d-flex flex-column">
-                <Link className="text-white py-2 mb-1">Vans</Link>
-                <Link className="text-white py-2 mb-1">Sneaker</Link>
-                <Link className="text-white py-2 mb-1">Run Shoes</Link>
-                <Link className="text-white py-2 mb-1">Sandal</Link>
+                <Link className="text-secondary py-2 mb-1">Vans</Link>
+                <Link className="text-secondary py-2 mb-1">Sneaker</Link>
+                <Link className="text-secondary py-2 mb-1">Run Shoes</Link>
+                <Link className="text-secondary py-2 mb-1">Sandal</Link>
               </div>
             </div>
           </div>

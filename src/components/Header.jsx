@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
-import compare from "../images/compare.svg";
-import wishlist from "../images/wishlist.svg";
-import user from "../images/user.svg";
+
 import cart from "../images/cart.svg";
 import menu from "../images/menu.svg";
+import { menuLinks, menuOptions } from "../utils/Data";
+
 const Header = () => {
   return (
     <>
@@ -53,40 +53,21 @@ const Header = () => {
               </div>
             </div>
             <div className="col-5">
-              <div className="header-upper-links d-flex align-items-center justify-content-between">
-                <div>
-                  <Link
-                    to="/compare-product"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
-                    <img src={compare} alt="compare" />
-                    <p className="mb-0">
-                      Compare <br /> Products
-                    </p>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    to="/wishlist"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
-                    <img src={wishlist} alt="wishlist" />
-                    <p className="mb-0">
-                      Favourite <br /> Wishlist
-                    </p>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    to="/login"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
-                    <img src={user} alt="user" />
-                    <p className="mb-0">
-                      Log in <br /> My Account
-                    </p>
-                  </Link>
-                </div>
+              <div className="header-menus header-upper-links d-flex align-items-center justify-content-between">
+                {menuOptions?.map((menu, index) => {
+                  return (
+                    <div className="header-menu" key={index}>
+                      <Link
+                        to={menu.path}
+                        className="d-flex align-items-center gap-10 text-white"
+                      >
+                        <img src={menu.img} alt="user" />
+                        <p className="mb-0">{menu.title}</p>
+                      </Link>
+                    </div>
+                  );
+                })}
+
                 <div>
                   <Link
                     to="/cart"
@@ -146,11 +127,20 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="menu-links">
-                  <div className="d-flex align-items-center gap-15">
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/product">Our Store</NavLink>
-                    <NavLink to="/blogs">Blogs</NavLink>
-                    <NavLink to="/contact">Contact</NavLink>
+                  <div className="d-flex align-items-center gap-30">
+                    {menuLinks?.map((menu, index) => {
+                      return (
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive ? "selected" : ""
+                          }
+                          key={index}
+                          to={menu.href}
+                        >
+                          {menu.title}
+                        </NavLink>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

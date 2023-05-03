@@ -105,11 +105,25 @@ textarea {
 .header-bottom .menu-links a,
 .header-bottom .dropdown button {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: 400;
   letter-spacing: 0.3;
   text-transform: uppercase;
+}
+
+.header-bottom .menu-links a:hover, .header-menus .header-menu a p:hover {
+  color: var(--color-febd69);
+}
+
+.header-menu {
+  max-width: min-content;
+}
+
+.selected {
+  color: var(--color-febd69) !important;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
 }
 
 .header-bottom .dropdown button:focus {
@@ -149,6 +163,16 @@ footer .input-group-text {
   color: var(--color-232f3e);
   background-color: var(--color-febd69);
   padding: 8px 17px;
+}
+
+.footer-link>a {
+  max-width: fit-content;
+}
+
+.footer-contact>address>a:hover,
+.social_icons>a>i:hover,
+.footer-link>a:hover {
+  color: var(--color-febd69) !important;
 }
 
 /* Footer Part Ends Here */
