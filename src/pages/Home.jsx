@@ -13,23 +13,37 @@ import logo2 from "../images/run1.png";
 import logo3 from "../images/run3.png";
 import air from "../images/air.png";
 
+import ReactStars from "react-rating-stars-component";
+import productCompare from "../images/productcompare.svg";
+import wish from "../images/wish.svg";
+import addcart from "../images/add-cart.svg";
+import view from "../images/view.svg";
+import { addToWishList } from "../features/products/productSlice";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../features/blogs/blogSlice";
+import { getAllProducts } from "../features/products/productSlice";
 
 const Home = () => {
   const blogState = useSelector((state) => state?.blog?.singleBlog);
+  const productState = useSelector((state) => state.product.product);
   const location = useLocation();
   const getBlogId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
   useEffect(() => {
     getblog();
+    getallProducts();
   }, []);
 
   const getblog = () => {
     dispatch(getBlog(getBlogId));
   };
-
+  const getallProducts = () => {
+    dispatch(getAllProducts());
+  };
+  const addToWish = (id) => {
+    dispatch(addToWishList(id));
+  };
   return (
     <>
       <Container class1="home-wrapper-1 py-5">
@@ -208,10 +222,75 @@ const Home = () => {
           <div className="col-12">
             <h3 className="section-heading">Featured Collection</h3>
           </div>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {productState &&
+            productState?.map((item, index) => {
+              if (item.tags === "featured") {
+                return (
+                  <div key={index} className={"col-3"}>
+                    <Link
+                      to={`${
+                        location.pathname === "/"
+                          ? "/product/:id"
+                          : location.pathname === "/product/:id"
+                          ? "/product/:id"
+                          : ":id"
+                      }`}
+                      className="product-card position-relative"
+                    >
+                      <div className="wishlist-icon position-absolute">
+                        <button
+                          onClick={(e) => {
+                            addToWish(item?._id);
+                          }}
+                          className="border-0 bg-transparent"
+                        >
+                          <img src={wish} alt="wishlist" />
+                        </button>
+                      </div>
+                      <div className="product-image">
+                        <img
+                          src={item?.image[0].url}
+                          className="img-fluid d-block mx-auto"
+                          alt="product images"
+                          width={160}
+                        />
+                        <img
+                          src={item?.image[1].url}
+                          className="img-fluid d-block mx-auto"
+                          alt="product images"
+                          width={160}
+                        />
+                      </div>
+                      <div className="product-details">
+                        <h6 className="brand">{item.brand}</h6>
+                        <h5 className="product-title">{item?.title}</h5>
+                        <ReactStars
+                          count={5}
+                          size={24}
+                          value={item?.totalRating.toString()}
+                          edit={false}
+                          activeColor="#ffd700"
+                        />
+                        <p className="price">${item?.price}</p>
+                      </div>
+                      <div className="action-bar position-absolute">
+                        <div className="d-flex flex-column gap-15">
+                          <button className="border-0 bg-transparent">
+                            <img src={productCompare} alt="compare" />
+                          </button>
+                          <button className="border-0 bg-transparent">
+                            <img src={view} alt="view" />
+                          </button>
+                          <button className="border-0 bg-transparent">
+                            <img src={addcart} alt="addcart" />
+                          </button>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              }
+            })}
         </div>
       </Container>
       <Container class1="home-wrapper-2 py-5 famous-wrapper">
@@ -241,12 +320,22 @@ const Home = () => {
           </div>
         </div>
         <div className="row pt-5">
-          <SpecialProduct />
-          <SpecialProduct />
-          <SpecialProduct />
-          <SpecialProduct />
-          <SpecialProduct />
-          <SpecialProduct />
+          {productState &&
+            productState?.map((item, index) => {
+              if (item.tags === "special") {
+                return (
+                  <SpecialProduct
+                    key={index}
+                    brand={item?.brand}
+                    title={item?.title}
+                    totalrating={item?.totalrating.toString()}
+                    price={item?.price}
+                    sold={item?.sold}
+                    quantity={item?.quantity}
+                  />
+                );
+              }
+            })}
         </div>
       </Container>
       <Container class1="home-wrapper-2 popular-wrapper">
@@ -256,10 +345,75 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {productState &&
+            productState?.map((item, index) => {
+              if (item.tags === "popular") {
+                return (
+                  <div key={index} className={"col-3"}>
+                    <Link
+                      to={`${
+                        location.pathname === "/"
+                          ? "/product/:id"
+                          : location.pathname === "/product/:id"
+                          ? "/product/:id"
+                          : ":id"
+                      }`}
+                      className="product-card position-relative"
+                    >
+                      <div className="wishlist-icon position-absolute">
+                        <button
+                          onClick={(e) => {
+                            addToWish(item?._id);
+                          }}
+                          className="border-0 bg-transparent"
+                        >
+                          <img src={wish} alt="wishlist" />
+                        </button>
+                      </div>
+                      <div className="product-image">
+                        <img
+                          src={item?.image[0].url}
+                          className="img-fluid d-block mx-auto"
+                          alt="product images"
+                          width={160}
+                        />
+                        <img
+                          src={item?.image[1].url}
+                          className="img-fluid d-block mx-auto"
+                          alt="product images"
+                          width={160}
+                        />
+                      </div>
+                      <div className="product-details">
+                        <h6 className="brand">{item.brand}</h6>
+                        <h5 className="product-title">{item?.title}</h5>
+                        <ReactStars
+                          count={5}
+                          size={24}
+                          value={item?.totalRating.toString()}
+                          edit={false}
+                          activeColor="#ffd700"
+                        />
+                        <p className="price">${item?.price}</p>
+                      </div>
+                      <div className="action-bar position-absolute">
+                        <div className="d-flex flex-column gap-15">
+                          <button className="border-0 bg-transparent">
+                            <img src={productCompare} alt="compare" />
+                          </button>
+                          <button className="border-0 bg-transparent">
+                            <img src={view} alt="view" />
+                          </button>
+                          <button className="border-0 bg-transparent">
+                            <img src={addcart} alt="addcart" />
+                          </button>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              }
+            })}
         </div>
       </Container>
       <Container class1="home-wrapper-2 py-5 marque-wrapper">

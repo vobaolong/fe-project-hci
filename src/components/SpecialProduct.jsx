@@ -2,7 +2,9 @@ import React from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import product from "../images/nike.png";
-const SpecialProduct = () => {
+
+const SpecialProduct = (props) => {
+  const { title, brand, totalrating, price, sold, quantity } = props;
   return (
     <>
       <div className="col-4 mt-3">
@@ -12,19 +14,20 @@ const SpecialProduct = () => {
               <img className="img-fluid" src={product} alt="" />
             </div>
             <div className="special-product-content">
-              <h5 className="special-product-brand">Nike</h5>
+              <h5 className="special-product-brand">{brand}</h5>
               <Link to="/" className="special-product-title fw-bolder">
-                Nike Air Jordan 1 Low 'Marina Blue' DC0774-114
+                {title}
               </Link>
               <ReactStars
                 count={5}
                 size={24}
-                value={4}
+                value={totalrating}
                 edit={false}
                 activeColor="#ffd700"
               />
               <p className="special-product-price">
-                <span className="red-p">$100</span> &nbsp; <strike>$200</strike>
+                <span className="red-p">$ {price}</span> &nbsp;{" "}
+                <strike>${(price * 4) / 5}</strike>
               </p>
               <div className="discount-till d-flex align-items-center gap-10">
                 <p className="mb-0">
@@ -37,15 +40,15 @@ const SpecialProduct = () => {
                 </div>
               </div>
               <div className="prod-count my-3">
-                <p>Product: 5</p>
+                <p>Product: {quantity}</p>
                 <div className="progress">
                   <div
                     className="progress-bar"
                     role="progressbar"
-                    style={{ width: "25%" }}
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
+                    style={{ width: quantity / quantity + sold * 100 + "%" }}
+                    aria-valuenow={quantity / quantity + sold * 100}
+                    aria-valuemin={quantity}
+                    aria-valuemax={sold + quantity}
                   ></div>
                 </div>
               </div>

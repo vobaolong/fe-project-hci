@@ -5,8 +5,41 @@ import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 import { BiPhoneCall, BiInfoCircle } from "react-icons/bi";
 import Container from "../components/Container";
 import CustomInput from "../components/CustomInput";
+import * as yup from "yup";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { createQuery } from "../features/contact/contactSlice";
+
+const contactSchema = yup.object({
+  name: yup.string().required("Name is Required"),
+  email: yup.string().nullable().email().required("Email is required"),
+  mobile: yup
+    .string()
+    .default("")
+    .nullable()
+    .required("Mobile Number is Required."),
+  comment: yup.string().default("").nullable().required("Comment is Required."),
+});
 
 const Contact = () => {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      comment: "",
+    },
+    validationSchema: contactSchema,
+    onSubmit: (values) => {
+      dispatch(
+        createQuery({
+          name: values.name,
+          email: values.email,
+          comment: values.comment,
+        })
+      );
+    },
+  });
   return (
     <>
       <Meta title={"Contact Us"} />
@@ -29,26 +62,49 @@ const Contact = () => {
             <div className="contact-inner-wrapper d-flex justify-content-between ">
               <div>
                 <h3 className="contact-title mb-4">Contact</h3>
-                <form action="submit" className="d-flex flex-column gap-15">
+                <form
+                  action=""
+                  onSubmit={formik.handleSubmit}
+                  className="d-flex flex-column gap-15"
+                >
                   <CustomInput
                     type="text"
-                    name="Name"
+                    name="name"
                     className="form-control"
                     label="Name"
+                    onChange={formik.handleChange("name")}
+                    onBlur={formik.handleBlur("name")}
+                    values={formik.values.name}
                   />
+                  <div className="error">
+                    {formik.touched.name && formik.errors.name}
+                  </div>
                   <CustomInput
                     type="email"
                     className="form-control"
+                    name="email"
                     label="Email"
+                    onChange={formik.handleChange("email")}
+                    onBlur={formik.handleBlur("email")}
+                    values={formik.values.email}
                   />
+                  <div className="error">
+                    {formik.touched.email && formik.errors.email}
+                  </div>
                   <textarea
-                    name=""
                     id=""
                     className="w-100 form-control"
                     cols="30"
                     rows="4"
                     placeholder="Comments"
+                    name="comment"
+                    onChange={formik.handleChange("comment")}
+                    onBlur={formik.handleBlur("comment")}
+                    values={formik.values.comment}
                   ></textarea>
+                  <div className="error">
+                    {formik.touched.comment && formik.errors.comment}
+                  </div>
                   <div>
                     <button className="button border-0">Submit</button>
                   </div>
