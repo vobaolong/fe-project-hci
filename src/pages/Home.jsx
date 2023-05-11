@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
@@ -27,9 +27,11 @@ import { getAllProducts } from "../features/products/productSlice";
 const Home = () => {
   const blogState = useSelector((state) => state?.blog?.singleBlog);
   const productState = useSelector((state) => state.product.product);
+  const navigate = useNavigate();
   const location = useLocation();
   const getBlogId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
+
   useEffect(() => {
     getblog();
     getallProducts();
@@ -227,16 +229,7 @@ const Home = () => {
               if (item.tags === "featured") {
                 return (
                   <div key={index} className={"col-3"}>
-                    <Link
-                      to={`${
-                        location.pathname === "/"
-                          ? "/product/:id"
-                          : location.pathname === "/product/:id"
-                          ? "/product/:id"
-                          : ":id"
-                      }`}
-                      className="product-card position-relative"
-                    >
+                    <div className="product-card position-relative">
                       <div className="wishlist-icon position-absolute">
                         <button
                           onClick={(e) => {
@@ -279,14 +272,18 @@ const Home = () => {
                             <img src={productCompare} alt="compare" />
                           </button>
                           <button className="border-0 bg-transparent">
-                            <img src={view} alt="view" />
+                            <img
+                              onClick={() => navigate("/product/" + item?._id)}
+                              src={view}
+                              alt="view"
+                            />
                           </button>
                           <button className="border-0 bg-transparent">
                             <img src={addcart} alt="addcart" />
                           </button>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 );
               }
@@ -326,6 +323,7 @@ const Home = () => {
                 return (
                   <SpecialProduct
                     key={index}
+                    id={index?._id}
                     brand={item?.brand}
                     title={item?.title}
                     totalrating={item?.totalrating.toString()}
@@ -350,16 +348,7 @@ const Home = () => {
               if (item.tags === "popular") {
                 return (
                   <div key={index} className={"col-3"}>
-                    <Link
-                      to={`${
-                        location.pathname === "/"
-                          ? "/product/:id"
-                          : location.pathname === "/product/:id"
-                          ? "/product/:id"
-                          : ":id"
-                      }`}
-                      className="product-card position-relative"
-                    >
+                    <div className="product-card position-relative">
                       <div className="wishlist-icon position-absolute">
                         <button
                           onClick={(e) => {
@@ -402,14 +391,20 @@ const Home = () => {
                             <img src={productCompare} alt="compare" />
                           </button>
                           <button className="border-0 bg-transparent">
-                            <img src={view} alt="view" />
+                            <img
+                              onClick={(e) => {
+                                addToWish(item?._id);
+                              }}
+                              src={view}
+                              alt="view"
+                            />
                           </button>
                           <button className="border-0 bg-transparent">
                             <img src={addcart} alt="addcart" />
                           </button>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 );
               }

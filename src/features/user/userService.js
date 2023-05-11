@@ -19,7 +19,41 @@ const login = async (userData) => {
 };
 
 const getUserWishList = async (userData) => {
-  const response = await axios.post(`${base_url}user/wishlist`, config);
+  const response = await axios.get(`${base_url}user/wishlist`, config);
+  if (response.data) {
+    return response.data;
+  }
+};
+
+const addToCart = async (cartData) => {
+  const response = await axios.post(`${base_url}user/cart`, cartData, config);
+  if (response.data) {
+    return response.data;
+  }
+};
+
+const getCart = async () => {
+  const response = await axios.get(`${base_url}user/cart`, config);
+  if (response.data) {
+    return response.data;
+  }
+};
+
+const removeProductFromCart = async (cartItemId) => {
+  const response = await axios.delete(
+    `${base_url}user/delete-product-cart/${cartItemId}`,
+    config
+  );
+  if (response.data) {
+    return response.data;
+  }
+};
+
+const updateProductFromCart = async (cartDetail) => {
+  const response = await axios.delete(
+    `${base_url}user/update-product-cart/${cartDetail.cartItemId}/${cartDetail.quantity}`,
+    config
+  );
   if (response.data) {
     return response.data;
   }
@@ -29,4 +63,8 @@ export const authService = {
   register,
   login,
   getUserWishList,
+  addToCart,
+  getCart,
+  removeProductFromCart,
+  updateProductFromCart,
 };

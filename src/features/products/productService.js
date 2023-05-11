@@ -8,6 +8,13 @@ const getProducts = async (userData) => {
   }
 };
 
+const getProduct = async (id) => {
+  const response = await axios.get(`${base_url}product/${id}`);
+  if (response.data) {
+    return response.data;
+  }
+};
+
 const addToWishList = async (productId) => {
   const response = await axios.get(
     `${base_url}product/wishlist`,
@@ -20,5 +27,6 @@ const addToWishList = async (productId) => {
 };
 export const productService = {
   getProducts,
+  getProduct,
   addToWishList,
 };

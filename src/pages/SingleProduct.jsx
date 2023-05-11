@@ -7,16 +7,62 @@ import ReactImageZoom from "react-image-zoom";
 import Color from "../components/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import shoes from "../images/products/nike-jordan.png";
 import Container from "../components/Container";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProduct } from "../features/products/productSlice";
+import { toast } from "react-toastify";
+import { addProductToCart, getUserCart } from "../features/user/userSlice";
+
 const SingleProduct = () => {
+  const [color, setColor] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+  const location = useLocation();
+  const getProductId = location.pathname.split("/")[2];
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const productState = useSelector((state) => state.product.singleProduct);
+  const cartState = useSelector((state) => state.auth.cartProducts);
+
+  useEffect(() => {
+    dispatch(getProduct(getProductId));
+    dispatch(getUserCart());
+  }, []);
+
+  useEffect(() => {
+    for (let index = 0; index < cartState.length; index++) {
+      if (getProductId === cartState[index]?.productId?._id) {
+        setAdded(true);
+      }
+    }
+  });
+  const uploadCart = () => {
+    if (color === null) {
+      toast.error("Please choose a color");
+      return false;
+    } else {
+      dispatch(
+        addProductToCart({
+          productId: productState?._id,
+          quantity,
+          color,
+          price: productState?.price,
+        })
+      );
+      navigate("/cart");
+    }
+  };
   const props = {
     width: 594,
     height: 600,
     zoomWidth: 600,
 
-    img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg",
+    img: productState.image[0]?.url
+      ? productState.image[0]?.url
+      : "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg",
   };
 
   const [orderedProduct, setOrderedProduct] = useState(true);
@@ -43,50 +89,27 @@ const SingleProduct = () => {
               </div>
             </div>
             <div className="other-product-images d-flex flex-wrap gap-15">
-              <div>
-                <img
-                  src="https:/../images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  className="w-1/4 img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src="https:/../images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  className="w-1/4 img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src="https:/../images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  className="w-1/4 img-fluid"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  src="https:/../images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  className="w-1/4 img-fluid"
-                  alt=""
-                />
-              </div>
+              {productState.image.map((item, index) => {
+                return (
+                  <div>
+                    <img src={item?.url} className="w-1/4 img-fluid" alt="" />
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="col-6">
             <div className="main-product-details">
               <div className="border-bottom">
-                <h3 className="title">
-                  Kids Headphones Bulk 10 Pack Multi Colored For Students
-                </h3>
+                <h3 className="title">{productState?.title}</h3>
               </div>
               <div className="border-bottom py-3">
-                <p className="price">$ 100</p>
+                <p className="price">$ {productState?.price}</p>
                 <div className="d-flex align-items-center gap-10">
                   <ReactStars
                     count={5}
                     size={24}
-                    value={4}
+                    value={productState?.totalrating}
                     edit={false}
                     activeColor="#ffd700"
                   />
@@ -103,18 +126,18 @@ const SingleProduct = () => {
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Brand :</h3>
-                  <p className="product-data">Havells</p>
+                  <p className="product-data">{productState?.brand}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Category :</h3>
-                  <p className="product-data">shoes</p>
+                  <p className="product-data">{productState?.category}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Tags :</h3>
-                  <p className="product-data">shoes</p>
+                  <p className="product-data">{productState?.tags}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
-                  <h3 className="product-heading">Availablity :</h3>
+                  <h3 className="product-heading">Availability :</h3>
                   <p className="product-data">In Stock</p>
                 </div>
                 <div className="d-flex gap-10 flex-column mt-2 mb-3">
@@ -134,31 +157,51 @@ const SingleProduct = () => {
                     </span>
                   </div>
                 </div>
-                <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                  <h3 className="product-heading">Color :</h3>
-                  <Color />
-                </div>
+                {added === false && (
+                  <>
+                    <div className="d-flex gap-10 flex-column mt-2 mb-3">
+                      <h3 className="product-heading">Color :</h3>
+                      <Color
+                        setColor={setColor}
+                        colorData={productState?.color}
+                      />
+                    </div>
+                  </>
+                )}
                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
-                  <h3 className="product-heading">Quantity :</h3>
-                  <div className="">
-                    <input
-                      type="number"
-                      name=""
-                      min={1}
-                      max={10}
-                      className="form-control"
-                      style={{ width: "70px" }}
-                      id=""
-                    />
-                  </div>
-                  <div className="d-flex align-items-center gap-30 ms-5">
+                  {added === false && (
+                    <>
+                      <h3 className="product-heading">Quantity :</h3>
+                      <div className="">
+                        <input
+                          type="number"
+                          name=""
+                          min={1}
+                          max={10}
+                          className="form-control"
+                          style={{ width: "70px" }}
+                          id=""
+                          onChange={(e) => setQuantity(e.target.value)}
+                          value={quantity}
+                        />
+                      </div>
+                    </>
+                  )}
+                  <div
+                    className={
+                      added ? "ms-0" : "ms-5 d-flex align-items-center gap-30"
+                    }
+                  >
                     <button
                       className="button border-0"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
                       type="button"
+                      onClick={() => {
+                        added ? navigate("/cart") : uploadCart();
+                      }}
                     >
-                      Add to Cart
+                      {added ? "Go to cart" : " Add to Cart"}
                     </button>
                     <button className="button signup">Buy It Now</button>
                   </div>
@@ -188,9 +231,7 @@ const SingleProduct = () => {
                   <a
                     href="javascript:void(0);"
                     onClick={() => {
-                      copyToClipboard(
-                        "https:/../images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                      );
+                      copyToClipboard(window.location.href);
                     }}
                   >
                     Copy Product Link
@@ -206,12 +247,11 @@ const SingleProduct = () => {
           <div className="col-12">
             <h4>Description</h4>
             <div className="bg-white p-3">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tenetur nisi similique illum aut perferendis voluptas, quisquam
-                obcaecati qui nobis officia. Voluptatibus in harum deleniti
-                labore maxime officia esse eos? Repellat?
-              </p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: productState?.description,
+                }}
+              ></p>
             </div>
           </div>
         </div>
@@ -328,13 +368,13 @@ const SingleProduct = () => {
             <div className="modal-body py-0">
               <div className="d-flex align-items-center">
                 <div className="flex-grow-1 w-50">
-                  <img src={shoes} className="img-fluid" alt="product imgae" />
+                  <img src={shoes} className="img-fluid" alt="product images" />
                 </div>
                 <div className="d-flex flex-column flex-grow-1 w-50">
                   <h6 className="mb-3">Apple shoes</h6>
-                  <p className="mb-1">Quantity: asgfd</p>
-                  <p className="mb-1">Color: asgfd</p>
-                  <p className="mb-1">Size: asgfd</p>
+                  <p className="mb-1">Quantity: sd</p>
+                  <p className="mb-1">Color: sd</p>
+                  <p className="mb-1">Size: sd</p>
                 </div>
               </div>
             </div>

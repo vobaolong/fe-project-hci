@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import product from "../images/nike.png";
 
 const SpecialProduct = (props) => {
-  const { title, brand, totalrating, price, sold, quantity } = props;
+  const { title, brand, totalrating, price, sold, quantity, id } = props;
   return (
     <>
       <div className="col-4 mt-3">
@@ -52,10 +52,13 @@ const SpecialProduct = (props) => {
                   ></div>
                 </div>
               </div>
-              <button className="btn btn-outline-warning rounded" to="/">
-                Add to cart
+              <Link
+                className="button btn btn-outline-warning rounded"
+                to={"/product" + id}
+              >
+                View
                 <i className="fa-solid fa-cart-shopping fa-bounce ms-2 "></i>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
