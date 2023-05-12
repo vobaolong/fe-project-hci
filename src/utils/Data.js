@@ -1,7 +1,3 @@
-import compare from "../images/compare.svg";
-import wishlist from "../images/wishlist.svg";
-import user from "../images/user.svg";
-
 import service1 from "../images/services/service.png";
 import service2 from "../images/services/service-02.png";
 import service3 from "../images/services/service-03.png";
@@ -16,24 +12,6 @@ import brand5 from "../images/brand/brand-05.png";
 
 import famous1 from "../images/famous/famous-01.png";
 import famous2 from "../images/famous/famous-02.png";
-
-export const menuOptions = [
-  {
-    path: "/compare-product",
-    img: compare,
-    title: "Compare\nProduct",
-  },
-  {
-    path: "/wishlist",
-    img: wishlist,
-    title: "Wish List",
-  },
-  {
-    path: "/login",
-    img: user,
-    title: "Login",
-  },
-];
 
 export const menuLinks = [
   {

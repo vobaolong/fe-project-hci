@@ -8,10 +8,14 @@ import logo from "../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
+import compare from "../images/compare.svg";
+import wishlist from "../images/wishlist.svg";
+import user from "../images/user.svg";
 
 const Header = () => {
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state?.auth?.cartProducts);
+  const authState = useSelector((state) => state?.auth);
   const [totalAmount, setTotalAmount] = useState(null);
   useEffect(() => {
     let sum = 0;
@@ -70,20 +74,35 @@ const Header = () => {
             </div>
             <div className="col-5">
               <div className="header-menus header-upper-links d-flex align-items-center justify-content-between">
-                {menuOptions?.map((menu, index) => {
-                  return (
-                    <div className="header-menu" key={index}>
-                      <Link
-                        to={menu.path}
-                        className="d-flex align-items-center gap-10 text-white"
-                      >
-                        <img src={menu.img} alt="user" />
-                        <p className="mb-0">{menu.title}</p>
-                      </Link>
-                    </div>
-                  );
-                })}
-
+                <Link
+                  to="/compare-product"
+                  className="d-flex align-items-center gap-10 text-white"
+                >
+                  <img src={compare} alt="user" />
+                  <p className="mb-0">
+                    Compare
+                    <br />
+                    Product
+                  </p>
+                </Link>
+                <Link
+                  to="/wishlist"
+                  className="d-flex align-items-center gap-10 text-white"
+                >
+                  <img src={wishlist} alt="user" />
+                  <p className="mb-0">Wish List</p>
+                </Link>
+                <Link
+                  to={authState?.user === null ? "/login" : ""}
+                  className="d-flex align-items-center gap-10 text-white"
+                >
+                  <img src={user} alt="user" />
+                  {authState?.user === null ? (
+                    <p className="mb-0">Login</p>
+                  ) : (
+                    <p className="mb-0">Welcome {authState?.user?.fullName}</p>
+                  )}
+                </Link>
                 <div>
                   <Link
                     to="/cart"
