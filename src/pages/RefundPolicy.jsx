@@ -20,7 +20,7 @@ const RefundPolicy = () => {
                 will be given for change of mind or incorrect sizing, so please
                 ensure you are ordering the correct product.
               </p>
-              <div class="border-bottom my-5"></div>
+              <div className="border-bottom my-5"></div>
               <h3 className="mb-5 d-flex text-capitalize align-items-center justify-content-center">
                 exchange policy
               </h3>

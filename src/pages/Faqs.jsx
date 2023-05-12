@@ -16,13 +16,13 @@ const Faqs = () => {
               <h3 className="mb-5 d-flex text-capitalize align-items-center justify-content-center">
                 FAQs
               </h3>
-              <div class="accordion" id="accordionExample">
+              <div className="accordion" id="accordionExample">
                 {faqs?.map((faq, index) => {
                   return (
-                    <div class="accordion-item" key={index}>
-                      <h2 class="accordion-header" id={`heading-${index}`}>
+                    <div className="accordion-item" key={index}>
+                      <h2 className="accordion-header" id={`heading-${index}`}>
                         <button
-                          class="accordion-button fs-6 fw-bolder"
+                          className="accordion-button fs-6 fw-bolder"
                           type="button"
                           data-bs-toggle="collapse"
                           data-bs-target={`#collapse-${index}`}
@@ -34,13 +34,13 @@ const Faqs = () => {
                       </h2>
                       <div
                         id={`collapse-${index}`}
-                        class="accordion-collapse collapse"
+                        className="accordion-collapse collapse"
                         aria-labelledby={`heading-${index}`}
                         data-bs-parent="#accordionExample"
                       >
                         <div
                           style={{ textAlign: "justify" }}
-                          class="accordion-body ms-2"
+                          className="accordion-body ms-2"
                         >
                           {faq.answer}
                         </div>

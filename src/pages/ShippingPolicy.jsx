@@ -49,7 +49,7 @@ const ShippingPolicy = () => {
               <p className="text-decoration-underline fw-bolder">
                 Shipping Costs and delivery days:
               </p>
-              <table class="table rounded-corners">
+              <table className="table rounded-corners">
                 <thead>
                   <tr className="table-active">
                     <th className="col-3" scope="col">

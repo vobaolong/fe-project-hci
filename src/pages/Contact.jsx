@@ -116,24 +116,24 @@ const Contact = () => {
                 <div>
                   <ul className="ps-0">
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <i class="fa-solid fa-location-dot fs-5"></i>
+                      <i className="fa-solid fa-location-dot fs-5"></i>
                       <address className="mb-0">
                         Add: No 1 Vo Van Ngan Street, Linh Chieu Ward, Thu Duc
                         City, Ho Chi Minh City
                       </address>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <i class="fa-solid fa-phone fs-5"></i>
+                      <i className="fa-solid fa-phone fs-5"></i>
                       <a href="tel:+84 348073013">(+84) 348 073 013</a>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <i class="fa-solid fa-envelope fs-5"></i>
+                      <i className="fa-solid fa-envelope fs-5"></i>
                       <a href="mailto:baolong01.dev@gmail.com">
                         baolong01.dev@gmail.com
                       </a>
                     </li>
                     <li className="mb-3 d-flex gap-15 align-items-center">
-                      <i class="fa-solid fa-clock fs-5"></i>
+                      <i className="fa-solid fa-clock fs-5"></i>
                       <p className="mb-0">
                         Monday - Friday <br />
                         10:00 AM - 8:00 PM

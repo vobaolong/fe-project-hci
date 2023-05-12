@@ -40,7 +40,7 @@ const Footer = () => {
                   href="https://goo.gl/maps/WTbcMkfgpwhBH96k9"
                   className="text-white fs-6"
                 >
-                  <i class="fa-solid fa-location-dot me-2"></i>
+                  <i className="fa-solid fa-location-dot me-2"></i>
                   No 1 Vo Van Ngan Street, Linh Chieu Ward, Thu Duc City, Ho Chi
                   Minh City
                 </a>
@@ -48,25 +48,25 @@ const Footer = () => {
                   href="tel:+84 348073013"
                   className="mt-3 d-block mb-1 text-white"
                 >
-                  <i class="fa-solid fa-phone me-2"></i>
+                  <i className="fa-solid fa-phone me-2"></i>
                   (+84) 348 073 013
                 </a>
                 <a
                   href="mailto:baolong01.dev@gmail.com"
                   className="mt-2 d-block mb-0 text-white"
                 >
-                  <i class="fa-solid fa-envelope me-2"></i>
+                  <i className="fa-solid fa-envelope me-2"></i>
                   baolong01.dev@gmail.com
                 </a>
                 <div className="social_icons d-flex align-items-center gap-30 mt-4">
                   <a className="text-white" href="https://www.linkedin.com/">
-                    <i class="fa-brands fa-linkedin fs-3"></i>
+                    <i className="fa-brands fa-linkedin fs-3"></i>
                   </a>
                   <a className="text-white" href="https://github.com/">
-                    <i class="fa-brands fa-github fs-3"></i>
+                    <i className="fa-brands fa-github fs-3"></i>
                   </a>
                   <a className="text-white" href="https://www.youtube.com/">
-                    <i class="fa-brands fa-youtube fs-3"></i>
+                    <i className="fa-brands fa-youtube fs-3"></i>
                   </a>
                 </div>
               </address>
