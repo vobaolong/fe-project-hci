@@ -1,103 +1,66 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Navbar from "./components/layout/Navbar/Navbar";
+import WebFont from "webfontloader";
+import Footer from "./components/layout/Footer/Footer";
+import footerData from "./data/footerData.json";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import OurStore from "./pages/OurStore";
-import Blog from "./pages/Blog";
-import CompareProduct from "./pages/CompareProduct";
-import Wishlist from "./pages/Wishlist";
-import Login from "./pages/Login";
-import ForgotPassword from "./pages/ForgotPassword";
-import Signup from "./pages/Signup";
-import ResetPassword from "./pages/ResetPassword";
-import SingleBlog from "./pages/SingleBlog";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import ShippingPolicy from "./pages/ShippingPolicy";
-import SingleProduct from "./pages/SingleProduct";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import RefundPolicy from "./pages/RefundPolicy";
-import TermAndConditions from "./pages/TermAndConditions";
-import Faqs from "./pages/Faqs";
-import { PrivateRoutes } from "./routes/PrivateRoutes";
-import { OpenRoutes } from "./routes/OpenRoutes";
 
-export const ScrollToTops = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+import store from "./store";
+import { loadUser } from "./actions/userAction";
+import ElementWithRoutes from "./routes/ElementWithRoutes";
+import axios from "axios";
 
-  return null;
-};
 function App() {
+  const menuOptions = [
+    {
+      menuName: "Trang chủ",
+      path: "/",
+    },
+    {
+      menuName: "Sản phẩm",
+      path: "/products",
+    },
+    {
+      menuName: "Về chúng tôi",
+      path: "/aboutus",
+    },
+    {
+      menuName: "Liên hệ",
+      path: "/contactus",
+    },
+  ];
+
+  const [stripeApikey, setStripeApiKey] = useState("");
+
+  const getStripeApiKey = async () => {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+
+    setStripeApiKey(data.stripeApiKey);
+  };
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Raleway"],
+      },
+    });
+
+    // loading user data
+    store.dispatch(loadUser());
+
+    getStripeApiKey();
+  }, []);
+
   return (
     <>
-      <BrowserRouter>
-        <ScrollToTops />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="product" element={<OurStore />} />
-            <Route path="product/:id" element={<SingleProduct />} />
-            <Route path="blogs" element={<Blog />} />
-            <Route path="blog/:id" element={<SingleBlog />} />
-            <Route
-              path="cart"
-              element={
-                <PrivateRoutes>
-                  <Cart />
-                </PrivateRoutes>
-              }
-            />
-            <Route
-              path="checkout"
-              element={
-                <PrivateRoutes>
-                  <Checkout />
-                </PrivateRoutes>
-              }
-            />
-            <Route path="compare-product" element={<CompareProduct />} />
-            <Route
-              path="wishlist"
-              element={
-                <PrivateRoutes>
-                  <Wishlist />
-                </PrivateRoutes>
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <OpenRoutes>
-                  <Login />
-                </OpenRoutes>
-              }
-            />
-            <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route
-              path="signup"
-              element={
-                <OpenRoutes>
-                  <Signup />
-                </OpenRoutes>
-              }
-            />
-            <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="refund-policy" element={<RefundPolicy />} />
-            <Route path="shipping-policy" element={<ShippingPolicy />} />
-            <Route path="term-conditions" element={<TermAndConditions />} />
-            <Route path="faqs" element={<Faqs />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      {/* Navbar components */}
+      <Navbar menuOptions={menuOptions} />
+
+      {/* All routes */}
+      <ElementWithRoutes stripeApiKey={stripeApikey} />
+
+      {/* Footer component */}
+      <Footer jsonData={footerData} />
     </>
   );
 }
