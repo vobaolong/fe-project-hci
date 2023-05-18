@@ -152,7 +152,6 @@ const OrderDetails = () => {
                 <div className="headingData">
                   {order.orderItems &&
                     order.orderItems.map((item, index) => {
-                      console.log(order.orderItems);
                       return (
                         <div
                           key={index}
