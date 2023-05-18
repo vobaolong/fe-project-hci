@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
       className="flex flex-col justify-between w-64 h-[400px] m-auto rounded-lg shadow-xl bg-secColor overflow-hidden md:hover:shadow-xl transition-all duration-300 md:hover:scale-105 group decoration-transparent"
       title={`Name: ${
         product.name
-      } \nPrice: ${product.price.toLocaleString()} VND \nRating: ${
+      } \nPrice: ${product.price.toLocaleString()} đ \nRating: ${
         product.ratings
       } ★`}
     >
@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
           value={product.price}
           displayType={"text"}
           thousandSeparator={true}
-          renderText={(value) => <div>{value} VND</div>}
+          renderText={(value) => <div>{value} đ</div>}
         />
       </div>
     </Link>

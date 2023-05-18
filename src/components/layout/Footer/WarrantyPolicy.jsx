@@ -1,9 +1,12 @@
 import React from "react";
 import quyDinhBaoHanhImg from "../../../assets/quydinhbaohanh.png";
+import MetaData from "../MetaData";
 const WarrantyPolicy = () => {
   return (
-    <div className="">
-      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl py-5 flex-wrap">
+    <>
+      <MetaData title={`JAMILA | Bảo hành`} />
+
+      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
         <div className="w-[100%] px-5">
           <h1 className="text-primaryBlue text-3xl font-semibold uppercase tracking-widest mt-5 text-center">
             Chính sách bảo hành
@@ -11,15 +14,15 @@ const WarrantyPolicy = () => {
           <br />
           <br />
         </div>
-        <div className=" md:w-[100%] sm:w-[80%] px-14 ">
+        <div className="w-[100%] mx-10 my-5">
           <img
             src={quyDinhBaoHanhImg}
             alt="quydinhbaohanhImg"
             className="rounded-xl w-[100%] "
           />
         </div>
-        <div class="md:w-[100%] sm:w-[100%] px-5">
-          <p class="mt-5 text-lightGray mx-10 text-justify leading-6">
+        <div class="w-[100%] px-5">
+          <p class="lg:text-lg md:text-md sm:text-sm text-mainColor lg:mx-10 md:mx-5 sm:mx-3 text-justify leading-relaxed">
             <br />
             <strong>1. Điều kiện nhận bảo hành tại JAMILA</strong>
             <br />
@@ -38,8 +41,6 @@ const WarrantyPolicy = () => {
             của nhà sản xuất.
             <br />
             <br />
-          </p>
-          <p class="mt-4 text-lightGray mx-10 text-justify leading-6">
             <strong>2. Không nhận bảo hành tại JAMILA</strong>
             <br />
             <br />
@@ -64,7 +65,7 @@ const WarrantyPolicy = () => {
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

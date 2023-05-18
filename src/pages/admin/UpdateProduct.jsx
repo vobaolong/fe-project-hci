@@ -19,6 +19,7 @@ import SideBar from "../../components/admin/Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
 import { useParams, useNavigate } from "react-router-dom";
+import { brands } from "../../data/brand";
 
 const UpdateProduct = () => {
   const dispatch = useDispatch();
@@ -38,21 +39,11 @@ const UpdateProduct = () => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
-
-  const categories = [
-    "Laptop",
-    "PC",
-    "Chuột",
-    "Bàn phím",
-    "Tai nghe",
-    "SSD",
-    "Case PC",
-  ];
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -61,7 +52,7 @@ const UpdateProduct = () => {
       setProductName(product.name);
       setPrice(product.price);
       setDescription(product.description);
-      setCategory(product.category);
+      setBrand(product.brand);
       setStock(product.stock);
       setOldImages(product.images);
     }
@@ -101,7 +92,7 @@ const UpdateProduct = () => {
     myForm.set("name", productName);
     myForm.set("price", price);
     myForm.set("description", description);
-    myForm.set("category", category);
+    myForm.set("brand", brand);
     myForm.set("stock", Stock);
 
     images.forEach((image) => {
@@ -134,7 +125,7 @@ const UpdateProduct = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Sản phẩm - Admin`} />
+      <MetaData title={`Sản phẩm | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">
@@ -187,20 +178,21 @@ const UpdateProduct = () => {
                 <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <AccountTree className="text-xl text-white mx-2" />
                   <select
-                    value={category}
+                    value={brand}
                     className="px-3 py-2 outline-none border-2 w-full"
-                    onChange={(e) => setCategory(e.target.value)}
+                    onChange={(e) => setBrand(e.target.value)}
                   >
                     <option value="">Vui lòng chọn danh mục</option>
-                    {categories?.map((category, index) => {
+                    {brands?.map((brand, index) => {
                       return (
-                        <option key={index} value={category}>
-                          {category}
+                        <option key={index} value={brand}>
+                          {brand}
                         </option>
                       );
                     })}
                   </select>
                 </div>
+
                 <InputField
                   type="number"
                   name="stock"

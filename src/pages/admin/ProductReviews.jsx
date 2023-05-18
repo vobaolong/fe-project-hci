@@ -131,7 +131,7 @@ const ProductReviews = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Tất cả đánh giá - Admin`} />
+      <MetaData title={`Tất cả đánh giá | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">

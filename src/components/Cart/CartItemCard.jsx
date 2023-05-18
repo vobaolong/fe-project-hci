@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CurrencyFormat from 'react-currency-format';
+import CurrencyFormat from "react-currency-format";
 
-const CartItemCard = ({ item, deleteCartItems }) => {
+const CartItemCard = ({ item, size, deleteCartItems }) => {
   return (
     <div className="w-24 md:w-full flex flex-col justify-center  md:justify-start md:flex-row gap-6 py-3 h-auto items-start box-border">
       <img
@@ -17,10 +17,19 @@ const CartItemCard = ({ item, deleteCartItems }) => {
         >
           {item.name}
         </Link>
-          <CurrencyFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix="Giá: " renderText={value => <div>{value} VND</div>} />         
+        <CurrencyFormat
+          value={item.price}
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix="Giá: "
+          renderText={(value) => <div>{value} đ</div>}
+        />
+        <div className="capitalize rounded-md bg-secondaryDark opacity-70 w-max p-2">
+          Size: {size}
+        </div>
         <p
           onClick={() => deleteCartItems(item.product)}
-          className="bg-red-300 w-[150px] hover:bg-red-400 hover:shadow-lg transition-all duration-500 text-white cursor-pointer py-[0.1em] rounded-md text-center mt-2"
+          className="bg-red-600 w-[150px] hover:bg-red-400 hover:shadow-lg hover:scale-95 transition-all duration-500 text-white cursor-pointer py-[0.1em] rounded-md text-center mt-2"
         >
           Xóa
         </p>

@@ -8,7 +8,7 @@ const Footer = ({ jsonData }) => {
 
   return (
     <div className="bg-primaryDarkBlue w-[100%] top-full ">
-      <div className="flex flex-wrap sm:flex-col lg:justify-center md:flex-row px-8 mx-4 lg:mx-40">
+      <div className="flex flex-wrap sm:flex-col lg:justify-between md:flex-row mx-4 lg:mx-40 md:mx-8 gap-3 sm:mx-4">
         <div className="md:w-1/4 sm:w-full items-center justify-center py-10">
           <img className="md:w-[50%] sm:w-[10%]" src={logo} alt="logo" />
           <p className="text-primaryBlue mt-4">
@@ -38,7 +38,7 @@ const Footer = ({ jsonData }) => {
           </div>
         </div>
 
-        <div className="md:w-1/4 p-10">
+        <div className="md:w-1/5 py-10">
           <FooterContent
             title={heading.policy}
             data={footerData.policy}
@@ -46,14 +46,14 @@ const Footer = ({ jsonData }) => {
           />
         </div>
 
-        <div className="md:w-1/4 p-10">
+        <div className="md:w-1/5 py-10">
           <FooterContent
             title={heading.information}
             data={footerData.infoData}
           />
         </div>
 
-        <div className="md:w-1/4 p-10">
+        <div className="md:w-1/5 py-10">
           <FooterContent
             title={heading.account}
             data={footerData.accountInfo}
@@ -63,7 +63,7 @@ const Footer = ({ jsonData }) => {
       <div className="border-t-2 py-5 px-8 md:px-24 flex flex-col md:flex-row items-center justify-center">
         <div>
           <p className="tracking-wider text-sm text-center">
-            JAMILA &copy; 2023 - All Rights Reserved
+            <strong>JAMILA</strong> &copy; 2023 - All Rights Reserved
           </p>
         </div>
       </div>

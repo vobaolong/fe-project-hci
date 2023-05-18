@@ -14,9 +14,9 @@ import { useSelector } from "react-redux";
 import UserOptions from "./UserOptions";
 import logo from "../../../assets/logo.png";
 const isActiveStyle =
-  "font-bold text-xl opacity-100 transition-all duration-500";
+  "font-bold lg:text-xl md:text-md sm:text-sm opacity-100 transition-all duration-500";
 const isNotActiveStyle =
-  "font-semibold text-lg opacity-50 transition-all duration-500";
+  "font-semibold lg:text-lg md:text-md sm:text-sm opacity-50 transition-all duration-500";
 
 const Navbar = ({ menuOptions }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -29,21 +29,24 @@ const Navbar = ({ menuOptions }) => {
 
   return (
     <>
-      <header className="bg-primaryDarkBlue top-0 z-50 py-2 md:py-3 px-4 lg:px-40 text-primaryBlue flex justify-between border-b border-slate-200">
-        <p className="sm:text-sm flex gap-1 font-medium col-span-6">
-          <FaShippingFast className="h-6 text-xl" />
-          Miễn phí vận chuyển đơn từ 1.000.000 ₫
-        </p>
-        <p className="sm:text-sm flex gap-1 font-medium col-span-6">
-          <HiOutlinePhone className="h-6 text-xl" />
-          Hotline:
-          <strong>
-            <a className="hover:text-amber-400" href="tel:+84348073013">
-              0348073013
-            </a>
-          </strong>
-        </p>
-      </header>
+      {`${user?.role}` === "admin" ? null : (
+        <header className="bg-primaryDarkBlue top-0 z-50 py-2 md:py-3 px-4 lg:px-40 text-primaryBlue flex justify-between border-b border-slate-200">
+          <p className="sm:text-sm flex gap-1 font-medium col-span-6">
+            <FaShippingFast className="h-6 text-xl" />
+            Miễn phí vận chuyển đơn từ 1.000.000 ₫
+          </p>
+          <p className="sm:text-sm flex gap-1 font-medium col-span-6">
+            <HiOutlinePhone className="h-6 text-xl" />
+            Hotline:
+            <strong>
+              <a className="hover:text-amber-400" href="tel:+84348073013">
+                0348073013
+              </a>
+            </strong>
+          </p>
+        </header>
+      )}
+
       <header className="w-[100%] bg-primaryDarkBlue top-0 right-0 sticky z-50 py-3 md:py-6 px-4 lg:px-40 text-slate-900 border-b-2 border-b-slate-200">
         <div className="flex justify-between items-center">
           <Link className="lg:w-[10%] md:w-[20%] sm:w-[20%] mx-5 p-0" to="/">
@@ -51,7 +54,7 @@ const Navbar = ({ menuOptions }) => {
           </Link>
           <div className="hidden md:block text-primaryBlue">
             {`${user?.role}` === "admin" ? null : (
-              <div className="flex gap-10">
+              <div className="flex lg:gap-10 md:gap-7 sm:gap-5">
                 {menuOptions?.map((menu, index) => {
                   return (
                     <NavLink
@@ -75,7 +78,7 @@ const Navbar = ({ menuOptions }) => {
                 <CustomIcon path="/cart" Icon={HiOutlineShoppingBag} />
                 {cartItems.length === 0 ? null : (
                   <>
-                    <p className="w-5 text-xs text-white -ml-7 rounded-full border-2 border-sky-500 pl-1.5">
+                    <p className="w-5 h-5 text-xs text-primaryDarkBlue -ml-9 rounded-full border-2 pl-1 bg-slate-600">
                       {cartItems.length}
                     </p>
                   </>

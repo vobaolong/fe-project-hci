@@ -9,16 +9,7 @@ import Pagination from "react-js-pagination";
 import { AiOutlineFrown } from "react-icons/ai";
 import FilterSlide from "../../components/Products/FilterSlide";
 import MetaData from "../../components/layout/MetaData";
-
-const categories = [
-  "Laptop",
-  "PC",
-  "Chuột",
-  "Bàn phím",
-  "Tai nghe",
-  "SSD",
-  "Case PC",
-];
+import { brands } from "../../data/brand";
 
 const Products = () => {
   window.scrollTo(0, 0);
@@ -29,7 +20,7 @@ const Products = () => {
     useSelector((state) => state.products);
 
   const [price, setPrice] = useState([0, 50000000]);
-  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [ratings, setRatings] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const keyword = params.keyword;
@@ -48,8 +39,8 @@ const Products = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, error, alert, keyword, currentPage, price, category, ratings]);
+    dispatch(getProduct(keyword, currentPage, price, brand, ratings));
+  }, [dispatch, error, alert, keyword, currentPage, price, brand, ratings]);
 
   return (
     <Fragment>
@@ -57,7 +48,7 @@ const Products = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`Sản phẩm | JAMILA`} />
+          <MetaData title={`JAMILA | Sản phẩm`} />
           <div className="h-auto w-[100%] py-24 md:px-10 ">
             <h1 className="headingStyle">
               <div className="headingStylesDiv" />
@@ -79,8 +70,8 @@ const Products = () => {
               <FilterSlide
                 price={price}
                 priceHandler={priceHandler}
-                categories={categories}
-                setCategory={setCategory}
+                brands={brands}
+                setBrand={setBrand}
                 ratings={ratings}
                 setRatings={setRatings}
               />

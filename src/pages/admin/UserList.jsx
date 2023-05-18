@@ -5,9 +5,9 @@ import { clearErrors, getAllUsers, deleteUser } from "../../actions/userAction";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
-import { Edit, Delete } from "@material-ui/icons";
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ const UserList = () => {
               className="text-green-400 hover:text-green-500 transition-all duration-300"
               to={`/admin/user/${params.getValue(params.id, "id")}`}
             >
-              <Edit />
+              <FaEdit className="text-2xl" />
             </Link>
 
             <button
@@ -95,7 +95,7 @@ const UserList = () => {
                 deleteUserHandler(params.getValue(params.id, "id"))
               }
             >
-              <Delete />
+              <FaTrash className="text-2xl" />
             </button>
           </Fragment>
         );
@@ -117,7 +117,7 @@ const UserList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Tất cả người dùng - Admin`} />
+      <MetaData title={`Tất cả người dùng | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">

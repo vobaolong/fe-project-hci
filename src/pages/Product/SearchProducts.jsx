@@ -20,7 +20,7 @@ const SearchProducts = () => {
   return (
     <>
       <div className="h-screen bg-primaryBlue z-10 flex justify-center items-center fixed top-0 left-0 right-0">
-        <MetaData title={`Tìm kiếm | JAMILA`} />
+        <MetaData title={`JAMILA | Tìm kiếm`} />
         <form className="  py-24" onSubmit={searchSubmitHandler}>
           <div className="flex  items-center px-8 md:px-20">
             <div className="w-full flex items-center shadow-lg bg-white rounded-lg shadow-cyan-500/40">

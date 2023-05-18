@@ -134,7 +134,7 @@ export const newReviewReducer = (state = {}, action) => {
   }
 };
 
-// new product reducer - admin
+// new product reducer | Admin
 export const newProductReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case NEW_PRODUCT_REQUEST:
@@ -169,7 +169,7 @@ export const newProductReducer = (state = { product: {} }, action) => {
   }
 };
 
-// delete product -- admin
+// delete product -| Admin
 export const productReducer = (state = {}, action) => {
   switch (action.type) {
     case DELETE_PRODUCT_REQUEST:

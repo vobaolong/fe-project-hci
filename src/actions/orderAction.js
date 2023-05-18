@@ -49,11 +49,7 @@ export const cancelOrder = (id, order) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.put(
-      `/api/v1/order/${id}`,
-      order,
-      config
-    );
+    const { data } = await axios.put(`/api/v1/order/${id}`, order, config);
 
     dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {
@@ -112,7 +108,7 @@ export const myOrders = () => async (dispatch) => {
   }
 };
 
-// Get all orders -- admin
+// Get all orders -| Admin
 export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });

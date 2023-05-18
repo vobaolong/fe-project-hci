@@ -23,11 +23,11 @@ import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import MgSlider from "../../components/Products/MgSlider";
 import CurrencyFormat from "react-currency-format";
+import SizeSelect from "../../components/Products/SizeSelect";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  // getting id from the url
   const { id } = useParams();
 
   const [open, setOpen] = useState(false);
@@ -43,6 +43,7 @@ const ProductDetails = () => {
   );
 
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState(null);
 
   const options = {
     size: "large",
@@ -71,7 +72,6 @@ const ProductDetails = () => {
 
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
-
     setQuantity(quantity + 1);
   };
 
@@ -120,14 +120,11 @@ const ProductDetails = () => {
               <h2 className="text-primaryBlue font-bold text-xl text-center mt-5 md:mt-0 md:text-left capitalize">
                 {product.name}
               </h2>
-              {/* <p className="text-slate-400 font-light text-xm text-center md:text-left">
-                Product # {product._id}
-              </p> */}
             </div>
 
             <div
-              className="flex gap-3 my-5
-            justify-center md:justify-start items-center border-t-2 border-b-2 py-3 border-slate-300"
+              className="flex gap-3 my-3
+            justify-center md:justify-start items-center border-t-2 py-3 border-slate-300"
             >
               <Rating {...options} />
               <span className="text-slate-500">
@@ -136,43 +133,44 @@ const ProductDetails = () => {
             </div>
 
             <div>
-              <h1 className="text-2xl font-bold text-primaryBlue text-center md:text-left">
+              <h1 className="text-2xl font-bold text-primaryBlue border-b-2 border-slate-300 pb-3 text-center md:text-left">
                 <CurrencyFormat
                   value={product.price}
                   displayType={"text"}
                   thousandSeparator={true}
-                  renderText={(value) => <div>{value} VND</div>}
+                  renderText={(value) => <div>{value} đ</div>}
                 />
               </h1>
-
-              <div className="flex gap-5 my-5 flex-col md:flex-row justify-center md:justify-start">
-                <QuantityCardInput
-                  quantity={quantity}
-                  increaseQuantity={increaseQuantity}
-                  decreaseQuantity={decreaseQuantity}
-                />
-
-                <button
-                  disabled={product.stock < 1 ? true : false}
-                  onClick={addToCartHandler}
-                  className="commonBtnStyle mx-auto md:mx-0 py-2 px-5 w-full sm:w-1/2 md:w-[170px] bg-primaryBlue"
-                >
-                  Thêm vào giỏ hàng
-                </button>
+              <div className="container mx-auto mt-4  pb-3">
+                <SizeSelect />
               </div>
-
               <p className="border-t-2 border-b-2 py-3 border-slate-300 text-slate-600 font-semibold text-center md:text-left">
-                Trạng thái:{" "}
+                {/* Trạng thái:{" "}
                 <b
                   className={`${
                     product.stock < 1 ? "text-red-500" : "text-green-500"
                   }`}
                 >
-                  {product.stock < 1 ? "Hết hàng" : "Trong kho"} -
-                  {product.stock} sản phẩm
-                </b>
+                  {product.stock < 1 ? "Hết hàng" : "Còn hàng"}
+                </b> */}
+                <div className="flex gap-5 my-5 flex-col md:flex-row justify-center md:justify-start">
+                  <QuantityCardInput
+                    quantity={quantity}
+                    increaseQuantity={increaseQuantity}
+                    decreaseQuantity={decreaseQuantity}
+                  />
+
+                  <button
+                    disabled={product.stock < 1 ? true : false}
+                    onClick={addToCartHandler}
+                    className="commonBtnStyle mx-auto md:mx-0 py-2 px-5 w-full sm:w-1/2 md:w-[170px] bg-primaryBlue"
+                  >
+                    Thêm vào giỏ hàng
+                  </button>
+                </div>
               </p>
             </div>
+
             <div className="py-5 font-semibold text-center md:text-left">
               Mô tả:
               <p className="font-normal text-slate-500 text-sm text-justify">

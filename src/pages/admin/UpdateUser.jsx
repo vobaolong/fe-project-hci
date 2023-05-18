@@ -73,7 +73,7 @@ const UpdateUser = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Cập nhật người dùng - Admin`} />
+      <MetaData title={`Cập nhật người dùng | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">

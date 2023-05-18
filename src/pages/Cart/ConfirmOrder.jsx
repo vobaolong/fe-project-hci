@@ -4,7 +4,7 @@ import MetaData from "../../components/layout/MetaData";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutSteps from "../../components/shipping/CheckoutSteps";
 import SlideableBtn from "../../components/layout/Buttons/SlideableBtn";
-import CurrencyFormat from 'react-currency-format';
+import CurrencyFormat from "react-currency-format";
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -88,15 +88,28 @@ const ConfirmOrder = () => {
                           >
                             {item.name}
                           </Link>
-                          <span>                               
-                              <CurrencyFormat value={item.price} displayType={'text'} thousandSeparator={true} renderText={value => 
-                              <div>{item.quantity} X {value}  ={' '}
-                              <b>
-                              <CurrencyFormat value={item.price * item.quantity} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />         
-                              </b>                              
-                              </div>} />         
-                              
-                            </span>
+                          <span>
+                            <CurrencyFormat
+                              value={item.price}
+                              displayType={"text"}
+                              thousandSeparator={true}
+                              renderText={(value) => (
+                                <div>
+                                  {item.quantity} X {value} ={" "}
+                                  <b>
+                                    <CurrencyFormat
+                                      value={item.price * item.quantity}
+                                      displayType={"text"}
+                                      thousandSeparator={true}
+                                      renderText={(value) => (
+                                        <div>{value} đ</div>
+                                      )}
+                                    />
+                                  </b>
+                                </div>
+                              )}
+                            />
+                          </span>
                         </div>
                       );
                     })}
@@ -113,11 +126,21 @@ const ConfirmOrder = () => {
                   <div className="flex flex-col gap-5 my-3">
                     <div className="flex justify-between">
                       <p>Tổng: </p>
-                      <CurrencyFormat value={subtotal} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />       
+                      <CurrencyFormat
+                        value={subtotal}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        renderText={(value) => <div>{value} đ</div>}
+                      />
                     </div>
                     <div className="flex justify-between">
                       <p>Phí vận chuyển: </p>
-                      <CurrencyFormat value={shippingCharges} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />       
+                      <CurrencyFormat
+                        value={shippingCharges}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        renderText={(value) => <div>{value} đ</div>}
+                      />
                     </div>
                   </div>
 
@@ -125,7 +148,17 @@ const ConfirmOrder = () => {
                     <p>
                       <b>Tổng: </b>
                     </p>
-                    <CurrencyFormat value={totalPrice} displayType={'text'} thousandSeparator={true} renderText={value => <div> <b>{value} VND</b> </div>} />       
+                    <CurrencyFormat
+                      value={totalPrice}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      renderText={(value) => (
+                        <div>
+                          {" "}
+                          <b>{value} đ</b>{" "}
+                        </div>
+                      )}
+                    />
                   </div>
 
                   <SlideableBtn onClick={proceedToPayment} label="Tiếp tục" />

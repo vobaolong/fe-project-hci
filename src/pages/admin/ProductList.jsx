@@ -9,9 +9,9 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
-import { Edit, Delete } from "@material-ui/icons";
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ const ProductList = () => {
               className="text-green-400 hover:text-green-500 transition-all duration-300"
               to={`/admin/product/${params.getValue(params.id, "id")}`}
             >
-              <Edit />
+              <FaEdit className="text-2xl" />
             </Link>
 
             <button
@@ -95,7 +95,7 @@ const ProductList = () => {
                 deleteProductHandler(params.getValue(params.id, "id"))
               }
             >
-              <Delete />
+              <FaTrash className="text-2xl" />
             </button>
           </Fragment>
         );
@@ -110,14 +110,14 @@ const ProductList = () => {
       rows.push({
         id: item._id,
         stock: item.stock,
-        price: `${(item.price).toLocaleString()} VND`,
+        price: `${item.price.toLocaleString()} đ`,
         name: item.name,
       });
     });
 
   return (
     <Fragment>
-      <MetaData title={`Sản phẩm - Admin`} />
+      <MetaData title={`Sản phẩm | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">

@@ -9,9 +9,10 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
-import { Edit, Delete } from "@material-ui/icons";
+
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const OrdersList = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,7 @@ const OrdersList = () => {
               className="text-green-400 hover:text-green-500 transition-all duration-300"
               to={`/admin/order/${params.getValue(params.id, "id")}`}
             >
-              <Edit />
+              <FaEdit className="text-2xl" />
             </Link>
 
             <button
@@ -98,7 +99,7 @@ const OrdersList = () => {
                 deleteOrderHandler(params.getValue(params.id, "id"))
               }
             >
-              <Delete />
+              <FaTrash className="text-2xl" />
             </button>
           </Fragment>
         );
@@ -127,7 +128,7 @@ const OrdersList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Đơn hàng - Admin`} />
+      <MetaData title={`Đơn hàng | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">

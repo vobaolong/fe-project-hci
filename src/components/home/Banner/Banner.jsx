@@ -1,7 +1,7 @@
 import React from "react";
 import { CgMouse } from "react-icons/cg";
 import CustomIcon from "../../Icons/CustomIcon";
-import { brands } from "../../../data/brand";
+import { brandLogos } from "../../../data/brand";
 import Marquee from "react-fast-marquee";
 
 const Banner = ({ jsonData }) => {
@@ -38,7 +38,7 @@ const Banner = ({ jsonData }) => {
         <div className="grid-cols-12 ">
           <div className=" p-4">
             <Marquee className="flex gap-20">
-              {brands?.map((index) => {
+              {brandLogos?.map((index) => {
                 return (
                   <div className="mx-4">
                     <img src={index.image} alt="brand" />

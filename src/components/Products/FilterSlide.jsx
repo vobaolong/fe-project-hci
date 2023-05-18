@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-
 import Slider from "@material-ui/core/Slider";
 import { MdClose, MdArrowForward } from "react-icons/md";
 
 const FilterSlide = ({
   price,
   priceHandler,
-  categories,
-  setCategory,
+  brands,
+  setBrand,
   ratings,
   setRatings,
 }) => {
@@ -46,7 +45,7 @@ const FilterSlide = ({
         }`}
       >
         <div className="flex justify-between items-center">
-          <p className="py-2 w-full border-b-2 border-primaryBlue/50 text-primaryBlue">
+          <p className="py-2 w-full border-b-2 border-primaryBlue/50 text-secondaryDark">
             Bộ lọc
           </p>
           <MdClose
@@ -55,7 +54,7 @@ const FilterSlide = ({
           />
         </div>
         <div className="pt-5">
-          <p className="filterHeadingStyle">Giá</p>
+          <p className="filterHeadingStyle m-2">Giá</p>
           <Slider
             value={price}
             onChange={priceHandler}
@@ -64,29 +63,33 @@ const FilterSlide = ({
             min={0}
             max={50000000}
           />
+          <p className="filterHeadingStyle m-2">Thương hiệu</p>
 
-          <div>
-            <p className="filterHeadingStyle pt-5 pb-3 border-b-2 border-primaryBlue/50">
-              Danh mục
-            </p>
-            <ul>
-              {categories.map((category, index) => {
-                return (
-                  <li
-                    className="py-1 cursor-pointer text-slate-500 hover:text-neutral-300"
-                    key={index}
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
+          <select
+            className="px-3 py-2 outline-none border-2 w-full rounded-md cursor-pointer focus:ring-blue-500 focus:border-blue-500 block"
+            onChange={(e) => setBrand(e.target.value)}
+          >
+            <option
+              disabled
+              className="filterHeadingStyle m-2 pt-5 pb-3 border-b-2 border-primaryBlue/50"
+            >
+              Chọn...
+            </option>
+            {brands?.map((brand, index) => {
+              return (
+                <option
+                  className="py-1 cursor-pointer text-slate-500 hover:text-neutral-300"
+                  key={index}
+                  value={brand}
+                >
+                  {brand}
+                </option>
+              );
+            })}
+          </select>
           <div>
             <fieldset>
-              <p className="filterHeadingStyle pt-3">Đánh giá từ</p>
+              <p className="filterHeadingStyle pt-3">Đánh giá</p>
               <Slider
                 value={ratings}
                 onChange={(e, newRatings) => setRatings(newRatings)}

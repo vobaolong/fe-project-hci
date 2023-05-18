@@ -14,6 +14,7 @@ import Loader from "../../components/layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
+import MetaData from "../../components/layout/MetaData";
 
 const LoginSignUp = () => {
   const navigate = useNavigate();
@@ -226,6 +227,7 @@ const LoginSignUp = () => {
   };
   return (
     <>
+      <MetaData title={`JAMILA | Đăng nhập/ Đăng ký`} />
       {loading ? (
         <Loader />
       ) : (
@@ -254,11 +256,11 @@ const LoginSignUp = () => {
 
             {/* Login form */}
             <form
-              className="flex flex-col justify-evenly items-center h-[80%] transition-transform duration-500"
+              className="flex flex-col justify-evenly items-center h-[80%] transition-transform duration-500 px-5"
               ref={loginTab}
               onSubmit={loginSubmit}
             >
-              <div className="flex justify-evenly flex-col w-full h-[40%] px-5">
+              <div className="flex justify-evenly flex-col w-full h-[40%]">
                 <InputField
                   type="text"
                   name="email"
@@ -291,7 +293,7 @@ const LoginSignUp = () => {
                   )}
                 </div>
               </div>
-              <div className="flex w-[100%] px-7 justify-between">
+              <div className="flex w-[100%] justify-between">
                 <p>
                   <input type="checkbox" className="accent-green-900" /> Ghi nhớ
                   đăng nhập
@@ -387,7 +389,7 @@ const LoginSignUp = () => {
                       alt="ảnh đại diện"
                     />
                     <input
-                      className="avatarChoose border-2 rounded-lg "
+                      className="avatarChoose border-2 rounded-lg w-full"
                       type="file"
                       name="avatar"
                       accept="image/*"
@@ -396,7 +398,7 @@ const LoginSignUp = () => {
                       required
                     />
                   </div>
-                  <div className="bg-primaryDarkBlue mt-2 p-5 rounded-xl text-sm">
+                  <div className="bg-primaryDarkBlue mt-2 p-3 rounded-xl text-sm">
                     <ul className="flex flex-col gap-2 text-zinc-400">
                       <li id="lower" className="ease-in-out">
                         <AiOutlineCloseCircle
@@ -459,7 +461,7 @@ const LoginSignUp = () => {
               </div>
               <p className="py-2">
                 Đã có tài khoản ?{" "}
-                <a className="underline text-blue-500" href="">
+                <a className="underline text-blue-500" href="/login">
                   Đăng nhập ngay
                 </a>
               </p>

@@ -2,53 +2,68 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AiOutlineInbox } from "react-icons/ai";
-import { GrAddCircle } from "react-icons/gr";
-import ImportExportIcon from "@material-ui/icons/ImportExport";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PeopleIcon from "@material-ui/icons/People";
-import RateReviewIcon from "@material-ui/icons/RateReview";
-
+import {
+  FaBorderAll,
+  FaChartLine,
+  FaListAlt,
+  FaRegPlusSquare,
+  FaRocketchat,
+  FaSitemap,
+  FaUser,
+} from "react-icons/fa";
 const Sidebar = () => {
   return (
-    <div className="w-full bg-white py-24 flex flex-col gap-10 h-full px-10 ">
-      <Link className="sidebarLinkStyles border-b-2" to="/admin/dashboard">
-        <p>
-          <DashboardIcon /> Bảng điều khiển
-        </p>
+    <div className="w-full bg-white py-24 flex flex-col gap-10 h-full px-10">
+      <Link
+        className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
+        to="/admin/dashboard"
+      >
+        <FaChartLine />
+        <p>Bảng điều khiển</p>
       </Link>
-      <Link className="sidebarLinkStyles border-b-2" to="#">
+      <Link
+        className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
+        to="#"
+      >
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
-          defaultExpandIcon={<ImportExportIcon />}
+          defaultExpandIcon={<FaSitemap />}
         >
-          <TreeItem nodeId="1" label="Sản phẩm">
-            <Link className="sidebarLinkStyles border-b-2" to="/admin/products">
-              <TreeItem nodeId="2" label="Tất cả" icon={<AiOutlineInbox />} />
+          <TreeItem className="gap-3" nodeId="1" label="Sản phẩm">
+            <Link className="sidebarLinkStyles text-lg" to="/admin/products">
+              <TreeItem
+                nodeId="2"
+                label="Tất cả"
+                icon={<FaBorderAll className="h-8 text-xl" />}
+              />
             </Link>
 
-            <Link className="sidebarLinkStyles border-b-2" to="/admin/product">
-              <TreeItem nodeId="3" label="Thêm" icon={<GrAddCircle />} />
+            <Link className="sidebarLinkStyles text-lg" to="/admin/product">
+              <TreeItem nodeId="3" label="Thêm" icon={<FaRegPlusSquare />} />
             </Link>
           </TreeItem>
         </TreeView>
       </Link>
-      <Link className="sidebarLinkStyles border-b-2" to="/admin/orders">
-        <p>
-          <ListAltIcon /> Đơn hàng
-        </p>
+      <Link
+        className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
+        to="/admin/orders"
+      >
+        <FaListAlt />
+        <p>Đơn hàng</p>
       </Link>
-      <Link className="sidebarLinkStyles border-b-2" to="/admin/users">
-        <p>
-          <PeopleIcon /> Người dùng
-        </p>
+      <Link
+        className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
+        to="/admin/users"
+      >
+        <FaUser />
+        <p>Người dùng</p>
       </Link>
-      <Link className="sidebarLinkStyles border-b-2" to="/admin/reviews">
-        <p>
-          <RateReviewIcon />
-          Đánh giá
-        </p>
+      <Link
+        className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
+        to="/admin/reviews"
+      >
+        <FaRocketchat />
+        <p>Đánh giá</p>
       </Link>
     </div>
   );

@@ -1,16 +1,16 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import MetaData from '../../components/layout/MetaData';
-import { Link, useParams } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import MetaData from "../../components/layout/MetaData";
+import { Link, useParams } from "react-router-dom";
 import {
   getOrderDetails,
   clearErrors,
   cancelOrder,
-} from '../../actions/orderAction';
-import Loader from '../../components/layout/Loader/Loader';
-import { useAlert } from 'react-alert';
-import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
-import CurrencyFormat from 'react-currency-format';
+} from "../../actions/orderAction";
+import Loader from "../../components/layout/Loader/Loader";
+import { useAlert } from "react-alert";
+import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import CurrencyFormat from "react-currency-format";
 
 const OrderDetails = () => {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ const OrderDetails = () => {
 
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
-  const [status] = useState('Cancel');
+  const [status] = useState("Cancel");
 
   const updateStatussOrder = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
 
-    myForm.set('status', status);
+    myForm.set("status", status);
 
     dispatch(cancelOrder(params.id, myForm));
   };
@@ -44,7 +44,7 @@ const OrderDetails = () => {
     }
 
     if (isUpdated) {
-      alert.success('Cập nhật trạng thái đơn hàng thành công');
+      alert.success("Cập nhật trạng thái đơn hàng thành công");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
@@ -93,15 +93,15 @@ const OrderDetails = () => {
                     <p
                       className={`${
                         order.paymentInfo &&
-                        order.paymentInfo.status === 'succeeded'
-                          ? 'text-green-500'
-                          : 'text-red-500'
+                        order.paymentInfo.status === "succeeded"
+                          ? "text-green-500"
+                          : "text-red-500"
                       }  `}
                     >
                       {order.paymentInfo &&
-                      order.paymentInfo.status === 'succeeded'
-                        ? 'Đã thanh toán'
-                        : 'Chưa thanh toán'}
+                      order.paymentInfo.status === "succeeded"
+                        ? "Đã thanh toán"
+                        : "Chưa thanh toán"}
                     </p>
                   </div>
 
@@ -111,9 +111,9 @@ const OrderDetails = () => {
                       {order.totalPrice && (
                         <CurrencyFormat
                           value={order.totalPrice}
-                          displayType={'text'}
+                          displayType={"text"}
                           thousandSeparator={true}
-                          renderText={(value) => <div>{value} VND</div>}
+                          renderText={(value) => <div>{value} đ</div>}
                         />
                       )}
                     </span>
@@ -126,21 +126,21 @@ const OrderDetails = () => {
                 <div className="headingData">
                   <div className="flex gap-3">
                     <p className="flex gap-3">
-                      Đơn hàng:{' '}
+                      Đơn hàng:{" "}
                       <p
                         className={`${
-                          order.orderStatus && order.orderStatus === 'Delivered'
-                            ? 'text-green-500'
-                            : 'text-red-500'
+                          order.orderStatus && order.orderStatus === "Delivered"
+                            ? "text-green-500"
+                            : "text-red-500"
                         }  `}
                       >
-                        {order.orderStatus && order.orderStatus === 'Delivered'
-                          ? 'Đã giao hàng'
-                          : order.orderStatus === 'Shipped'
-                          ? 'Đang vận chuyển'
-                          : order.orderStatus === 'Cancel'
-                          ? 'Đã hủy'
-                          : 'Đang xử lí'}
+                        {order.orderStatus && order.orderStatus === "Delivered"
+                          ? "Đã giao hàng"
+                          : order.orderStatus === "Shipped"
+                          ? "Đang vận chuyển"
+                          : order.orderStatus === "Cancel"
+                          ? "Đã hủy"
+                          : "Đang xử lí"}
                       </p>
                     </p>
                   </div>
@@ -172,18 +172,18 @@ const OrderDetails = () => {
                           <span>
                             <CurrencyFormat
                               value={item.price}
-                              displayType={'text'}
+                              displayType={"text"}
                               thousandSeparator={true}
                               renderText={(value) => (
                                 <div>
-                                  {item.quantity} X {value} ={' '}
+                                  {item.quantity} X {value} ={" "}
                                   <b>
                                     <CurrencyFormat
                                       value={item.price * item.quantity}
-                                      displayType={'text'}
+                                      displayType={"text"}
                                       thousandSeparator={true}
                                       renderText={(value) => (
-                                        <div>{value} VND</div>
+                                        <div>{value} đ</div>
                                       )}
                                     />
                                   </b>
@@ -198,7 +198,7 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-          {order.orderStatus === 'Processing' && (
+          {order.orderStatus === "Processing" && (
             <form
               className="flex justify-center content-center mb-20"
               onSubmit={updateStatussOrder}

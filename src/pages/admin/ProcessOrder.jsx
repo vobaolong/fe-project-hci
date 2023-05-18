@@ -1,19 +1,19 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import MetaData from '../../components/layout/MetaData';
-import { Link, useParams } from 'react-router-dom';
-import SideBar from '../../components/admin/Sidebar';
-import { useAlert } from 'react-alert';
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import MetaData from "../../components/layout/MetaData";
+import { Link, useParams } from "react-router-dom";
+import SideBar from "../../components/admin/Sidebar";
+import { useAlert } from "react-alert";
 import {
   getOrderDetails,
   clearErrors,
   updateOrder,
-} from '../../actions/orderAction';
-import Loader from '../../components/layout/Loader/Loader';
-import Button from '../../components/user/Button';
-import { AccountTree } from '@material-ui/icons';
-import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
-import CurrencyFormat from 'react-currency-format';
+} from "../../actions/orderAction";
+import Loader from "../../components/layout/Loader/Loader";
+import Button from "../../components/user/Button";
+import { AccountTree } from "@material-ui/icons";
+import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import CurrencyFormat from "react-currency-format";
 
 const ProcessOrder = () => {
   const alert = useAlert();
@@ -26,14 +26,14 @@ const ProcessOrder = () => {
     isUpdated,
     loading: loadingOrder,
   } = useSelector((state) => state.order);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   const updateProcessOrder = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
 
-    myForm.set('status', status);
+    myForm.set("status", status);
 
     dispatch(updateOrder(params.id, myForm));
   };
@@ -50,7 +50,7 @@ const ProcessOrder = () => {
     }
 
     if (isUpdated) {
-      alert.success('Cập nhật trạng thái đơn hàng thành công');
+      alert.success("Cập nhật trạng thái đơn hàng thành công");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
@@ -59,7 +59,7 @@ const ProcessOrder = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Đơn hàng - Admin`} />
+      <MetaData title={`Đơn hàng | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">
@@ -111,23 +111,30 @@ const ProcessOrder = () => {
                         <p
                           className={`${
                             order.paymentInfo &&
-                            order.paymentInfo.status === 'succeeded'
-                              ? 'text-green-500'
-                              : 'text-red-500'
+                            order.paymentInfo.status === "succeeded"
+                              ? "text-green-500"
+                              : "text-red-500"
                           }  `}
                         >
                           {order.paymentInfo &&
-                          order.paymentInfo.status === 'succeeded'
-                            ? 'Thanh toán'
-                            : 'Chưa thanh toán'}
+                          order.paymentInfo.status === "succeeded"
+                            ? "Thanh toán"
+                            : "Chưa thanh toán"}
                         </p>
                       </div>
 
                       <div className="flex gap-3">
                         <p>Số tiền: </p>
-                        
+
                         <span className="text-slate-600">
-                          {order.totalPrice && <CurrencyFormat value={order.totalPrice} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />} 
+                          {order.totalPrice && (
+                            <CurrencyFormat
+                              value={order.totalPrice}
+                              displayType={"text"}
+                              thousandSeparator={true}
+                              renderText={(value) => <div>{value} đ</div>}
+                            />
+                          )}
                         </span>
                       </div>
                     </div>
@@ -138,23 +145,23 @@ const ProcessOrder = () => {
                     <div className="headingData">
                       <div className="flex gap-3">
                         <p className="flex gap-3">
-                          Đơn hàng:{' '}
+                          Đơn hàng:{" "}
                           <p
                             className={`${
                               order.orderStatus &&
-                              order.orderStatus === 'Delivered'
-                                ? 'text-green-500'
-                                : 'text-red-500'
+                              order.orderStatus === "Delivered"
+                                ? "text-green-500"
+                                : "text-red-500"
                             }  `}
                           >
                             {order.orderStatus &&
-                            order.orderStatus === 'Delivered'
-                              ? 'Đã giao hàng'
-                              : order.orderStatus === 'Shipped'
-                              ? 'Đang vận chuyển'
-                              : order.orderStatus === 'Cancel'
-                              ? 'Đã hủy'
-                              : 'Đang xử lí'}
+                            order.orderStatus === "Delivered"
+                              ? "Đã giao hàng"
+                              : order.orderStatus === "Shipped"
+                              ? "Đang vận chuyển"
+                              : order.orderStatus === "Cancel"
+                              ? "Đã hủy"
+                              : "Đang xử lí"}
                           </p>
                         </p>
                       </div>
@@ -181,14 +188,27 @@ const ProcessOrder = () => {
                             >
                               {item.name}
                             </Link>
-                            <span>                               
-                              <CurrencyFormat value={item.price} displayType={'text'} thousandSeparator={true} renderText={value => 
-                              <div>{item.quantity} X {value}  ={' '}
-                              <b>
-                              <CurrencyFormat value={item.price * item.quantity} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />         
-                              </b>                              
-                              </div>} />         
-                              
+                            <span>
+                              <CurrencyFormat
+                                value={item.price}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                renderText={(value) => (
+                                  <div>
+                                    {item.quantity} X {value} ={" "}
+                                    <b>
+                                      <CurrencyFormat
+                                        value={item.price * item.quantity}
+                                        displayType={"text"}
+                                        thousandSeparator={true}
+                                        renderText={(value) => (
+                                          <div>{value} đ</div>
+                                        )}
+                                      />
+                                    </b>
+                                  </div>
+                                )}
+                              />
                             </span>
                           </div>
                         );
@@ -198,8 +218,8 @@ const ProcessOrder = () => {
                 </div>
 
                 {/*  */}
-                {order.orderStatus !== 'Delivered' &&
-                  order.orderStatus !== 'Cancel' && (
+                {order.orderStatus !== "Delivered" &&
+                  order.orderStatus !== "Cancel" && (
                     <div className="tall:pl-8 py-5  mt-3 md:mt-0 col-span-6 tall:col-span-2">
                       <form
                         className="w-[100%] h-[60vh] flex flex-col gap-6 justify-center items-center mx-auto shadow-lg bg-white p-5 rounded-md"
@@ -235,11 +255,11 @@ const ProcessOrder = () => {
                             disabled={
                               loadingOrder
                                 ? true
-                                : false || status === ''
+                                : false || status === ""
                                 ? true
                                 : false
                             }
-                          />{' '}
+                          />{" "}
                         </div>
                       </form>
                     </div>

@@ -15,6 +15,7 @@ import SideBar from "../../components/admin/Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
 import { useNavigate } from "react-router-dom";
+import { brands } from "../../data/brand";
 
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
@@ -26,20 +27,10 @@ const CreateNewProduct = () => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
-
-  const categories = [
-    "Laptop",
-    "PC",
-    "Chuột",
-    "Bàn phím",
-    "Tai nghe",
-    "SSD",
-    "Case PC",
-  ];
 
   useEffect(() => {
     if (error) {
@@ -63,7 +54,7 @@ const CreateNewProduct = () => {
     myForm.set("name", productName);
     myForm.set("price", price);
     myForm.set("description", description);
-    myForm.set("category", category);
+    myForm.set("brand", brand);
     myForm.set("stock", Stock);
 
     images.forEach((image) => {
@@ -95,7 +86,7 @@ const CreateNewProduct = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Sản phẩm - Admin`} />
+      <MetaData title={`Sản phẩm | Admin`} />
 
       {/* dashboard */}
       <div className="dashboardStyle">
@@ -149,13 +140,13 @@ const CreateNewProduct = () => {
                   <AccountTree className="text-xl text-white mx-2" />
                   <select
                     className="px-3 py-2 outline-none border-2 w-full"
-                    onChange={(e) => setCategory(e.target.value)}
+                    onChange={(e) => setBrand(e.target.value)}
                   >
-                    <option value="">Vui lòng chọn danh mục *</option>
-                    {categories.map((category, index) => {
+                    <option value="">Vui lòng chọn thương hiệu *</option>
+                    {brands?.map((brand, index) => {
                       return (
-                        <option key={index} value={category}>
-                          {category}
+                        <option key={index} value={brand}>
+                          {brand}
                         </option>
                       );
                     })}

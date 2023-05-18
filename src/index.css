@@ -37,7 +37,7 @@
   }
 
   .headingStyle {
-    @apply w-fit mx-auto mb-5 text-2xl md:text-3xl text-secondaryDark font-semibold pb-3 border-b-4 border-secondaryDark relative before:content-[''] before:absolute before:w-[50px] before:h-[10px] before:rounded-md before:bg-secondaryDark before:-bottom-[7px] before:left-[50%] before:-translate-x-[50%];
+    @apply w-fit mx-auto mb-5 text-2xl md:text-3xl text-primaryBlue font-semibold pb-3 border-b-4 border-secondaryDark relative before:content-[''] before:absolute before:w-[50px] before:h-[10px] before:rounded-md before:bg-secondaryDark before:-bottom-[7px] before:left-[50%] before:-translate-x-[50%];
   }
 
   /* .headingStylesDiv {

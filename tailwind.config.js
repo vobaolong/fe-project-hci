@@ -39,7 +39,7 @@ module.exports = {
       textColor: {
         lightGray: "#6d7879",
         primaryBlue: "#335231",
-        secondaryDark: "#021e34",
+        secondaryDark: "#FACA7B",
         mainColor: "#1A1B1F",
         primaryDarkBlue: "#FFFAE5",
         secColor: "#FACA7B",

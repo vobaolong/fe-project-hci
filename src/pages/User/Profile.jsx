@@ -20,7 +20,7 @@ const Profile = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title={`Thông tin | ${user.name}`} />
+          <MetaData title={`JAMILA | Thông tin`} />
           <div className="h-full md:h-screen w-full flex flex-col py-12 md:py-0 md:flex-row px-8  bg-slate-100">
             <div className="flex flex-col w-full h-screen justify-center items-center">
               <h1 className="text-2xl md:-translate-x-9 -translate-y-5 justify-center items-center text-primaryBlue">

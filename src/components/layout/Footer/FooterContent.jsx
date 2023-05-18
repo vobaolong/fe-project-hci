@@ -11,7 +11,7 @@ const FooterContent = ({ data, title }) => {
         {data
           ? data.map((item, index) => {
               return (
-                <div key={index} className="my-2 group">
+                <div key={index} className="my-2 group w-max">
                   <Link
                     className="text-lightGray ease-in-out duration-500 group-hover:text-mainColor group-hover:underline group-hover:underline-offset-4"
                     to={item.path}

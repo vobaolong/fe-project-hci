@@ -33,7 +33,7 @@ import {
 
 // fetching all products
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 50000000], category, ratings = 0) =>
+  (keyword = "", currentPage = 1, price = [0, 50000000], brand, ratings = 0) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -42,8 +42,8 @@ export const getProduct =
 
       let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
-      if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      if (brand) {
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&brand=${brand}&ratings[gte]=${ratings}`;
       }
 
       // getting all the products from api
@@ -105,7 +105,7 @@ export const createProduct = (productData) => async (dispatch) => {
   }
 };
 
-// update product -- admin
+// update product -| Admin
 export const updateProduct = (id, productData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });

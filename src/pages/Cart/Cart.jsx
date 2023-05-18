@@ -8,8 +8,10 @@ import {
   resetCart,
 } from "../../actions/cartAction";
 import { Link, useNavigate } from "react-router-dom";
-import { RemoveShoppingCart } from "@material-ui/icons";
-import CurrencyFormat from 'react-currency-format';
+
+import CurrencyFormat from "react-currency-format";
+import MetaData from "../../components/layout/MetaData";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -18,11 +20,9 @@ const Cart = () => {
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
-
     if (stock <= quantity) {
       return;
     }
-
     dispatch(addItemsToCart(id, newQty));
   };
 
@@ -48,10 +48,13 @@ const Cart = () => {
 
   return (
     <Fragment>
+      <MetaData title={`JAMILA | Giỏ hàng`} />
       {cartItems.length === 0 ? (
         <div className="isEmptyCart h-screen flex flex-col gap-3 justify-center items-center ">
-          <RemoveShoppingCart />
-          <p className="text-slate-500 text-xl">Không có sản phẩm trong giỏ hàng</p>
+          <MdRemoveShoppingCart />
+          <p className="text-slate-500 text-xl">
+            Không có sản phẩm trong giỏ hàng
+          </p>
           <Link
             className="bg-primaryBlue text-white px-10 py-2 rounded-md hover:scale-105 transition-all duration-500"
             to="/products"
@@ -76,6 +79,7 @@ const Cart = () => {
                       <CartItemCard
                         item={item}
                         deleteCartItems={deleteItemsFromCart}
+                        size={item.size}
                       />
                     </div>
                     <div className="flex items-center justify-center md:justify-start">
@@ -94,14 +98,19 @@ const Cart = () => {
                       />
                     </div>
                     <div className="flex justify-end items-center">
-                    <CurrencyFormat value={item.price * item.quantity} displayType={'text'} thousandSeparator={true} renderText={value => <div>{value} VND</div>} />       
+                      <CurrencyFormat
+                        value={item.price * item.quantity}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        renderText={(value) => <div>{value} đ</div>}
+                      />
                     </div>
                   </div>
                 );
               })}
             </div>
             <div className="w-[90%] flex mx-auto md:flex-row sm:flex-col gap-5 divide-y">
-              <div className="px-5 md:w-1/2 lg:w-1/5">
+              <div className="md:w-1/2 lg:w-1/5">
                 <input
                   type="submit"
                   onClick={clearCartHandle}
@@ -109,14 +118,23 @@ const Cart = () => {
                   value="Xóa toàn bộ sản phẩm"
                 />
               </div>
-              <div className="grid place-items-end w-[90%] mx-auto flex ">
-                <div className="flex justify-between px-5 py-5 border-t-4 border-primaryDarkBlue w-full md:w-1/2 lg:w-1/3 ">
-                  <p className="font-bold text-[1.2em] ">Thành tiền</p>
-                  <CurrencyFormat value={cartItems.reduce(
-                    (acc, item) => acc + item.quantity * item.price,
-                    0
-                  )} displayType={'text'} thousandSeparator={true} renderText={value => <div> <b> {value} VND</b> </div>} />       
-
+              <div className="grid place-items-end w-[90%] mx-auto">
+                <div className="flex justify-between px-5 py-5 border-primaryDarkBlue w-full md:w-1/2 lg:w-1/3 ">
+                  <p className="font-bold text-lg ">Thành tiền:</p>
+                  <CurrencyFormat
+                    value={cartItems.reduce(
+                      (acc, item) => acc + item.quantity * item.price,
+                      0
+                    )}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    renderText={(value) => (
+                      <div>
+                        {" "}
+                        <b> {value} đ</b>{" "}
+                      </div>
+                    )}
+                  />
                 </div>
                 <div className="px-5 w-full md:w-1/2 lg:w-1/5">
                   <button
