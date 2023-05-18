@@ -1,20 +1,20 @@
-import React, { Fragment, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { saveShippingInfo } from "../../actions/cartAction";
-import MetaData from "../../components/layout/MetaData";
-import { Home, LocationCity, Phone } from "@material-ui/icons";
-import InputField from "../../components/user/InputField";
-import Button from "../../components/user/Button";
-import CheckoutSteps from "../../components/shipping/CheckoutSteps";
-import { useAlert } from "react-alert";
-import { useNavigate } from "react-router-dom";
+import React, { Fragment, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveShippingInfo } from '../../actions/cartAction';
+import MetaData from '../../components/layout/MetaData';
+import { Home, LocationCity, Phone } from '@material-ui/icons';
+import InputField from '../../components/user/InputField';
+import Button from '../../components/user/Button';
+import CheckoutSteps from '../../components/shipping/CheckoutSteps';
+import { useAlert } from 'react-alert';
+import { useNavigate } from 'react-router-dom';
 
 const Shipping = () => {
   const navgiate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
   const { shippingInfo } = useSelector((state) => state.cart);
-  const [fullname, setFullname] = useState(shippingInfo.fullname);
+  const [fullName, setFullname] = useState(shippingInfo.fullName);
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
@@ -23,19 +23,19 @@ const Shipping = () => {
     e.preventDefault();
 
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Số điện thoại phải là 10 số");
+      alert.error('Số điện thoại phải là 10 số');
       return;
     }
 
     dispatch(
       saveShippingInfo({
-        fullname,
+        fullName,
         address,
         city,
         phoneNo,
       })
     );
-    navgiate("/order/confirm");
+    navgiate('/order/confirm');
   };
   return (
     <Fragment>
@@ -57,10 +57,10 @@ const Shipping = () => {
               <div className="flex gap-5 justify-evenly flex-col h-full ">
                 <InputField
                   type="text"
-                  name="fullname"
+                  name="fullName"
                   placeholder="Họ và tên *"
                   Icon={Home}
-                  value={fullname}
+                  value={fullName}
                   onChange={(e) => setFullname(e.target.value)}
                 />
 

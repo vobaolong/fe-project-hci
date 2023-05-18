@@ -84,7 +84,7 @@ const ProcessOrder = () => {
                       <div className="flex gap-3 ">
                         <p>Tên: </p>
                         <span className="text-slate-600">
-                          {order.shippingInfo && order.shippingInfo.fullname}
+                          {order.shippingInfo && order.shippingInfo.fullName}
                         </span>
                       </div>
                       <div className="flex gap-3 ">
@@ -186,7 +186,7 @@ const ProcessOrder = () => {
                               className="capitalize"
                               to={`/product/${item.product}`}
                             >
-                              {item.name}
+                              {item.name}, Size: {item.size}
                             </Link>
                             <span>
                               <CurrencyFormat

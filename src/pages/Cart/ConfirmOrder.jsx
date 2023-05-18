@@ -53,7 +53,7 @@ const ConfirmOrder = () => {
                     <div className="flex gap-3 ">
                       <p>Tên: </p>
                       <span className="text-slate-600">
-                        {shippingInfo.fullname}
+                        {shippingInfo.fullName}
                       </span>
                     </div>
                     <div className="flex gap-3 ">
@@ -86,7 +86,7 @@ const ConfirmOrder = () => {
                             className="capitalize w-[30vmax] hover:text-cyan-600"
                             to={`/product/${item.product}`}
                           >
-                            {item.name}
+                            {item.name}, Size: {item.size}
                           </Link>
                           <span>
                             <CurrencyFormat

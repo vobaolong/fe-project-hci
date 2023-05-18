@@ -19,11 +19,10 @@ export const addItemsToCart =
         price: data.product.price,
         image: data.product.images[0].url,
         stock: data.product.stock,
-        quantity,
-        size,
+        quantity: quantity,
+        size: size,
       },
     });
-
     localStorage.setItem(
       "cartItems",
       JSON.stringify(getState().cart.cartItems)

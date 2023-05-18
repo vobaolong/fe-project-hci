@@ -70,6 +70,10 @@ const ProductDetails = () => {
     dispatch(getProductDetails(id));
   }, [dispatch, id, error, alert, reviewError, success]);
 
+  const handleSizeClick = (size) => {
+    setSize(size);
+  };
+
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
     setQuantity(quantity + 1);
@@ -80,7 +84,7 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
+    dispatch(addItemsToCart(id, quantity, size));
     alert.success("Thêm giỏ hàng thành công");
   };
 
@@ -142,7 +146,7 @@ const ProductDetails = () => {
                 />
               </h1>
               <div className="container mx-auto mt-4  pb-3">
-                <SizeSelect />
+                <SizeSelect valueSize={size} handleSizeClick={handleSizeClick}/>
               </div>
               <p className="border-t-2 border-b-2 py-3 border-slate-300 text-slate-600 font-semibold text-center md:text-left">
                 {/* Trạng thái:{" "}

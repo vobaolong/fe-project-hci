@@ -18,20 +18,20 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
-  const increaseQuantity = (id, quantity, stock) => {
+  const increaseQuantity = (id, quantity, stock, size) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty, size));
   };
 
-  const decreaseQuantity = (id, quantity) => {
+  const decreaseQuantity = (id, quantity, size) => {
     const newQty = quantity - 1;
     if (quantity <= 1) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty, size));
   };
 
   const deleteItemsFromCart = (id) => {
@@ -89,11 +89,12 @@ const Cart = () => {
                           increaseQuantity(
                             item.product,
                             item.quantity,
-                            item.stock
+                            item.stock,
+                            item.size
                           )
                         }
                         decreaseQuantity={() =>
-                          decreaseQuantity(item.product, item.quantity)
+                          decreaseQuantity(item.product, item.quantity, item.size)
                         }
                       />
                     </div>

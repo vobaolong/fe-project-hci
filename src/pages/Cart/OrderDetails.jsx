@@ -68,7 +68,7 @@ const OrderDetails = () => {
                 <div className="flex gap-3 ">
                   <p>Tên: </p>
                   <span className="text-slate-600">
-                    {order.user && order.shippingInfo.fullname}
+                    {order.user && order.shippingInfo.fullName}
                   </span>
                 </div>
                 <div className="flex gap-3 ">
@@ -81,7 +81,7 @@ const OrderDetails = () => {
                   <p>Địa chỉ: </p>
                   <span className="text-slate-600">
                     {order.user &&
-                      `${order.shippingInfo.fullname} - ${order.shippingInfo.address}, ${order.shippingInfo.city} `}
+                      `${order.shippingInfo.fullName} - ${order.shippingInfo.address}, ${order.shippingInfo.city} `}
                   </span>
                 </div>
               </div>
@@ -167,7 +167,7 @@ const OrderDetails = () => {
                             className="capitalize"
                             to={`/product/${item.product}`}
                           >
-                            {item.name}
+                            {item.name}, Size: {item.size}
                           </Link>
                           <span>
                             <CurrencyFormat
