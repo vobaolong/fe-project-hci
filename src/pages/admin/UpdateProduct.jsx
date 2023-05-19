@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   clearErrors,
   getProductDetails,
@@ -166,14 +168,13 @@ const UpdateProduct = () => {
                 <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <Description className="text-xl text-primaryBlue mx-2" />
 
-                  <textarea
-                    className="px-3 py-2 outline-none border-2 w-full bg-slate-200"
+                  <ReactQuill
+                    style={{ background: 'white', width: '100%' }}
+                    className="flex gap-2 justify-evenly flex-col h-full"
                     placeholder="Vui lòng nhập mô tả sản phẩm *"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    cols="30"
-                    rows="1"
-                  ></textarea>
+                    onChange={setDescription}
+                  />
                 </div>
                 <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <AccountTree className="text-xl text-primaryBlue mx-2" />

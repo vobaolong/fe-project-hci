@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import parse from 'html-react-parser';
 import {
   clearErrors,
   getProductDetails,
@@ -184,7 +185,7 @@ const ProductDetails = () => {
             <div className="py-5 font-semibold text-center md:text-left">
               Mô tả:
               <p className="font-normal text-slate-500 text-sm text-justify">
-                {product.description}
+                {parse(product.description)}
               </p>
             </div>
             <div className="flex justify-center md:justify-start">
