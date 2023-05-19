@@ -34,8 +34,8 @@ const Cart = () => {
     dispatch(addItemsToCart(id, newQty, size));
   };
 
-  const deleteItemsFromCart = (id) => {
-    dispatch(removeItemsFromCart(id));
+  const deleteItemsFromCart = (id, size) => {
+    dispatch(removeItemsFromCart(id, size));
   };
 
   const clearCartHandle = async () => {
@@ -64,21 +64,23 @@ const Cart = () => {
         </div>
       ) : (
         <Fragment>
-          <div className="cartPage h-auto py-24">
-            <div className="cartHeader overflow-x-auto md:overflow-x-hidden bg-primaryBlue w-[90%] mx-auto box-border text-white grid grid-cols-3 md:grid-cols-6 rounded-t-xl">
-              <p className="m-5 md:col-span-4">Sản phẩm</p>
+          <div className="h-full flex mt-28 bg-white rounded-xl flex-wrap pb-5 mb-10 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
+            <div className="cartHeader overflow-x-auto md:overflow-x-hidden bg-primaryBlue w-[100%] mx-auto box-border text-white grid grid-cols-3 md:grid-cols-6 rounded-t-xl px-4">
+              <p className="m-5 lg:col-span-4 md:col-span-3">Sản phẩm</p>
               <p className="m-5">Số lượng</p>
               <p className="m-5 text-right">Tổng</p>
             </div>
 
-            <div className="cartContainer w-[90%] px-5 bg-slate-100 mx-auto flex flex-col gap-5 divide-y">
+            <div className="cartContainer w-[100%] px-5 bg-white mx-auto flex flex-col divide-y-2 border-b-2">
               {cartItems?.map((item, index) => {
                 return (
                   <div key={index} className="grid grid-cols-3 md:grid-cols-6">
                     <div className="md:col-span-4 place-items-start">
                       <CartItemCard
                         item={item}
-                        deleteCartItems={deleteItemsFromCart}
+                        deleteCartItems={(id) =>
+                          deleteItemsFromCart(id, item.size)
+                        }
                         size={item.size}
                       />
                     </div>
@@ -94,7 +96,11 @@ const Cart = () => {
                           )
                         }
                         decreaseQuantity={() =>
-                          decreaseQuantity(item.product, item.quantity, item.size)
+                          decreaseQuantity(
+                            item.product,
+                            item.quantity,
+                            item.size
+                          )
                         }
                       />
                     </div>
@@ -110,18 +116,19 @@ const Cart = () => {
                 );
               })}
             </div>
-            <div className="w-[90%] flex mx-auto md:flex-row sm:flex-col gap-5 divide-y">
-              <div className="md:w-1/2 lg:w-1/5">
-                <input
+            <div className="w-[100%] px-5 flex mx-auto md:flex-row sm:flex-col gap-5">
+              <div className="lg:w-1/5 md:w-1/2">
+                <button
                   type="submit"
                   onClick={clearCartHandle}
-                  className="bg-red-600 w-full hover:shadow-lg py-2 rounded-md text-white mt-5 transition-all duration-500 hover:scale-105 cursor-pointer"
-                  value="Xóa toàn bộ sản phẩm"
-                />
+                  className="bg-red-600 w-full hover:shadow-lg py-2 rounded-md text-white mt-5 transition-all duration-500 hover:scale-95 cursor-pointer"
+                >
+                  Xoá toàn bộ sản phẩm
+                </button>
               </div>
               <div className="grid place-items-end w-[90%] mx-auto">
-                <div className="flex justify-between px-5 py-5 border-primaryDarkBlue w-full md:w-1/2 lg:w-1/3 ">
-                  <p className="font-bold text-lg ">Thành tiền:</p>
+                <div className="flex justify-between py-5 border-primaryDarkBlue w-full md:w-1/2 lg:w-1/3 mt-2 border-t-2 border-t-slate-500 text-lg">
+                  <p className="font-bold">Thành tiền:</p>
                   <CurrencyFormat
                     value={cartItems.reduce(
                       (acc, item) => acc + item.quantity * item.price,
@@ -137,10 +144,10 @@ const Cart = () => {
                     )}
                   />
                 </div>
-                <div className="px-5 w-full md:w-1/2 lg:w-1/5">
+                <div className="w-full md:w-1/2 lg:w-[33%]">
                   <button
                     onClick={checkoutHandler}
-                    className="bg-primaryBlue w-full hover:shadow-lg py-2 rounded-md text-white mt-10 transition-all duration-500 hover:scale-105"
+                    className="bg-primaryBlue w-full hover:shadow-lg py-2 rounded-md text-white mt-10 transition-all duration-500 hover:scale-95"
                   >
                     Đặt hàng
                   </button>

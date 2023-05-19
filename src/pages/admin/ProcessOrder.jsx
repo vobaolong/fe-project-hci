@@ -76,19 +76,19 @@ const ProcessOrder = () => {
               </p>
             </div>
             <div className="px-10">
-              <div className="grid grid-col-1 tall:grid-cols-6 divide-y-2 tall:divide-y-0 tall:divide-x-2 divide-secondaryDark">
+              <div className="grid grid-col-1 tall:grid-cols-6 divide-y-2 tall:divide-y-0 tall:divide-x-2 divide-slate-400">
                 <div className="flex flex-col col-span-6 tall:col-span-4">
                   <div>
                     <p className="text-xl font-bold">Thông tin vận chuyển</p>
                     <div className="headingData">
                       <div className="flex gap-3 ">
-                        <p>Tên: </p>
+                        <p>Họ và tên khách hàng: </p>
                         <span className="text-slate-600">
-                          {order.shippingInfo && order.shippingInfo.fullName}
+                          {order.shippingInfo && order.shippingInfo.name}
                         </span>
                       </div>
                       <div className="flex gap-3 ">
-                        <p>SĐT: </p>
+                        <p>Số điện thoại: </p>
                         <span className="text-slate-600">
                           {order.shippingInfo && order.shippingInfo.phoneNo}
                         </span>

@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { FaMapMarkerAlt, FaPhoneAlt, FaMailBulk } from "react-icons/fa";
 import { useAlert } from "react-alert";
 import MetaData from "../components/layout/MetaData";
+import TextField from "@mui/material/TextField";
 
 const ContactUs = () => {
   const form = useRef();
@@ -31,7 +32,7 @@ const ContactUs = () => {
   return (
     <>
       <MetaData title={`JAMILA | Liên hệ`} />
-      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
+      <div className="h-full flex mt-28 m-10 bg-white rounded-lg flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
         <div className="px-5">
           <h1 className="text-primaryBlue lg:text-3xl md:text-2xl sm:text-2xl text-center font-semibold uppercase tracking-widest my-5">
             Thông tin liên lạc
@@ -49,7 +50,7 @@ const ContactUs = () => {
             title="map"
           ></iframe>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col p-2 justify-around text-lightGray w-[100%] text-md">
+        <div className="flex lg:flex-row md:flex-col sm:flex-col p-2 justify-around text-lightGray w-[100%] text-base lg:divide-x xl:divide-x md:gap-3 sm:gap-3">
           <div className="xl:w-[40%] lg:w-[40%] md:w-[100%] sm:w-[100%] mx-3 flex flex-col gap-2">
             <p>
               Điền vào biểu mẫu và chúng tôi sẽ liên hệ lại với bạn trong vòng
@@ -90,47 +91,57 @@ const ContactUs = () => {
               </a>
             </div>
           </div>
-          <span className="border-l-2"></span>
+
           <div className="xl:w-[60%] lg:w-[60%] sm:w-[100%]">
             <form
               ref={form}
               onSubmit={sendEmail}
               className="flex xl:flex-row lg:flex-row sm:flex-col flex-wrap text-black"
             >
-              <div className="lg:w-[40%] sm:w-[100%] px-3">
-                <input
-                  className="w-[100%] p-2 my-2 rounded-lg h-11"
+              <div className="lg:w-[40%] sm:w-[100%] px-3 gap-3 flex flex-col flex-wrap mb-2 xl:mt-0 lg:mt-0 md:mt-3 sm:mt-3">
+                <TextField
                   name="user_name"
-                  placeholder="Họ và tên *"
                   type="text"
                   required
+                  id="outlined-basic"
+                  label="Họ và tên"
+                  variant="outlined"
+                  className="w-[100%]"
                 />
-                <input
-                  className="w-[100%] p-2 my-2 rounded-lg h-11"
+                <TextField
                   name="user_email"
-                  placeholder="Địa chỉ email *"
                   type="email"
                   required
+                  id="outlined-basic"
+                  label="Địa chỉ email"
+                  variant="outlined"
+                  className="w-[100%]"
                 />
-                <input
-                  className="w-[100%] p-2 my-2 rounded-lg h-11"
+                <TextField
                   name="subject"
-                  placeholder="Tiêu đề *"
                   type="text"
                   required
+                  id="outlined-basic"
+                  label="Tiêu đề"
+                  variant="outlined"
+                  className="w-[100%]"
                 />
               </div>
-              <div className="lg:w-[60%] sm:w-[100%] px-3 flex flex-wrap justify-end">
-                <textarea
-                  className="w-[100%] p-2 my-2 rounded-lg h-40 resize-none"
-                  name="message"
-                  placeholder="Nội dung *"
-                  type="text"
-                ></textarea>
+              <div className="lg:w-[60%] sm:w-[100%] px-3 flex flex-wrap justify-end mb-2">
+                <TextField
+                  className="w-[100%]"
+                  id="outlined-multiline-static"
+                  label="Nội dung"
+                  multiline
+                  required
+                  rows={7}
+                />
+              </div>
+              <div className="lg:w-[100%] md:w-[100%] sm:w-[100%] px-3 flex flex-wrap justify-end">
                 <button
                   type="submit"
                   value="Gửi"
-                  className="xl:w-[50%] lg:w-[100%] sm:w-[100%] bg-secondaryDark hover:bg-primaryBlue text-white font-bold py-2 px-4 rounded"
+                  className="mt-5 xl:w-[58%] lg:w-[100%] sm:w-[100%] bg-secondaryDark hover:bg-primaryBlue text-white font-bold py-2 px-4 rounded justify-end"
                 >
                   Gửi
                 </button>

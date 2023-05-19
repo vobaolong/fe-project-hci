@@ -14,7 +14,7 @@ const HomePage = () => {
   const alert = useAlert();
 
   const { loading, error, products } = useSelector((state) => state.products);
-
+  console.log(products);
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -36,7 +36,13 @@ const HomePage = () => {
           <Banner jsonData={companydata} />
 
           {/* our products */}
-          <OurProduct products={products.slice(0, 8)} />
+          <OurProduct heading="Sản phẩm mới" products={products.slice(0, 8)} />
+
+          {/* our products */}
+          <OurProduct
+            heading="Sản phẩm bán chạy"
+            products={products.slice(0, 4)}
+          />
         </Fragment>
       )}
     </div>

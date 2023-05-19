@@ -13,10 +13,11 @@ import Slider from "./Slider";
 import { useSelector } from "react-redux";
 import UserOptions from "./UserOptions";
 import logo from "../../../assets/logo.png";
+import { Badge } from "@material-ui/core";
 const isActiveStyle =
-  "font-bold lg:text-xl md:text-md sm:text-sm opacity-100 transition-all duration-500";
+  "font-bold lg:text-xl md:text-base sm:text-sm opacity-100 transition-all duration-500";
 const isNotActiveStyle =
-  "font-semibold lg:text-lg md:text-md sm:text-sm opacity-50 transition-all duration-500";
+  "font-semibold lg:text-lg md:text-base sm:text-sm opacity-50 transition-all duration-500";
 
 const Navbar = ({ menuOptions }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -75,14 +76,15 @@ const Navbar = ({ menuOptions }) => {
             {`${user?.role}` === "admin" ? null : (
               <>
                 <CustomIcon path="/search" Icon={HiOutlineSearch} />
-                <CustomIcon path="/cart" Icon={HiOutlineShoppingBag} />
-                {cartItems.length === 0 ? null : (
-                  <>
-                    <p className="w-5 h-5 text-xs text-primaryDarkBlue -ml-9 rounded-full border-2 pl-1 bg-slate-600">
-                      {cartItems.length}
-                    </p>
-                  </>
-                )}
+
+                <Badge
+                  badgeContent={
+                    cartItems.length === 0 ? null : cartItems.length
+                  }
+                  color="primary"
+                >
+                  <CustomIcon path="/cart" Icon={HiOutlineShoppingBag} />
+                </Badge>
               </>
             )}
             {isAuthenticated ? (

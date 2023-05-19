@@ -13,7 +13,7 @@ const QuantityCardInput = ({
         </button>
         <input
           readOnly
-          className="w-6 md:w-10 text-center p-1 outline-none"
+          className="w-6 md:w-10 text-center p-1 outline-none bg-slate-200"
           value={quantity}
           type="number"
         />

@@ -44,25 +44,29 @@ const Profile = () => {
             </div>
 
             <div className="flex flex-col w-full h-screen justify-evenly py-24 items-start box-border">
-              <div>
-                <h4 className="profileTitle">
-                  Tên
-                  <p className="profileValue">{user.name}</p>
-                </h4>
+              <div className="flex">
+                <p className="text-slate-800 font-medium text-lg">
+                  Họ và tên khách hàng:
+                </p>
+                <strong className="inline ml-2 font-medium text-xl text-slate-600">
+                  {user.name}
+                </strong>
               </div>
-              <div>
-                <h4 className="profileTitle">
-                  Email
-                  <p className="profileValue">{user.email}</p>
-                </h4>
+              <div className="flex">
+                <p className="text-slate-800 font-medium text-lg">
+                  Địa chỉ Email:
+                </p>
+                <strong className="inline ml-2 font-medium text-xl text-slate-600">
+                  {user.email}
+                </strong>
               </div>
-              <div>
-                <h4 className="profileTitle">
-                  Tham gia
-                  <p className="profileValue">
-                    {String(user.createdAt).substring(0, 10)}
-                  </p>
-                </h4>
+              <div className="flex">
+                <p className="text-slate-800 font-medium text-lg">
+                  Ngày tham gia:
+                </p>
+                <strong className="inline ml-2 font-medium text-xl text-slate-600">
+                  {String(user.createdAt).substring(0, 10)}
+                </strong>
               </div>
               <div className="flex flex-col gap-y-5 w-full md:w-[40%]">
                 <Link

@@ -56,7 +56,7 @@ const UserList = () => {
     },
     {
       field: "name",
-      headerName: "Tên",
+      headerName: "Tên người dùng",
       minWidth: 180,
       flex: 0.4,
     },

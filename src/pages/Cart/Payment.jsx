@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { CreditCard, Event, VpnKey } from "@material-ui/icons";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 import { resetCart } from "../../actions/cartAction";
+import SlideableBtn from "../../components/layout/Buttons/SlideableBtn";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -137,11 +138,10 @@ const Payment = () => {
     <Fragment>
       <div className="h-auto py-24 px-8 md:px-0">
         <MetaData title={`Thanh toán`} />
-
         <CheckoutSteps activeStep={2} />
-        <div className="w-full md:w-[30%] mx-auto">
+        <div className="h-full flex flex-col flex-wrap bg-white rounded-lg py-4 m-10 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 items-center">
           <form
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-5 w-[50%]"
             onSubmit={(e) => submitHandler(e)}
           >
             <p className="w-fit mx-auto text-xl font-bold py-5 border-b-2 border-secondaryDark">
@@ -160,7 +160,7 @@ const Payment = () => {
               <CardCvcElement className="paymentInputFieldStyle" />
             </div>
 
-            <input
+            {/* <input
               // onClick={dispatch(resetCart())}
               className="slideableBtnStyles cursor-pointer mt-5"
               ref={payBtn}
@@ -173,22 +173,31 @@ const Payment = () => {
                       orderInfo && orderInfo.totalPrice.toLocaleString()
                     } đ`
               }
-            />
-          </form>
-        </div>
-        <div className="w-full md:w-[30%] mx-auto">
-          <form
-            className="flex gap-1 mt-5 "
-            onSubmit={(e) => submitWithoutPay(e)}
-          >
-            <input
-              // onClick={dispatch(resetCart())}
-              className="slideableBtnStyles cursor-pointer"
+            /> */}
+            <SlideableBtn
+              ref={payBtn}
               type="submit"
               disabled={loading ? true : false}
-              value={"Thanh toán khi nhận hàng"}
+              label={
+                loading
+                  ? `Đang xử lý...`
+                  : `Thanh toán - ${
+                      orderInfo && orderInfo.totalPrice.toLocaleString()
+                    } đ`
+              }
             />
           </form>
+          <div className="w-full md:w-[50%] mx-auto">
+            <form
+              className="flex gap-1 mt-5 mt-5"
+              onSubmit={(e) => submitWithoutPay(e)}
+            >
+              <SlideableBtn
+                disabled={loading ? true : false}
+                label="Thanh toán khi nhận hàng"
+              />
+            </form>
+          </div>
         </div>
       </div>
     </Fragment>

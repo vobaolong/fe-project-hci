@@ -18,6 +18,7 @@ import {
   DialogContent,
   DialogTitle,
   Button,
+  TextField,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
@@ -84,8 +85,12 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
+    if (size === null) {
+      alert.error("Vui lòng chọn size trước khi thêm vào giỏ hàng");
+      return;
+    }
     dispatch(addItemsToCart(id, quantity, size));
-    alert.success("Thêm giỏ hàng thành công");
+    alert.success("Thêm vào giỏ hàng thành công");
   };
 
   const submitReviewToggle = () => {
@@ -109,17 +114,17 @@ const ProductDetails = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full py-24 px-8 sm:15 md:px-24 flex flex-col md:flex-row justify-center bg-secColor">
+        <div className="h-full flex mt-28 m-10 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2">
           <MetaData title={`${product.name} | JAMILA`} />
-          <div className="w-full flex justify-center md:w-1/2 md:p-10 overflow-hidden ">
+          <div className="w-full flex justify-center md:w-1/2 md:p-10 lg:p-0 sm:p-10 overflow-hidden">
             <MgSlider
-              width="400px"
-              height="400px"
+              width="500px"
+              height="500px"
               slides={product.images && product.images}
             />
           </div>
 
-          <div className="md:p-10 md:w-1/2 ">
+          <div className="md:w-1/2 md:p-10 lg:p-0 sm:p-10">
             <div>
               <h2 className="text-primaryBlue font-bold text-xl text-center mt-5 md:mt-0 md:text-left capitalize">
                 {product.name}
@@ -135,7 +140,6 @@ const ProductDetails = () => {
                 ({product.numOfReviews} Đánh giá)
               </span>
             </div>
-
             <div>
               <h1 className="text-2xl font-bold text-primaryBlue border-b-2 border-slate-300 pb-3 text-center md:text-left">
                 <CurrencyFormat
@@ -146,24 +150,26 @@ const ProductDetails = () => {
                 />
               </h1>
               <div className="container mx-auto mt-4  pb-3">
-                <SizeSelect valueSize={size} handleSizeClick={handleSizeClick}/>
+                <SizeSelect
+                  valueSize={size}
+                  handleSizeClick={handleSizeClick}
+                />
               </div>
               <p className="border-t-2 border-b-2 py-3 border-slate-300 text-slate-600 font-semibold text-center md:text-left">
-                {/* Trạng thái:{" "}
+                Trạng thái:{" "}
                 <b
                   className={`${
                     product.stock < 1 ? "text-red-500" : "text-green-500"
                   }`}
                 >
                   {product.stock < 1 ? "Hết hàng" : "Còn hàng"}
-                </b> */}
+                </b>
                 <div className="flex gap-5 my-5 flex-col md:flex-row justify-center md:justify-start">
                   <QuantityCardInput
                     quantity={quantity}
                     increaseQuantity={increaseQuantity}
                     decreaseQuantity={decreaseQuantity}
                   />
-
                   <button
                     disabled={product.stock < 1 ? true : false}
                     onClick={addToCartHandler}
@@ -184,7 +190,7 @@ const ProductDetails = () => {
             <div className="flex justify-center md:justify-start">
               <button
                 onClick={submitReviewToggle}
-                className="commonBtnStyle w-full sm:w-1/2 md:w-[190px] py-2 px-10 bg-secondaryDark hover:scale-105 outline-none"
+                className="commonBtnStyle w-full sm:w-1/2 md:w-[190px] py-2 px-10 bg-secondaryDark hover:scale-95 outline-none"
               >
                 Thêm đánh giá
               </button>
@@ -212,15 +218,16 @@ const ProductDetails = () => {
               size="large"
               name="hover-feedback"
             />
-            <textarea
-              className="w-full border-2 p-1 rounded-lg max-h-max"
-              cols="30"
-              placeholder="Thêm đánh giá"
-              rows="5"
+            <TextField
+              className="w-[100%]"
+              id="outlined-multiline-static"
+              multiline
+              required
+              rows={7}
+              label="Thêm đánh giá"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              required
-            ></textarea>
+            ></TextField>
           </DialogContent>
           <DialogActions>
             <Button onClick={submitReviewToggle} color="secondary">

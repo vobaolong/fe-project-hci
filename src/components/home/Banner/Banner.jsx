@@ -9,7 +9,7 @@ const Banner = ({ jsonData }) => {
 
   return (
     <>
-      <div className="w-[100%] h-screen flex justify-center items-center customBanner ">
+      <div className="w-[100%] h-screen flex justify-center items-center">
         <div className="flex justify-center flex-col items-center mx-4 lg:mx-40">
           <h1 className="text-2xl font-bold text-zinc-900 text-center">
             Chào mừng đến với {"  "}
@@ -34,13 +34,13 @@ const Banner = ({ jsonData }) => {
           </a>
         </div>
       </div>
-      <div className="grid-rows-1 bg-slate-50 md:px-0 mx-4 lg:mx-40 rounded-md drop-shadow-md">
+      <div className="mt-2 grid-rows-1 bg-slate-50 md:py-3 lg:mx-44 md:mx-4 sm:mx-2 rounded-md drop-shadow-md">
         <div className="grid-cols-12 ">
           <div className=" p-4">
             <Marquee className="flex gap-20">
               {brandLogos?.map((index) => {
                 return (
-                  <div className="mx-4">
+                  <div key={index} className="mx-4">
                     <img src={index.image} alt="brand" />
                   </div>
                 );

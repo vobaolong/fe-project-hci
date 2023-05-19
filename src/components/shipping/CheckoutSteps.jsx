@@ -27,7 +27,12 @@ const CheckoutSteps = ({ activeStep }) => {
   };
   return (
     <>
-      <Stepper alternativeLabel activeStep={activeStep} style={stepStyle}>
+      <Stepper
+        className="h-full flex bg-white rounded-lg mb-5 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center"
+        alternativeLabel
+        activeStep={activeStep}
+        style={stepStyle}
+      >
         {steps.map((item, index) => {
           return (
             <Step
@@ -37,7 +42,7 @@ const CheckoutSteps = ({ activeStep }) => {
             >
               <StepLabel
                 style={{
-                  color: activeStep >= index ? "#0e8f99" : "raba(0,0,0,0.648)",
+                  color: activeStep >= index ? "#335231" : "rgba(0,0,0,0.648)",
                 }}
                 icon={item.icon}
               >

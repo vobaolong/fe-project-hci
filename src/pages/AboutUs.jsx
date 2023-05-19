@@ -5,15 +5,15 @@ const AboutUs = () => {
   return (
     <>
       <MetaData title={`JAMILA | Về chúng tôi`} />
-      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
+      <div className="h-full flex mt-28 m-10 bg-white rounded-lg flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
         <div class="px-5">
           <h1 class="text-primaryBlue lg:text-3xl md:text-2xl sm:text-2xl text-center font-semibold uppercase tracking-widest my-5">
             Vai trò và sứ mệnh
           </h1>
         </div>
         <div>
-          <p class="mt-5 lg:text-lg md:text-md sm:text-sm text-mainColor mx-10 text-justify leading-relaxed">
-            <strong className="lg:text-xl md:text-lg sm:text-md text-neutral-700 font-bold">
+          <p class="mt-5 lg:text-lg md:text-base sm:text-sm text-mainColor mx-10 text-justify leading-relaxed">
+            <strong className="lg:text-xl md:text-lg sm:text-base text-neutral-700 font-bold">
               MỤC TIÊU CỦA CHÚNG TÔI
             </strong>
             : Mọi khách hàng đều hài lòng

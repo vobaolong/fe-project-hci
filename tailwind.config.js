@@ -46,7 +46,7 @@ module.exports = {
         navColor: "#BEBEBE",
       },
       backgroundColor: {
-        secColor: "#efefef",
+        secColor: "#f3f3f3",
         mainColor: "#335231",
         // mainColor: "#1A1B1F",
         primaryBlue: "#335231",

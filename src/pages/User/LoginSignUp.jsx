@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
+import { Box, Tab } from "@material-ui/core";
+import { TabContext, TabList, TabPanel } from "@material-ui/lab";
 
 const LoginSignUp = () => {
   const navigate = useNavigate();
@@ -27,7 +29,6 @@ const LoginSignUp = () => {
   const alert = useAlert();
   const loginTab = useRef(null);
   const registerTab = useRef(null);
-  const switcherTab = useRef(null);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -61,22 +62,10 @@ const LoginSignUp = () => {
     }
   }, [error, alert, dispatch, redirect, isAuthenticated, navigate]);
 
-  const switchTabs = (e, tab) => {
-    if (tab === "login") {
-      switcherTab.current.classList.add("shiftToNeutral");
-      switcherTab.current.classList.remove("shiftToRight");
+  const [value, setValue] = useState("1");
 
-      registerTab.current.classList.remove("shiftToNeutralForm");
-      loginTab.current.classList.remove("shiftToLeft");
-    }
-
-    if (tab === "register") {
-      switcherTab.current.classList.add("shiftToRight");
-      switcherTab.current.classList.remove("shiftToNeutral");
-
-      registerTab.current.classList.add("shiftToNeutralForm");
-      loginTab.current.classList.add("shiftToLeft");
-    }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   const loginSubmit = (e) => {
@@ -231,252 +220,262 @@ const LoginSignUp = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mt-12 px-8 py-16 bg-slate-200 md:px-24">
-          <div className="bg-white shadow-lg w-full xl:w-1/3 lg:w-2/3 md:w-2/3 h-[100vh] rounded-lg mx-auto py-5 overflow-hidden">
-            <div>
-              <div className="flex justify-evenly">
-                <p
-                  className="grid place-items-center cursor-pointer hover:text-secondaryDark"
-                  onClick={(e) => switchTabs(e, "login")}
-                >
-                  Đăng nhập
-                </p>
-                <p
-                  className="grid place-items-center cursor-pointer hover:text-secondaryDark"
-                  onClick={(e) => switchTabs(e, "register")}
-                >
-                  Đăng ký
-                </p>
-              </div>
-              <button
-                className="h-[3px] bg-primaryBlue w-1/2 transition-all duration-500"
-                ref={switcherTab}
-              ></button>
-            </div>
+        <div className="justify-center flex items-center">
+          <div className="h-full mt-28 m-10 bg-white rounded-xl lg:mx-40 md:mx-4 sm:mx-2 xl:w-[40%] lg:w-[100%] md:w-[70%] sm:w-[100%]">
+            <Box className="" sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <TabList
+                    variant="fullWidth"
+                    onChange={handleChange}
+                    textColor="primary"
+                    indicatorColor="primary"
+                    aria-label="lab API tabs example"
+                  >
+                    <Tab
+                      className="font-bold text-lg"
+                      label="đăng nhập"
+                      value="login"
+                    />
+                    <Tab
+                      className="font-bold text-lg"
+                      label="Đăng ký"
+                      value="signup"
+                    />
+                  </TabList>
+                </Box>
+                <TabPanel value="login">
+                  {/* Login form */}
+                  <form
+                    className="flex flex-col px-5 py-2 justify-evenly items-center"
+                    ref={loginTab}
+                    onSubmit={loginSubmit}
+                  >
+                    <div className="w-full mb-5 justify-center items-center">
+                      <div className="flex justify-evenly flex-col h-full gap-3">
+                        <InputField
+                          type="text"
+                          name="email"
+                          label="Vui lòng nhập Email"
+                          Icon={MdMailOutline}
+                          value={loginEmail}
+                          onChange={(e) => setLoginEmail(e.target.value)}
+                        />
+                        <div className="flex">
+                          <InputField
+                            type={show ? "text" : "password"}
+                            name="password"
+                            label="Vui lòng nhập mật khẩu"
+                            Icon={MdLockOpen}
+                            value={loginPassword}
+                            onChange={(e) => setLoginPassword(e.target.value)}
+                          />
+                          {show ? (
+                            <AiFillEye
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          ) : (
+                            <AiFillEyeInvisible
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex w-[100%] justify-between my-5">
+                        <p>
+                          <input type="checkbox" className="accent-green-900" />{" "}
+                          Ghi nhớ đăng nhập
+                        </p>
+                        <Link
+                          to="/password/forgot"
+                          className="text-lightGray hover:text-primaryBlue underline-offset-2 underline"
+                        >
+                          Quên mật khẩu ?
+                        </Link>
+                      </div>
+                      <Button label="Đăng nhập" />
+                    </div>
+                  </form>
+                </TabPanel>
+                <TabPanel value="signup">
+                  {/* Register form */}
+                  <form
+                    className="flex flex-col px-5 py-2 justify-evenly items-center"
+                    ref={registerTab}
+                    encType="multipart/form-data"
+                    onSubmit={registerSubmit}
+                  >
+                    <div className="w-full mb-5 justify-center items-center">
+                      <div className="flex justify-evenly flex-col h-full gap-3">
+                        <InputField
+                          type="text"
+                          name="name"
+                          label="Vui lòng nhập tên"
+                          Icon={MdPerson}
+                          value={registerName}
+                          onChange={(e) => setRegisterName(e.target.value)}
+                        />
 
-            {/* Login form */}
-            <form
-              className="flex flex-col justify-evenly items-center h-[80%] transition-transform duration-500 px-5"
-              ref={loginTab}
-              onSubmit={loginSubmit}
-            >
-              <div className="flex justify-evenly flex-col w-full h-[40%]">
-                <InputField
-                  type="text"
-                  name="email"
-                  placeholder="Vui lòng nhập Email của bạn *"
-                  Icon={MdMailOutline}
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-                <div className="flex">
-                  <InputField
-                    type={show ? "text" : "password"}
-                    name="password"
-                    placeholder="Vui lòng nhập mật khẩu *"
-                    Icon={MdLockOpen}
-                    value={loginPassword}
-                    onChange={(e) => setLoginPassword(e.target.value)}
-                  />
-                  {show ? (
-                    <AiFillEye
-                      id="show_hide"
-                      className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                      onClick={handleShowHide}
-                    />
-                  ) : (
-                    <AiFillEyeInvisible
-                      id="show_hide"
-                      className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                      onClick={handleShowHide}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className="flex w-[100%] justify-between">
-                <p>
-                  <input type="checkbox" className="accent-green-900" /> Ghi nhớ
-                  đăng nhập
-                </p>
-                <Link
-                  to="/password/forgot"
-                  className="text-lightGray hover:text-primaryBlue underline-offset-2 underline"
-                >
-                  Quên mật khẩu ?
-                </Link>
-              </div>
-              <Button label="Đăng nhập" />
-            </form>
+                        <InputField
+                          type="email"
+                          name="email"
+                          label="Vui lòng nhập Email"
+                          Icon={MdMailOutline}
+                          value={registerEmail}
+                          onChange={(e) => setRegisterEmail(e.target.value)}
+                        />
+                        <div className="flex">
+                          <InputField
+                            type={show ? "text" : "password"}
+                            name="password"
+                            label="Vui lòng nhập mật khẩu"
+                            Icon={MdLockOpen}
+                            value={registerPassword}
+                            onKeyPress={(e) => checkPassword(e.target.value)}
+                            onChange={(e) =>
+                              setRegisterPassword(e.target.value)
+                            }
+                          />
+                          {show ? (
+                            <AiFillEye
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          ) : (
+                            <AiFillEyeInvisible
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          )}
+                        </div>
+                        <div className="flex">
+                          <InputField
+                            type={show ? "text" : "password"}
+                            name="cpassword"
+                            label="Xác nhận lại mật khẩu"
+                            Icon={MdLockOpen}
+                            value={cpassword}
+                            onChange={(e) => setCpassword(e.target.value)}
+                          />
+                          {show ? (
+                            <AiFillEye
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          ) : (
+                            <AiFillEyeInvisible
+                              id="show_hide"
+                              className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
+                              onClick={handleShowHide}
+                            />
+                          )}
+                        </div>
 
-            {/* Register form */}
-            <form
-              className="signUpForm h-[63%] transition-transform duration-500 flex flex-col px-5 py-2 justify-evenly items-center"
-              ref={registerTab}
-              encType="multipart/form-data"
-              onSubmit={registerSubmit}
-            >
-              <div className="w-full mb-5">
-                <div className="flex justify-evenly flex-col h-full gap-3">
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Vui lòng nhập tên *"
-                    Icon={MdPerson}
-                    value={registerName}
-                    onChange={(e) => setRegisterName(e.target.value)}
-                  />
-
-                  <InputField
-                    type="email"
-                    name="email"
-                    placeholder="Vui lòng nhập Email của bạn *"
-                    Icon={MdMailOutline}
-                    value={registerEmail}
-                    onChange={(e) => setRegisterEmail(e.target.value)}
-                  />
-                  <div className="flex">
-                    <InputField
-                      type={show ? "text" : "password"}
-                      name="password"
-                      placeholder="Vui lòng nhập mật khẩu *"
-                      Icon={MdLockOpen}
-                      value={registerPassword}
-                      onKeyPress={(e) => checkPassword(e.target.value)}
-                      onChange={(e) => setRegisterPassword(e.target.value)}
-                    />
-                    {show ? (
-                      <AiFillEye
-                        id="show_hide"
-                        className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                        onClick={handleShowHide}
-                      />
-                    ) : (
-                      <AiFillEyeInvisible
-                        id="show_hide"
-                        className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                        onClick={handleShowHide}
-                      />
-                    )}
-                  </div>
-                  <div className="flex">
-                    <InputField
-                      type={show ? "text" : "password"}
-                      name="cpassword"
-                      placeholder="Xác nhận lại mật khẩu *"
-                      Icon={MdLockOpen}
-                      value={cpassword}
-                      onChange={(e) => setCpassword(e.target.value)}
-                    />
-                    {show ? (
-                      <AiFillEye
-                        id="show_hide"
-                        className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                        onClick={handleShowHide}
-                      />
-                    ) : (
-                      <AiFillEyeInvisible
-                        id="show_hide"
-                        className="cursor-pointer justify-center mt-3 -ml-8 text-xl text-primaryBlue"
-                        onClick={handleShowHide}
-                      />
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-5">
-                    <img
-                      src={avatarPreview}
-                      className="w-10 h-10 rounded-full"
-                      alt="ảnh đại diện"
-                    />
-                    <input
-                      className="avatarChoose border-2 rounded-lg w-full"
-                      type="file"
-                      name="avatar"
-                      accept="image/*"
-                      placeholder="chọn ảnh"
-                      onChange={registerDataChange}
-                      required
-                    />
-                  </div>
-                  <div className="bg-primaryDarkBlue mt-2 p-3 rounded-xl text-sm">
-                    <ul className="flex flex-col gap-2 text-zinc-400">
-                      <li id="lower" className="ease-in-out">
-                        <AiOutlineCloseCircle
-                          id="iconNotCheckLower"
-                          className="inline mr-1 text-red-500"
-                        />
-                        <AiOutlineCheckCircle
-                          id="iconCheckLower"
-                          className="hidden text-green-600 mr-1"
-                        />
-                        Ít nhất có một ký tự viết thường
-                      </li>
-                      <li id="upper" className="ease-in-out">
-                        <AiOutlineCloseCircle
-                          id="iconNotCheckUpper"
-                          className="inline mr-1 text-red-500"
-                        />
-                        <AiOutlineCheckCircle
-                          id="iconCheckUpper"
-                          className="hidden text-green-600 mr-1"
-                        />
-                        Ít nhất có một ký tự viết hoa
-                      </li>
-                      <li id="number" className="ease-in-out">
-                        <AiOutlineCloseCircle
-                          id="iconNotCheckNumber"
-                          className="inline mr-1 text-red-500"
-                        />
-                        <AiOutlineCheckCircle
-                          id="iconCheckNumber"
-                          className="hidden text-green-600 mr-1"
-                        />
-                        Ít nhất có một ký tự số
-                      </li>
-                      <li id="special" className="ease-in-out">
-                        <AiOutlineCloseCircle
-                          id="iconNotCheckSpecial"
-                          className="inline mr-1 text-red-500"
-                        />
-                        <AiOutlineCheckCircle
-                          id="iconCheckSpecial"
-                          className="hidden text-green-600 mr-1"
-                        />
-                        Ít nhất có một ký tự đặc biệt
-                      </li>
-                      <li id="length" className="ease-in-out">
-                        <AiOutlineCloseCircle
-                          id="iconNotCheckLength"
-                          className="inline mr-1 text-red-500"
-                        />
-                        <AiOutlineCheckCircle
-                          id="iconCheckLength"
-                          className="hidden text-green-600 mr-1"
-                        />
-                        Độ dài ngắn nhất là 8 ký tự
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <p className="py-2">
-                Đã có tài khoản ?{" "}
-                <a className="underline text-blue-500" href="/login">
-                  Đăng nhập ngay
-                </a>
-              </p>
-              <Button id="btn-signup" label="Đăng ký" />
-              <p className="pt-5">
-                Nhấn "Đăng ký" cũng đồng nghĩa bạn đồng ý với{" "}
-                <a className="hover:underline text-sky-400" href="/">
-                  Điều khoản sử dụng
-                </a>{" "}
-                và{" "}
-                <a className="hover:underline text-sky-400" href="/">
-                  Chính sách bảo mật
-                </a>
-              </p>
-            </form>
+                        <div className="flex items-center gap-5">
+                          <img
+                            src={avatarPreview}
+                            className="w-10 h-10 rounded-full"
+                            alt="ảnh đại diện"
+                          />
+                          <input
+                            className="avatarChoose border-2 rounded-lg w-full"
+                            type="file"
+                            name="avatar"
+                            accept="image/*"
+                            label="chọn ảnh"
+                            onChange={registerDataChange}
+                            required
+                          />
+                        </div>
+                        <div className="bg-primaryDarkBlue mt-2 p-3 rounded-xl text-sm text-left">
+                          <ul className="flex flex-col gap-2 text-zinc-400">
+                            <li id="lower" className="ease-in-out">
+                              <AiOutlineCloseCircle
+                                id="iconNotCheckLower"
+                                className="inline mr-1 text-red-500"
+                              />
+                              <AiOutlineCheckCircle
+                                id="iconCheckLower"
+                                className="hidden text-green-600 mr-1"
+                              />
+                              Ít nhất có một ký tự viết thường
+                            </li>
+                            <li id="upper" className="ease-in-out">
+                              <AiOutlineCloseCircle
+                                id="iconNotCheckUpper"
+                                className="inline mr-1 text-red-500"
+                              />
+                              <AiOutlineCheckCircle
+                                id="iconCheckUpper"
+                                className="hidden text-green-600 mr-1"
+                              />
+                              Ít nhất có một ký tự viết hoa
+                            </li>
+                            <li id="number" className="ease-in-out">
+                              <AiOutlineCloseCircle
+                                id="iconNotCheckNumber"
+                                className="inline mr-1 text-red-500"
+                              />
+                              <AiOutlineCheckCircle
+                                id="iconCheckNumber"
+                                className="hidden text-green-600 mr-1"
+                              />
+                              Ít nhất có một ký tự số
+                            </li>
+                            <li id="special" className="ease-in-out">
+                              <AiOutlineCloseCircle
+                                id="iconNotCheckSpecial"
+                                className="inline mr-1 text-red-500"
+                              />
+                              <AiOutlineCheckCircle
+                                id="iconCheckSpecial"
+                                className="hidden text-green-600 mr-1"
+                              />
+                              Ít nhất có một ký tự đặc biệt
+                            </li>
+                            <li id="length" className="ease-in-out">
+                              <AiOutlineCloseCircle
+                                id="iconNotCheckLength"
+                                className="inline mr-1 text-red-500"
+                              />
+                              <AiOutlineCheckCircle
+                                id="iconCheckLength"
+                                className="hidden text-green-600 mr-1"
+                              />
+                              Độ dài ngắn nhất là 8 ký tự
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="py-2">
+                      Đã có tài khoản ?{" "}
+                      <a className="underline text-blue-500" href="/login">
+                        Đăng nhập ngay
+                      </a>
+                    </p>
+                    <Button id="btn-signup" label="Đăng ký" />
+                    <p className="pt-5">
+                      Nhấn "Đăng ký" cũng đồng nghĩa bạn đồng ý với{" "}
+                      <a className="hover:underline text-sky-400" href="/term">
+                        Điều khoản sử dụng
+                      </a>{" "}
+                      và{" "}
+                      <a className="hover:underline text-sky-400" href="/term">
+                        Chính sách bảo mật
+                      </a>
+                    </p>
+                  </form>
+                </TabPanel>
+              </TabContext>
+            </Box>
           </div>
         </div>
       )}

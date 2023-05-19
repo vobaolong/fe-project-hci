@@ -4,17 +4,17 @@ import MetaData from "../MetaData";
 const Policy = () => {
   return (
     <>
-      <MetaData title={`<strong>JAMILA | Chính sách`} />
-      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
+      <MetaData title={`JAMILA | Chính sách`} />
+      <div className="h-full flex mt-28 m-10 bg-white rounded-lg flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
         <div className="w-[100%] px-5">
-          <h1 className="text-primaryBlue lg:text-3xl md:text-2xl sm:text-2xl text-center font-semibold uppercase tracking-widest my-5">
+          <h1 className="text-primaryBlue text-3xl font-semibold uppercase tracking-widest m-10 text-center">
             Chính sách bán hàng
           </h1>
         </div>
         <div>
-          <p class="lg:text-lg md:text-md sm:text-sm text-mainColor mx-10 text-justify leading-relaxed">
+          <p class="lg:text-lg md:text-base sm:text-sm text-mainColor mx-10 text-justify leading-loose">
             <p>
-              <strong>1. Hàng hóa tạiJAMILA</strong>
+              <strong>1. Hàng hóa tại JAMILA</strong>
               <br />
               - Tất cả sản phẩm đều là chính hãng, mới 100%
               <br />- Hàng chính hãng được phân phối chính thức tại Việt Nam sẽ

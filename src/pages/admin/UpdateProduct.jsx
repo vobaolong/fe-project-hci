@@ -150,7 +150,7 @@ const UpdateProduct = () => {
                 <InputField
                   type="text"
                   name="productName"
-                  placeholder="Vui lòng nhập tên sản phẩm"
+                  label="Vui lòng nhập tên sản phẩm"
                   Icon={Spellcheck}
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
@@ -158,28 +158,28 @@ const UpdateProduct = () => {
                 <InputField
                   type="number"
                   name="price"
-                  placeholder="Vui lòng nhập giá sản phẩm"
+                  label="Vui lòng nhập giá sản phẩm"
                   Icon={Money}
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
-                <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">
-                  <Description className="text-xl text-white mx-2" />
+                <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
+                  <Description className="text-xl text-primaryBlue mx-2" />
 
                   <textarea
-                    className="px-3 py-2 outline-none border-2 w-full"
-                    placeholder="Vui lòng nhập mô tả sản phẩm"
+                    className="px-3 py-2 outline-none border-2 w-full bg-slate-200"
+                    placeholder="Vui lòng nhập mô tả sản phẩm *"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     cols="30"
                     rows="1"
                   ></textarea>
                 </div>
-                <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">
-                  <AccountTree className="text-xl text-white mx-2" />
+                <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
+                  <AccountTree className="text-xl text-primaryBlue mx-2" />
                   <select
                     value={brand}
-                    className="px-3 py-2 outline-none border-2 w-full"
+                    className="px-3 py-2 outline-none border-2 w-full bg-slate-200"
                     onChange={(e) => setBrand(e.target.value)}
                   >
                     <option value="">Vui lòng chọn danh mục</option>
@@ -196,7 +196,7 @@ const UpdateProduct = () => {
                 <InputField
                   type="number"
                   name="stock"
-                  placeholder="Vui lòng nhập số lượng sản phẩm"
+                  label="Vui lòng nhập số lượng sản phẩm"
                   Icon={Storage}
                   value={Stock}
                   onChange={(e) => setStock(e.target.value)}

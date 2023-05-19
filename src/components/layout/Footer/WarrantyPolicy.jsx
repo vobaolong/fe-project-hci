@@ -6,9 +6,9 @@ const WarrantyPolicy = () => {
     <>
       <MetaData title={`JAMILA | Bảo hành`} />
 
-      <div className="h-full flex mt-28 m-10 bg-secColor rounded-3xl flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
+      <div className="h-full flex mt-28 m-10 bg-white rounded-lg flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
         <div className="w-[100%] px-5">
-          <h1 className="text-primaryBlue text-3xl font-semibold uppercase tracking-widest mt-5 text-center">
+          <h1 className="text-primaryBlue text-3xl font-semibold uppercase tracking-widest m-10 text-center">
             Chính sách bảo hành
           </h1>
           <br />
@@ -18,11 +18,11 @@ const WarrantyPolicy = () => {
           <img
             src={quyDinhBaoHanhImg}
             alt="quydinhbaohanhImg"
-            className="rounded-xl w-[100%] "
+            className="rounded-xl w-[100%] shadow"
           />
         </div>
         <div class="w-[100%] px-5">
-          <p class="lg:text-lg md:text-md sm:text-sm text-mainColor lg:mx-10 md:mx-5 sm:mx-3 text-justify leading-relaxed">
+          <p class="lg:text-lg md:text-base sm:text-sm text-mainColor lg:mx-10 md:mx-5 sm:mx-3 text-justify leading-relaxed">
             <br />
             <strong>1. Điều kiện nhận bảo hành tại JAMILA</strong>
             <br />

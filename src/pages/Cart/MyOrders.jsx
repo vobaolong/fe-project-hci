@@ -6,7 +6,7 @@ import Loader from "../../components/layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
-import { Launch } from "@material-ui/icons";
+import { Visibility } from "@material-ui/icons";
 
 const MyOrders = () => {
   const alert = useAlert();
@@ -63,10 +63,10 @@ const MyOrders = () => {
       renderCell: (params) => {
         return (
           <Link
-            className="text-slate-500 hover:text-red-500 transition-all duration-500"
+            className="text-slate-500 hover:text-primaryBlue transition-all duration-500"
             to={`/order/${params.getValue(params.id, "id")}`}
           >
-            <Launch />
+            <Visibility />
           </Link>
         );
       },

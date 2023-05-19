@@ -34,14 +34,15 @@ import UserList from "../pages/admin/UserList";
 import UpdateUser from "../pages/admin/UpdateUser";
 import ProductReviews from "../pages/admin/ProductReviews";
 import Policy from "../components/layout/Footer/Policy";
-import WarrantyPolicy from "../components/layout/Footer/WarrantyPolicy"
+import WarrantyPolicy from "../components/layout/Footer/WarrantyPolicy";
+import Term from "../pages/Term";
 
 const ElementWithRoutes = ({ stripeApiKey }) => {
   // const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>
-      <div className="-mt-20">
+      <div className="-mt-20 center">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<ProductDetails />} />
@@ -49,8 +50,9 @@ const ElementWithRoutes = ({ stripeApiKey }) => {
           <Route path="/products/:keyword" element={<Products />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/policy" element={<Policy/>} />
-          <Route path="/WarrantyPolicy" element={<WarrantyPolicy/>} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/term" element={<Term />} />
+          <Route path="/WarrantyPolicy" element={<WarrantyPolicy />} />
           <Route path="/search" element={<SearchProducts />} />
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />

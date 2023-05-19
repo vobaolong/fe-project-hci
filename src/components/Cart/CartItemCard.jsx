@@ -24,11 +24,11 @@ const CartItemCard = ({ item, size, deleteCartItems }) => {
           prefix="Giá: "
           renderText={(value) => <div>{value} đ</div>}
         />
-        <div className="capitalize rounded-md bg-secondaryDark opacity-70 w-max p-2">
+        <div className="capitalize rounded-md bg-secColor w-max p-2">
           Size: {size}
         </div>
         <p
-          onClick={() => deleteCartItems(item.product)}
+          onClick={() => deleteCartItems(item.product, size)}
           className="bg-red-600 w-[150px] hover:bg-red-400 hover:shadow-lg hover:scale-95 transition-all duration-500 text-white cursor-pointer py-[0.1em] rounded-md text-center mt-2"
         >
           Xóa
