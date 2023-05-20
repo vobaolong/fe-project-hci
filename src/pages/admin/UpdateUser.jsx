@@ -91,7 +91,7 @@ const UpdateUser = () => {
             <Loader />
           ) : (
             <form
-              className="w-[90%]  md:w-[50%] mx-auto shadow-lg bg-white p-10 rounded-md"
+              className="w-[90%] md:w-[50%] mx-auto shadow-lg bg-white p-10 rounded-md"
               onSubmit={updateUserSubmitHandler}
             >
               <div className="w-full mb-2">
@@ -100,12 +100,14 @@ const UpdateUser = () => {
                     type="text"
                     name="username"
                     Icon={Person}
+                    label="Quyền"
                     value={name}
                   />
                   <InputField
                     type="email"
                     name="email"
                     Icon={MailOutline}
+                    label="Email"
                     value={email}
                   />
                   <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">

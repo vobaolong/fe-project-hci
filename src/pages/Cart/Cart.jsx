@@ -53,7 +53,7 @@ const Cart = () => {
         <div className="isEmptyCart h-screen flex flex-col gap-3 justify-center items-center ">
           <MdRemoveShoppingCart />
           <p className="text-slate-500 text-xl">
-            Không có sản phẩm trong giỏ hàng
+            Hiện chưa có sản phẩm nào trong giỏ hàng
           </p>
           <Link
             className="bg-primaryBlue text-white px-10 py-2 rounded-md hover:scale-105 transition-all duration-500"

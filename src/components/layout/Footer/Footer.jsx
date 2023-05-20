@@ -18,19 +18,19 @@ const Footer = ({ jsonData }) => {
           </p>
           <div className="flex gap-10 mt-2 transition-all">
             <a
-              className="text-primaryBlue text-3xl hover:text-secColor"
+              className="text-primaryBlue text-3xl hover:text-lightGray"
               href="/"
             >
               <FaGithub />
             </a>
             <a
-              className="text-primaryBlue text-3xl hover:text-secColor"
+              className="text-primaryBlue text-3xl hover:text-lightGray"
               href="/"
             >
               <FaFacebook />
             </a>
             <a
-              className="text-primaryBlue text-3xl hover:text-secColor"
+              className="text-primaryBlue text-3xl hover:text-lightGray"
               href="/"
             >
               <FaYoutube />

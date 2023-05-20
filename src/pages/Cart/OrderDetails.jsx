@@ -17,11 +17,11 @@ import {
   Home,
   HomeWork,
   LocalAtm,
+  LocalShipping,
   Mail,
   Person,
   Phone,
 } from "@material-ui/icons";
-import Shipping from "./Shipping";
 import { toast } from "react-toastify";
 
 const OrderDetails = () => {
@@ -232,7 +232,7 @@ const OrderDetails = () => {
                   {order.orderStatus && order.orderStatus === "Delivered" ? (
                     <Home className="text-slate-500" />
                   ) : order.orderStatus === "Shipped" ? (
-                    <Shipping className="text-slate-500" />
+                    <LocalShipping className="text-slate-500" />
                   ) : order.orderStatus === "Cancel" ? (
                     <Block className="text-slate-500" />
                   ) : (

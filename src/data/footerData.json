@@ -12,7 +12,9 @@
     ],
     "policy": [
       { "link": "Chính sách bán hàng", "path": "/policy" },
-      { "link": "Chính sách bảo hành", "path": "/WarrantyPolicy" }
+      { "link": "Chính sách bảo hành", "path": "/warrantypolicy" },
+      { "link": "Điều khoản sử dụng", "path": "/term" },
+      { "link": "Chính sách bảo mật", "path": "/term" }
     ],
     "infoData": [
       {

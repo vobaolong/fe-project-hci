@@ -153,9 +153,9 @@ const ProductReviews = () => {
               <div className="flex gap-5 justify-evenly flex-col h-full ">
                 <InputField
                   type="text"
-                  name="username"
+                  name="rating"
                   Icon={Star}
-                  placeholder="Nhập mã sản phẩm"
+                  label="Nhập mã sản phẩm"
                   value={productId}
                   onChange={(e) => setProductId(e.target.value)}
                 />

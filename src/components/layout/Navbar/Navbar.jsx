@@ -31,7 +31,7 @@ const Navbar = ({ menuOptions }) => {
   return (
     <>
       {`${user?.role}` === "admin" ? null : (
-        <header className="bg-primaryDarkBlue top-0 z-50 py-2 md:py-3 px-4 lg:px-40 text-primaryBlue flex justify-between border-b border-slate-200">
+        <header className="max-h-[10vh] bg-primaryBlue opacity-95 top-0 z-50 py-2 md:py-3 px-4 lg:px-40 text-primaryDarkBlue flex justify-between border-b border-slate-200">
           <p className="sm:text-sm flex gap-1 font-medium col-span-6">
             <FaShippingFast className="h-6 text-xl" />
             Miễn phí vận chuyển đơn từ 1.000.000 ₫

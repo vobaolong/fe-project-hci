@@ -9,7 +9,7 @@ import {
   FaRegPlusSquare,
   FaRocketchat,
   FaSitemap,
-  FaUser,
+  FaUsers,
 } from "react-icons/fa";
 const Sidebar = () => {
   return (
@@ -29,7 +29,7 @@ const Sidebar = () => {
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<FaSitemap />}
         >
-          <TreeItem className="gap-3" nodeId="1" label="Sản phẩm">
+          <TreeItem className="gap-3 text-xl" nodeId="1" label="Sản phẩm">
             <Link className="sidebarLinkStyles text-lg" to="/admin/products">
               <TreeItem
                 nodeId="2"
@@ -55,7 +55,7 @@ const Sidebar = () => {
         className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
         to="/admin/users"
       >
-        <FaUser />
+        <FaUsers />
         <p>Người dùng</p>
       </Link>
       <Link

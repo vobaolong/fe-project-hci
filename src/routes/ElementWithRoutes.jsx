@@ -52,7 +52,7 @@ const ElementWithRoutes = ({ stripeApiKey }) => {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/term" element={<Term />} />
-          <Route path="/WarrantyPolicy" element={<WarrantyPolicy />} />
+          <Route path="/warrantypolicy" element={<WarrantyPolicy />} />
           <Route path="/search" element={<SearchProducts />} />
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />

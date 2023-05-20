@@ -56,6 +56,10 @@ const OrdersList = () => {
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Đã giao hàng"
           ? "text-green-500"
+          : params.getValue(params.id, "status") === "Đang vận chuyển"
+          ? "text-yellow-500"
+          : params.getValue(params.id, "status") === "Đang xử lý"
+          ? "text-yellow-500"
           : "text-red-500";
       },
     },
@@ -120,7 +124,7 @@ const OrdersList = () => {
             ? "Đang vận chuyển"
             : order.orderStatus === "Cancel"
             ? "Đã hủy"
-            : "Đang xử lí",
+            : "Đang xử lý",
         amount: order.totalPrice,
       });
     });

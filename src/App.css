@@ -26,7 +26,15 @@ input[type="number"] {
   border: 1px solid #919191ab
 }
 
+.slick-next {
+  right: 8px !important;
+  z-index: 4;
+}
 
+.slick-prev {
+  left: 8px !important;
+  z-index: 4;
+}
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
@@ -93,11 +101,11 @@ input[type="number"] {
 }
 
 .paginationBox .pagination .pageItemActive {
-  background-color: #335231;
+  background-color: #026958;
 }
 
 .paginationBox .pagination .pageItemActive:hover {
-  background-color: #335231;
+  background-color: #026958;
 }
 
 .paginationBox .pagination .pageItemActive .pageLinkActive {
@@ -138,7 +146,7 @@ input.avatarChoose::file-selector-button:hover {
 .MuiFab-root {
   width: 35px !important;
   height: 30px !important;
-  border: 2px solid #335231 !important;
+  border: 2px solid #026958 !important;
 }
 
 /* user options style in navbar ends */
@@ -147,7 +155,7 @@ input.avatarChoose::file-selector-button:hover {
 
 .isEmptyCart>svg {
   font-size: 5vmax;
-  color: #335231;
+  color: #026958;
 }
 
 /* Cart page icons style end*/
@@ -156,16 +164,16 @@ input.avatarChoose::file-selector-button:hover {
 
 .MuiStepConnector-root {
   height: 1px;
-  background-color: #335231;
+  background-color: #026958;
 }
 
 .MuiStepLabel-iconContainer-active {
-  color: #335231 !important;
+  color: #026958 !important;
 }
 
 .MuiStepConnector-active,
 .MuiStepConnector-completed {
-  background-color: #335231;
+  background-color: #026958;
 }
 
 /* shipping checkoutsteps style ends */
@@ -182,14 +190,17 @@ input.avatarChoose::file-selector-button:hover {
   border-radius: 15px;
 }
 
-.MuiDataGrid-columnsContainer {
-  background-color: #335231;
-  color: #fff;
+.MuiTypography-body1 {
+  font-size: 18px;
 }
 
-.MuiTypography-root {
-  background-color: #fff !important;
+.MuiDataGrid-columnsContainer {
+  background-color: #026958;
+  color: #fff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
+
 
 .initial-child-container {
   gap: 20px !important;

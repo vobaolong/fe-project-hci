@@ -74,9 +74,9 @@ const UpdateProfile = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="h-screen px-8 py-24 bg-slate-200 md:px-24">
-          <MetaData title={`Cập nhật thông tin`} />
-          <div className="bg-white shadow-lg w-full md:w-1/2 lg:w-1/3 h-[70vh] rounded-lg  mx-auto py-5 overflow-hidden">
+        <div className="h-full px-8 py-24 bg-slate-200 md:px-24">
+          <MetaData title={`JAMILA | Cập nhật thông tin`} />
+          <div className="bg-white shadow-lg w-full sm:w-1/2 md:w-1/2 lg:w-1/3 h-[60vh] rounded-lg  mx-auto py-5 overflow-hidden">
             <h1 className="text-center text-xl text-slate-600 py-3 border-b-2 border-secondaryDark w-fit mx-auto">
               Cập nhật thông tin
             </h1>
@@ -90,7 +90,7 @@ const UpdateProfile = () => {
                   <InputField
                     type="text"
                     name="name"
-                    placeholder="Vui lòng nhập tên của bạn *"
+                    label="Vui lòng nhập tên của bạn"
                     Icon={MdFace}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -99,7 +99,7 @@ const UpdateProfile = () => {
                   <InputField
                     type="text"
                     name="email"
-                    placeholder="Vui lòng nhập Email của bạn *"
+                    label="Vui lòng nhập Email của bạn"
                     Icon={MdMailOutline}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

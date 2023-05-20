@@ -3,9 +3,9 @@ import ProductCard from "./ProductCard";
 
 const OurProduct = ({ products, heading }) => {
   return (
-    <div className="w-[100%] h-auto py-14 mt-8" id="ourproduct">
+    <div className="w-[100%] h-auto py-14 mt-4" id="ourproduct">
       <div className="">
-        <h1 className="headingStyle">{heading}</h1>
+        <h1 className="headingStyle text-left">{heading}</h1>
 
         <div className="w-[90%] mx-auto">
           <div className="productsLayoutStyle">

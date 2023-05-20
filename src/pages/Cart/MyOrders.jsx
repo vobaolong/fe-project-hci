@@ -34,7 +34,7 @@ const MyOrders = () => {
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Đã giao hàng"
           ? "text-green-500"
-          : params.getValue(params.id, "status") === "Đang vận chueyen"
+          : params.getValue(params.id, "status") === "Đang vận chuyển"
           ? "text-yellow-500"
           : params.getValue(params.id, "status") === "Đang xử lý"
           ? "text-yellow-500"
@@ -97,7 +97,7 @@ const MyOrders = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Đơn hàng của ${user.name}`} />
+      <MetaData title={`JAMILA | Lịch sử đặt hàng`} />
 
       {loading ? (
         <Loader />
@@ -112,11 +112,8 @@ const MyOrders = () => {
             className="rounded-t-md"
             autoHeight
           />
-          <p
-            className="bg-primaryBlue py-3
-          mt-10 text-center text-xl text-white rounded-b-md"
-          >
-            {user.name} Orders
+          <p className="bg-secondaryDark py-3 text-center text-xl text-white rounded-b-md">
+            Lịch sử đặt hàng của {user.name}
           </p>
         </div>
       )}

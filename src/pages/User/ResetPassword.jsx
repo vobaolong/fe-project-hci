@@ -156,22 +156,22 @@ const ResetPassword = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="h-screen px-8 py-24 bg-slate-200 md:px-24">
-          <MetaData title={`Đặt lại mật khẩu`} />
-          <div className="bg-white shadow-lg w-full md:w-1/2 lg:w-1/3 h-[70vh] rounded-lg  mx-auto py-5 overflow-hidden">
+        <div className="h-full px-8 py-24 bg-slate-200 md:px-24">
+          <MetaData title={`JAMILA | Đặt lại mật khẩu`} />
+          <div className="bg-white shadow-lg w-full sm:w-1/2 md:w-1/2 lg:w-1/3 h-[70vh] rounded-lg  mx-auto py-5 overflow-hidden">
             <h1 className="text-center text-xl text-slate-600 py-3 border-b-2 border-secondaryDark w-fit mx-auto">
               Đặt lại mật khẩu{" "}
             </h1>
             <form
-              className="h-[80%] transition-transform duration-500 flex flex-col px-5 py-2  justify-evenly items-center "
+              className="h-[90%] transition-transform duration-500 flex flex-col px-5 py-2 justify-evenly items-center "
               onSubmit={updatePasswordSubmit}
             >
               <div className="w-full mb-2">
-                <div className="flex gap-5 justify-evenly flex-col h-full ">
+                <div className="flex gap-5 justify-evenly flex-col h-full">
                   <InputField
                     type="password"
                     name="password"
-                    placeholder="Mật khẩu mới"
+                    label="Mật khẩu mới"
                     Icon={MdLockOpen}
                     value={password}
                     onKeyPress={(e) => checkPassword(e.target.value)}
@@ -180,7 +180,7 @@ const ResetPassword = () => {
                   <InputField
                     type="password"
                     name="confirmPassword"
-                    placeholder="Nhập lại mật khẩu"
+                    label="Nhập lại mật khẩu"
                     Icon={MdLock}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}

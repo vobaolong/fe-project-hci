@@ -36,7 +36,7 @@ const ConfirmOrder = () => {
   return (
     <Fragment>
       <div className="h-auto py-24 px-8 md:px-0">
-        <MetaData title={`Thông tin vận chuyển`} />
+        <MetaData title={`JAMILA | Thông tin vận chuyển`} />
 
         <CheckoutSteps activeStep={1} />
         <div className="p-5 h-full flex bg-white rounded-lg flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 justify-center">

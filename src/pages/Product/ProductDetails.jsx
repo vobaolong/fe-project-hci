@@ -124,15 +124,15 @@ const ProductDetails = () => {
       ) : (
         <div className="h-full flex mt-28 m-10 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 gap-5">
           <MetaData title={`${product.name} | JAMILA`} />
-          <div className="w-full flex justify-center md:w-[48%] md:p-10 lg:p-0 sm:p-10 overflow-hidden">
+          <div className="w-full flex justify-center md:w-[50%] md:p-10 lg:p-0 sm:p-10 overflow-hidden">
             <MgSlider
-              width="500px"
-              height="500px"
+              width="550px"
+              height="550px"
               slides={product.images && product.images}
             />
           </div>
 
-          <div className="md:w-[48%] md:p-10 lg:p-0 sm:p-10">
+          <div className="md:w-[45%] md:p-10 lg:p-0 sm:p-10">
             <div>
               <h2 className="text-primaryBlue font-bold text-xl text-center mt-5 md:mt-0 md:text-left capitalize">
                 {product.name}
@@ -149,13 +149,20 @@ const ProductDetails = () => {
               </span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primaryBlue border-b-2 border-slate-300 pb-3 text-center md:text-left">
+              <h1 className="text-2xl font-bold text-red-500 border-b-2 border-slate-300 pb-3 text-center md:text-left flex">
                 <CurrencyFormat
                   value={product.price}
                   displayType={"text"}
                   thousandSeparator={true}
                   renderText={(value) => <div>{value} đ</div>}
-                />
+                />{" "}
+                <div className="flex items-center">
+                  <p className="text-mainColor">|</p>
+                  <p className="text-base font-light italic text-mainColor">
+                    {" "}
+                    Giá đã bao gồm 10% VAT
+                  </p>
+                </div>
               </h1>
               <div className="container mx-auto mt-4 pb-3">
                 <SizeSelect
@@ -264,16 +271,25 @@ const ProductDetails = () => {
               multiline
               required
               rows={7}
+              cols={20}
               label="Thêm đánh giá"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             ></TextField>
           </DialogContent>
           <DialogActions>
-            <Button onClick={openReviewHandler} color="secondary">
+            <Button
+              variant="outlined"
+              onClick={openReviewHandler}
+              color="secondary"
+            >
               Hủy
             </Button>
-            <Button onClick={reviewSubmitHandler} color="primary">
+            <Button
+              variant="contained"
+              onClick={reviewSubmitHandler}
+              color="primary"
+            >
               Gửi
             </Button>
           </DialogActions>
