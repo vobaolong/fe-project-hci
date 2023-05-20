@@ -30,7 +30,7 @@ const CartItemCard = ({ item, size, deleteCartItems }) => {
         </div>
         <p
           onClick={() => deleteCartItems(item.product, size)}
-          className="bg-red-600 w-[150px] hover:bg-red-400 hover:shadow-lg hover:scale-95 transition-all duration-500 text-white cursor-pointer py-[0.1em] rounded-md text-center mt-2"
+          className="bg-red-600 w-max p-2 px-5 hover:bg-red-400 hover:shadow-lg hover:scale-95 transition-all duration-500 text-white cursor-pointer py-[0.1em] rounded-md text-center mt-2"
         >
           Xóa
         </p>

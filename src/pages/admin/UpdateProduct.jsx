@@ -1,13 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   clearErrors,
   getProductDetails,
   updateProduct,
 } from "../../actions/productAction";
-import { useAlert } from "react-alert";
 import Button from "../../components/user/Button";
 import MetaData from "../../components/layout/MetaData";
 import {
@@ -22,11 +21,11 @@ import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
 import { useParams, useNavigate } from "react-router-dom";
 import { brands } from "../../data/brand";
+import { toast } from "react-toastify";
 
 const UpdateProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
   const params = useParams();
 
   const { error, product } = useSelector((state) => state.productDetails);
@@ -60,31 +59,22 @@ const UpdateProduct = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Cập nhật sản phẩm thành công");
+      toast.success("Cập nhật sản phẩm thành công");
       navigate("/admin/products");
 
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [
-    alert,
-    dispatch,
-    updateError,
-    navigate,
-    isUpdated,
-    error,
-    productId,
-    product,
-  ]);
+  }, [dispatch, updateError, navigate, isUpdated, error, productId, product]);
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -169,7 +159,7 @@ const UpdateProduct = () => {
                   <Description className="text-xl text-primaryBlue mx-2" />
 
                   <ReactQuill
-                    style={{ background: 'white', width: '100%' }}
+                    style={{ background: "white", width: "100%" }}
                     className="flex gap-2 justify-evenly flex-col h-full"
                     placeholder="Vui lòng nhập mô tả sản phẩm *"
                     value={description}

@@ -3,19 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../../components/layout/Loader/Loader";
 import ProductCard from "../../components/home/OurProduct/ProductCard";
-import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { AiOutlineFrown } from "react-icons/ai";
 import FilterSlide from "../../components/Products/FilterSlide";
 import MetaData from "../../components/layout/MetaData";
 import { brands } from "../../data/brand";
+import { toast } from "react-toastify";
 
 const Products = () => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const params = useParams();
-  const alert = useAlert();
   const { loading, error, products, productsCount, resultPerPage } =
     useSelector((state) => state.products);
 
@@ -35,12 +34,12 @@ const Products = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(getProduct(keyword, currentPage, price, brand, ratings));
-  }, [dispatch, error, alert, keyword, currentPage, price, brand, ratings]);
+  }, [dispatch, error, keyword, currentPage, price, brand, ratings]);
 
   return (
     <Fragment>

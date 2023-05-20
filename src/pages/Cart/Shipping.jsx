@@ -6,12 +6,11 @@ import { Person, Home, LocationCity, Phone } from "@material-ui/icons";
 import InputField from "../../components/user/InputField";
 import Button from "../../components/user/Button";
 import CheckoutSteps from "../../components/shipping/CheckoutSteps";
-import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Shipping = () => {
   const navigate = useNavigate();
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { shippingInfo } = useSelector((state) => state.cart);
   const [name, setName] = useState(shippingInfo.name);
@@ -23,7 +22,7 @@ const Shipping = () => {
     e.preventDefault();
 
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Số điện thoại không đúng định dạng");
+      toast.error("Số điện thoại không đúng định dạng");
       return;
     }
 

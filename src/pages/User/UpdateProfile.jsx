@@ -8,18 +8,14 @@ import MetaData from "../../components/layout/MetaData";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
-import { useAlert } from "react-alert";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
-  // for navigation
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const { loading, error, isUpdated } = useSelector((state) => state.profile);
-
-  const alert = useAlert();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,12 +54,11 @@ const UpdateProfile = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-
     if (isUpdated) {
-      alert.success("Cập nhật thông tin thành công");
+      toast.success("Cập nhật thông tin thành công");
       dispatch(loadUser());
 
       navigate("/account", { replace: true });
@@ -72,7 +67,7 @@ const UpdateProfile = () => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [error, alert, dispatch, isUpdated, navigate, user]);
+  }, [error, dispatch, isUpdated, navigate, user]);
 
   return (
     <>

@@ -4,12 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../../components/layout/Loader/Loader";
 import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
 import { Visibility } from "@material-ui/icons";
+import { toast } from "react-toastify";
 
 const MyOrders = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { error, loading, orders } = useSelector((state) => state.myOrders);
 
@@ -17,12 +16,12 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(myOrders());
-  }, [dispatch, alert, error]);
+  }, [dispatch, error]);
 
   const columns = [
     { field: "id", headerName: "Mã đơn hàng", minWidth: 280, flex: 1 },
@@ -35,6 +34,10 @@ const MyOrders = () => {
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Đã giao hàng"
           ? "text-green-500"
+          : params.getValue(params.id, "status") === "Đang vận chueyen"
+          ? "text-yellow-500"
+          : params.getValue(params.id, "status") === "Đang xử lý"
+          ? "text-yellow-500"
           : "text-red-500";
       },
     },
@@ -48,7 +51,7 @@ const MyOrders = () => {
 
     {
       field: "amount",
-      headerName: "Tổng giá",
+      headerName: "Tổng tiền",
       type: "number",
       minWidth: 270,
       flex: 0.5,
@@ -87,8 +90,8 @@ const MyOrders = () => {
             ? "Đang vận chuyển"
             : item.orderStatus === "Cancel"
             ? "Đã hủy"
-            : "Đang xử lí",
-        amount: item.totalPrice,
+            : "Đang xử lý",
+        amount: `${item.totalPrice} đ`,
       });
     });
 

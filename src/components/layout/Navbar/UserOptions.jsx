@@ -3,7 +3,7 @@ import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import { useNavigate } from "react-router-dom";
 import { Dashboard, Person, ExitToApp, ListAlt } from "@material-ui/icons";
 import store from "./../../../store";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import { logout } from "../../../actions/userAction";
 import { Backdrop } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
@@ -13,7 +13,6 @@ const UserOptions = ({ user }) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const [open, setOpen] = useState(false);
 
@@ -35,7 +34,7 @@ const UserOptions = ({ user }) => {
 
   const logoutUser = () => {
     store.dispatch(logout());
-    alert.success("Đăng xuất thành công");
+    toast.success("Đăng xuất thành công");
     navigate("/");
   };
 

@@ -5,7 +5,6 @@ import {
   getUserDetails,
   updateUser,
 } from "../../actions/userAction";
-import { useAlert } from "react-alert";
 import Button from "../../components/user/Button";
 import MetaData from "../../components/layout/MetaData";
 import { VerifiedUser, Person, MailOutline } from "@material-ui/icons";
@@ -14,12 +13,12 @@ import { UPDATE_USER_RESET } from "../../constants/userConstants";
 import InputField from "../../components/user/InputField";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/layout/Loader/Loader";
+import { toast } from "react-toastify";
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const alert = useAlert();
 
   const userId = params.id;
 
@@ -44,22 +43,22 @@ const UpdateUser = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Cập nhật người dùng thành công");
+      toast.success("Cập nhật người dùng thành công");
       navigate("/admin/users");
 
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [alert, dispatch, error, navigate, isUpdated, updateError, user, userId]);
+  }, [dispatch, error, navigate, isUpdated, updateError, user, userId]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();

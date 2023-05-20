@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createProduct } from "../../actions/productAction";
-import { useAlert } from "react-alert";
 import Button from "../../components/user/Button";
 import MetaData from "../../components/layout/MetaData";
 import ReactQuill from "react-quill";
@@ -18,11 +17,11 @@ import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
 import { useNavigate } from "react-router-dom";
 import { brands } from "../../data/brand";
+import { toast } from "react-toastify";
 
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const { error, success, loading } = useSelector((state) => state.newProduct);
 
@@ -36,17 +35,17 @@ const CreateNewProduct = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (success) {
-      alert.success("Thêm sản phẩm thành công");
+      toast.success("Thêm sản phẩm thành công");
       navigate("/admin/products");
 
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [alert, dispatch, error, navigate, success]);
+  }, [dispatch, error, navigate, success]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();

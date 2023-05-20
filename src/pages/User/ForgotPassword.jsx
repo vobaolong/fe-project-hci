@@ -6,11 +6,10 @@ import Loader from "../../components/layout/Loader/Loader";
 import MetaData from "../../components/layout/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const { loading, error, message } = useSelector(
     (state) => state.forgotPassword
@@ -30,14 +29,14 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (message) {
-      alert.success(message);
+      toast.success(message);
     }
-  }, [error, alert, message, dispatch]);
+  }, [error, message, dispatch]);
 
   return (
     <Fragment>

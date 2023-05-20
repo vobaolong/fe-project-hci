@@ -7,17 +7,16 @@ import {
   clearErrors,
 } from "../../actions/orderAction";
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
 
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const OrdersList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const { error, orders } = useSelector((state) => state.allOrders);
 
@@ -25,23 +24,23 @@ const OrdersList = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
+      toast.error(deleteError);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success("Xoá đơn hàng thành công");
+      toast.success("Xoá đơn hàng thành công");
       navigate("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 
     dispatch(getAllOrders()); // getting all the orders
-  }, [dispatch, error, alert, deleteError, isDeleted, navigate]);
+  }, [dispatch, error, deleteError, isDeleted, navigate]);
 
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
@@ -70,7 +69,7 @@ const OrdersList = () => {
 
     {
       field: "amount",
-      headerName: "Tổng giá",
+      headerName: "Tổng tiền",
       type: "number",
       minWidth: 150,
       flex: 0.3,

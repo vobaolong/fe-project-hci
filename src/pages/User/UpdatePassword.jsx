@@ -8,18 +8,13 @@ import MetaData from "../../components/layout/MetaData";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
-import { useAlert } from "react-alert";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
+import { toast } from "react-toastify";
 
 const UpdatePassword = () => {
-  // for navigation
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-
   const { loading, error, isUpdated } = useSelector((state) => state.profile);
-
-  const alert = useAlert();
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -39,12 +34,12 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Cập nhật mật khẩu thành công");
+      toast.success("Cập nhật mật khẩu thành công");
 
       navigate("/account", { replace: true });
 
@@ -52,7 +47,7 @@ const UpdatePassword = () => {
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [error, alert, dispatch, isUpdated, navigate]);
+  }, [error, dispatch, isUpdated, navigate]);
   return (
     <>
       {loading ? (

@@ -1,13 +1,12 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { FaMapMarkerAlt, FaPhoneAlt, FaMailBulk } from "react-icons/fa";
-import { useAlert } from "react-alert";
 import MetaData from "../components/layout/MetaData";
 import TextField from "@mui/material/TextField";
+import { toast } from "react-toastify";
 
 const ContactUs = () => {
   const form = useRef();
-  const alert = useAlert();
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -27,7 +26,7 @@ const ContactUs = () => {
         }
       );
     e.target.reset();
-    alert.success("Gửi tin nhắn thành công");
+    toast.success("Gửi tin nhắn thành công");
   };
   return (
     <>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, Fragment } from "react";
 import CheckoutSteps from "../../components/shipping/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../../components/layout/MetaData";
-import { useAlert } from "react-alert";
 import {
   CardNumberElement,
   CardCvcElement,
@@ -16,6 +15,8 @@ import { CreditCard, Event, VpnKey } from "@material-ui/icons";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 import { resetCart } from "../../actions/cartAction";
 import SlideableBtn from "../../components/layout/Buttons/SlideableBtn";
+import { toast } from "react-toastify";
+import { Button, TextField } from "@material-ui/core";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -28,8 +29,6 @@ const Payment = () => {
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-
-  const alert = useAlert();
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
@@ -83,11 +82,11 @@ const Payment = () => {
 
       if (result.error) {
         payBtn.current.disabled = false;
-        alert.error(result.error.message);
+        toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          alert.success(
-            `Bạn đã thanh toán thành công số tiền ${order.totalPrice.toLocaleString()} đ}`
+          toast.success(
+            `Bạn đã thanh toán thành công số tiền ${order.totalPrice.toLocaleString()} đ`
           );
           // creating order when payment is success
           order.paymentInfo = {
@@ -100,12 +99,12 @@ const Payment = () => {
           dispatch(resetCart());
           setLoading(false);
         } else {
-          alert.error("There's some issue while processing payment");
+          toast.error("There's some issue while processing payment");
         }
       }
     } catch (err) {
       payBtn.current.disable = false;
-      alert.error(err.response.data.message);
+      toast.error(err.response.data.message);
     }
   };
 
@@ -123,25 +122,21 @@ const Payment = () => {
     setLoading(false);
   };
 
-  // const paymentHandler = async () => {
-  //   await dispatch(resetCart());
-  // };
-
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, error, alert]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>
       <div className="h-auto py-24 px-8 md:px-0">
         <MetaData title={`Thanh toán`} />
         <CheckoutSteps activeStep={2} />
-        <div className="h-full flex flex-col flex-wrap bg-white rounded-lg py-4 m-10 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 items-center">
+        <div className="h-full flex flex-col flex-wrap bg-white rounded-lg lg:py-10 sm:py-5 m-10 md:py-10 lg:mx-40 md:mx-4 sm:mx-2 items-center">
           <form
-            className="flex flex-col gap-5 w-[50%]"
+            className="flex flex-col gap-5 w-[40%]"
             onSubmit={(e) => submitHandler(e)}
           >
             <p className="w-fit mx-auto text-xl font-bold py-5 border-b-2 border-secondaryDark">
@@ -160,41 +155,29 @@ const Payment = () => {
               <CardCvcElement className="paymentInputFieldStyle" />
             </div>
 
-            {/* <input
-              // onClick={dispatch(resetCart())}
-              className="slideableBtnStyles cursor-pointer mt-5"
+            <Button
               ref={payBtn}
+              aria-label="Đang xử lý"
               type="submit"
-              disabled={loading ? true : false}
-              value={
-                loading
-                  ? `Processing...`
-                  : `Thanh toán - ${
-                      orderInfo && orderInfo.totalPrice.toLocaleString()
-                    } đ`
-              }
-            /> */}
-            <SlideableBtn
-              ref={payBtn}
-              type="submit"
-              disabled={loading ? true : false}
-              label={
-                loading
-                  ? `Đang xử lý...`
-                  : `Thanh toán - ${
-                      orderInfo && orderInfo.totalPrice.toLocaleString()
-                    } đ`
-              }
-            />
+              variant="outlined"
+              color="primary"
+              className="hover:scale-95 transition-all duration-500"
+            >
+              {loading
+                ? `Đang xử lý...`
+                : `Thanh toán - ${
+                    orderInfo && orderInfo.totalPrice.toLocaleString()
+                  } đ`}
+            </Button>
           </form>
-          <div className="w-full md:w-[50%] mx-auto">
+          <div className="w-full md:w-[40%] mx-auto">
             <form
-              className="flex gap-1 mt-5 mt-5"
+              className="flex gap-1 mt-5"
               onSubmit={(e) => submitWithoutPay(e)}
             >
               <SlideableBtn
                 disabled={loading ? true : false}
-                label="Thanh toán khi nhận hàng"
+                label="THANH TOÁN KHI NHẬN HÀNG"
               />
             </form>
           </div>

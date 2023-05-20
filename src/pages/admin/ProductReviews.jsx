@@ -7,7 +7,6 @@ import {
   deleteReviews,
 } from "../../actions/productAction";
 import SideBar from "../../components/admin/Sidebar";
-import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/user/Button";
@@ -15,11 +14,11 @@ import MetaData from "../../components/layout/MetaData";
 import { Delete, Star } from "@material-ui/icons";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
+import { toast } from "react-toastify";
 
 const ProductReviews = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const [productId, setProductId] = useState("");
 
@@ -37,21 +36,21 @@ const ProductReviews = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
+      toast.error(deleteError);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success("Xoá nhận xét thành công");
+      toast.success("Xoá nhận xét thành công");
       navigate("/admin/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
-  }, [dispatch, error, alert, deleteError, isDeleted, navigate, productId]);
+  }, [dispatch, error, deleteError, isDeleted, navigate, productId]);
 
   const deleteReviewHandler = (reviewId) => {
     dispatch(deleteReviews(reviewId, productId));

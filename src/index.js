@@ -6,14 +6,8 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import ScrollToTop from "react-scroll-to-top";
-import { positions, transitions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
-
-const options = {
-  timeout: 5000,
-  position: positions.BOTTOM_CENTER,
-  transition: transitions.SCALE,
-};
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ScrollToTops = () => {
   const { pathname } = useLocation();
@@ -27,22 +21,32 @@ export const ScrollToTops = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <BrowserRouter>
-        <ScrollToTops />
-        <App />
-        <ScrollToTop
-          title="Go to top"
-          smooth
-          style={{
-            justifyContent: "center",
-            display: "grid",
-            alignContent: "center",
-            zIndex: 1000,
-          }}
-        />
-      </BrowserRouter>
-    </AlertProvider>
+    <ToastContainer
+      position="top-right"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
+    <BrowserRouter>
+      <ScrollToTops />
+      <App />
+      <ScrollToTop
+        title="Go to top"
+        smooth
+        style={{
+          justifyContent: "center",
+          display: "grid",
+          alignContent: "center",
+          zIndex: 1000,
+        }}
+      />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

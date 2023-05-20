@@ -4,7 +4,6 @@ import WebFont from "webfontloader";
 import Footer from "./components/layout/Footer/Footer";
 import footerData from "./data/footerData.json";
 import "./App.css";
-
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import ElementWithRoutes from "./routes/ElementWithRoutes";

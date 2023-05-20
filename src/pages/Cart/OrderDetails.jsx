@@ -8,7 +8,6 @@ import {
   cancelOrder,
 } from "../../actions/orderAction";
 import Loader from "../../components/layout/Loader/Loader";
-import { useAlert } from "react-alert";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import CurrencyFormat from "react-currency-format";
 import {
@@ -23,11 +22,11 @@ import {
   Phone,
 } from "@material-ui/icons";
 import Shipping from "./Shipping";
+import { toast } from "react-toastify";
 
 const OrderDetails = () => {
   const dispatch = useDispatch();
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  const alert = useAlert();
   const params = useParams();
   console.log(order);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
@@ -45,22 +44,22 @@ const OrderDetails = () => {
   };
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Cập nhật trạng thái đơn hàng thành công");
+      toast.success("Cập nhật trạng thái đơn hàng thành công");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
     dispatch(getOrderDetails(params.id));
-  }, [alert, dispatch, error, isUpdated, updateError, params.id]);
+  }, [dispatch, error, isUpdated, updateError, params.id]);
 
   return (
     <Fragment>

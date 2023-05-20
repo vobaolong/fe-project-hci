@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../../components/layout/MetaData";
 import { Link, useParams } from "react-router-dom";
 import SideBar from "../../components/admin/Sidebar";
-import { useAlert } from "react-alert";
 import {
   getOrderDetails,
   clearErrors,
@@ -14,9 +13,9 @@ import Button from "../../components/user/Button";
 import { AccountTree } from "@material-ui/icons";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import CurrencyFormat from "react-currency-format";
+import { toast } from "react-toastify";
 
 const ProcessOrder = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -40,22 +39,22 @@ const ProcessOrder = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Cập nhật trạng thái đơn hàng thành công");
+      toast.success("Cập nhật trạng thái đơn hàng thành công");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
     dispatch(getOrderDetails(params.id));
-  }, [alert, dispatch, error, isUpdated, updateError, params.id]);
+  }, [dispatch, error, isUpdated, updateError, params.id]);
 
   return (
     <Fragment>

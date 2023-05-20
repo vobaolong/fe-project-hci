@@ -8,20 +8,15 @@ import MetaData from "../../components/layout/MetaData";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 
 const ResetPassword = () => {
-  // for navigation
   const navigate = useNavigate();
   const params = useParams();
-
   const dispatch = useDispatch();
-
   const { loading, error, success } = useSelector(
     (state) => state.forgotPassword
   );
-
-  const alert = useAlert();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -147,16 +142,15 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-
     if (success) {
-      alert.success("Reset mật khẩu thành công");
+      toast.success("Reset mật khẩu thành công");
 
       navigate("/login", { replace: true });
     }
-  }, [error, alert, dispatch, success, navigate]);
+  }, [error, dispatch, success, navigate]);
   return (
     <>
       {loading ? (

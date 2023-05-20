@@ -123,16 +123,16 @@ const Cart = () => {
               })}
             </div>
             <div className="w-[100%] px-5 flex mx-auto md:flex-row sm:flex-col gap-5">
-              <div className="lg:w-1/5 md:w-1/2 justify-center flex">
+              <div className="lg:w-1/5 md:w-1/2 justify-center flex h-max p-2">
                 <button
                   type="submit"
                   onClick={clearCartHandle}
                   className="bg-red-600 w-[90%] hover:shadow-lg py-2 rounded-md text-white mt-5 transition-all duration-500 hover:scale-95 cursor-pointer"
                 >
-                  Xoá toàn bộ sản phẩm
+                  Xoá tất cả
                 </button>
               </div>
-              <div className="grid place-items-end w-[90%] mx-auto">
+              <div className="grid place-items-end lg:w-4/5 md:w-1/2 mx-auto">
                 <div className="flex justify-between py-5 border-primaryDarkBlue w-full md:w-1/2 lg:w-1/3 mt-2 border-t-2 border-t-slate-500 text-lg">
                   <p className="font-bold">Thành tiền:</p>
                   <CurrencyFormat

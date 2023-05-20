@@ -7,7 +7,6 @@ import {
   newReview,
 } from "../../actions/productAction";
 import { useParams } from "react-router-dom";
-import { useAlert } from "react-alert";
 import ReviewCard from "../../components/home/ReviewCard/ReviewCard";
 import MetaData from "../../components/layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
@@ -30,10 +29,10 @@ import SizeSelect from "../../components/Products/SizeSelect";
 import OurProduct from "../../components/home/OurProduct/OurProduct";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import sizeBase from "../../assets/size.jpg";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const { id } = useParams();
 
   const [open, setOpen] = useState(false);
@@ -61,21 +60,21 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (reviewError) {
-      alert.error(reviewError);
+      toast.error(reviewError);
       dispatch(clearErrors());
     }
 
     if (success) {
-      alert.success("Đánh giá thành công");
+      toast.success("Đánh giá thành công");
       dispatch({ type: NEW_REVIEW_RESET });
     }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert, reviewError, success]);
+  }, [dispatch, id, error, reviewError, success]);
 
   const handleSizeClick = (size) => {
     setSize(size);
@@ -92,11 +91,11 @@ const ProductDetails = () => {
 
   const addToCartHandler = () => {
     if (size === null) {
-      alert.error("Vui lòng chọn size trước khi thêm vào giỏ hàng");
+      toast.error("Vui lòng chọn size trước khi thêm vào giỏ hàng");
       return;
     }
     dispatch(addItemsToCart(id, quantity, size));
-    alert.success("Thêm vào giỏ hàng thành công");
+    toast.success("Thêm vào giỏ hàng thành công");
   };
 
   const openReviewHandler = () => {

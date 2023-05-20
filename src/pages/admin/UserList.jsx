@@ -3,16 +3,15 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getAllUsers, deleteUser } from "../../actions/userAction";
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const UserList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const { error, users } = useSelector((state) => state.allUsers);
   const {
@@ -23,23 +22,23 @@ const UserList = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
+      toast.error(deleteError);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success(message);
+      toast.success(message);
       navigate("/admin/users");
       dispatch({ type: DELETE_USER_RESET });
     }
 
     dispatch(getAllUsers()); // getting all the user products
-  }, [dispatch, error, alert, deleteError, isDeleted, navigate, message]);
+  }, [dispatch, error, deleteError, isDeleted, navigate, message]);
 
   const deleteUserHandler = (id) => {
     dispatch(deleteUser(id));

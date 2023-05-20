@@ -13,10 +13,10 @@ import Loader from "../../components/layout/Loader/Loader";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
-import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
 import { Box, Tab } from "@material-ui/core";
 import { TabContext, TabList, TabPanel } from "@material-ui/lab";
+import { toast } from "react-toastify";
 
 const LoginSignUp = () => {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ const LoginSignUp = () => {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
-  const alert = useAlert();
   const loginTab = useRef(null);
   const registerTab = useRef(null);
 
@@ -53,14 +52,14 @@ const LoginSignUp = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isAuthenticated) {
       navigate(redirect, { replace: true });
     }
-  }, [error, alert, dispatch, redirect, isAuthenticated, navigate]);
+  }, [error, dispatch, redirect, isAuthenticated, navigate]);
 
   const [value, setValue] = useState("1");
 
@@ -85,7 +84,7 @@ const LoginSignUp = () => {
     myForm.set("avatar", avatar);
 
     if (registerPassword !== cpassword) {
-      alert.error("Password doesn't match");
+      toast.error("Password doesn't match");
     } else {
       dispatch(register(myForm));
     }

@@ -7,16 +7,15 @@ import {
   deleteProduct,
 } from "../../actions/productAction";
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const { error, products } = useSelector((state) => state.products);
   const { error: deleteError, isDeleted } = useSelector(
@@ -25,23 +24,23 @@ const ProductList = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
+      toast.error(deleteError);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success("Xoá sản phẩm thành công");
+      toast.success("Xoá sản phẩm thành công");
       navigate("/admin/products");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
     dispatch(getAdminProducts());
-  }, [dispatch, error, alert, deleteError, isDeleted, navigate]);
+  }, [dispatch, error, deleteError, isDeleted, navigate]);
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
