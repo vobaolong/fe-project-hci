@@ -1,24 +1,23 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { clearErrors, createProduct } from '../../actions/productAction';
-import { useAlert } from 'react-alert';
-import Button from '../../components/user/Button';
-import MetaData from '../../components/layout/MetaData';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { clearErrors, createProduct } from "../../actions/productAction";
+import { useAlert } from "react-alert";
+import Button from "../../components/user/Button";
+import MetaData from "../../components/layout/MetaData";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   AccountTree,
   Description,
   Storage,
   Spellcheck,
   AttachMoney,
-} from '@material-ui/icons';
-import SideBar from '../../components/admin/Sidebar';
-import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
-import InputField from '../../components/user/InputField';
-import { useNavigate } from 'react-router-dom';
-import { brands } from '../../data/brand';
-import { colors } from '@material-ui/core';
+} from "@material-ui/icons";
+import SideBar from "../../components/admin/Sidebar";
+import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import InputField from "../../components/user/InputField";
+import { useNavigate } from "react-router-dom";
+import { brands } from "../../data/brand";
 
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
@@ -27,10 +26,10 @@ const CreateNewProduct = () => {
 
   const { error, success, loading } = useSelector((state) => state.newProduct);
 
-  const [productName, setProductName] = useState('');
+  const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState('');
-  const [brand, setBrand] = useState('');
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -42,8 +41,8 @@ const CreateNewProduct = () => {
     }
 
     if (success) {
-      alert.success('Thêm sản phẩm thành công');
-      navigate('/admin/products');
+      alert.success("Thêm sản phẩm thành công");
+      navigate("/admin/products");
 
       dispatch({ type: NEW_PRODUCT_RESET });
     }
@@ -54,14 +53,14 @@ const CreateNewProduct = () => {
 
     const myForm = new FormData();
 
-    myForm.set('name', productName);
-    myForm.set('price', price);
-    myForm.set('description', description);
-    myForm.set('brand', brand);
-    myForm.set('stock', Stock);
+    myForm.set("name", productName);
+    myForm.set("price", price);
+    myForm.set("description", description);
+    myForm.set("brand", brand);
+    myForm.set("stock", Stock);
 
     images.forEach((image) => {
-      myForm.append('images', image);
+      myForm.append("images", image);
     });
 
     dispatch(createProduct(myForm));
@@ -130,7 +129,7 @@ const CreateNewProduct = () => {
                 <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <Description className="text-xl text-primaryBlue mx-2" />
                   <ReactQuill
-                    style={{ background: 'white', width: '100%' }}
+                    style={{ background: "white", width: "100%" }}
                     className="flex gap-2 justify-evenly flex-col h-full"
                     placeholder="Vui lòng nhập mô tả sản phẩm *"
                     value={description}

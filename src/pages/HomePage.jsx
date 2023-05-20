@@ -41,7 +41,7 @@ const HomePage = () => {
           {/* our products */}
           <OurProduct
             heading="Sản phẩm bán chạy"
-            products={products.slice(0, 4)}
+            products={products.slice(4, 12)}
           />
         </Fragment>
       )}

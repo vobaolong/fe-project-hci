@@ -41,7 +41,9 @@ input[type="number"] {
   /* Firefox */
 }
 
-
+.MuiDialog-paperWidthSm {
+  max-width: 800px;
+}
 
 /* pagination style start */
 

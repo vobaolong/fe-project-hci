@@ -65,17 +65,23 @@ const Cart = () => {
       ) : (
         <Fragment>
           <div className="h-full flex mt-28 bg-white rounded-xl flex-wrap pb-5 mb-10 lg:mx-40 md:mx-4 sm:mx-2 justify-center">
-            <div className="cartHeader overflow-x-auto md:overflow-x-hidden bg-primaryBlue w-[100%] mx-auto box-border text-white grid grid-cols-3 md:grid-cols-6 rounded-t-xl px-4">
-              <p className="m-5 lg:col-span-4 md:col-span-3">Sản phẩm</p>
-              <p className="m-5">Số lượng</p>
-              <p className="m-5 text-right">Tổng</p>
+            <div className="cartHeader overflow-x-auto md:overflow-x-hidden bg-primaryBlue w-[100%] mx-auto box-border text-white grid lg:grid-cols-6 md:grid-cols-6 sm:grid-cols-3 rounded-t-xl px-4">
+              <p className="m-5 lg:col-span-4 md:col-span-4 sm:col-span-1">
+                Sản phẩm
+              </p>
+              <p className="m-5 lg:col-span-1 md:col-span-1 sm:col-span-1">
+                Số lượng
+              </p>
+              <p className="m-5 lg:col-span-1 md:col-span-1 sm:col-span-1 text-right">
+                Tổng
+              </p>
             </div>
 
             <div className="cartContainer w-[100%] px-5 bg-white mx-auto flex flex-col divide-y-2 border-b-2">
               {cartItems?.map((item, index) => {
                 return (
                   <div key={index} className="grid grid-cols-3 md:grid-cols-6">
-                    <div className="md:col-span-4 place-items-start">
+                    <div className="llg:col-span-4 md:col-span-4 sm:col-span-1 place-items-start">
                       <CartItemCard
                         item={item}
                         deleteCartItems={(id) =>
@@ -84,7 +90,7 @@ const Cart = () => {
                         size={item.size}
                       />
                     </div>
-                    <div className="flex items-center justify-center md:justify-start">
+                    <div className="flex items-center justify-center md:justify-start lg:col-span-1 md:col-span-1 sm:col-span-1">
                       <QuantityCardInput
                         quantity={item.quantity}
                         increaseQuantity={() =>
@@ -104,7 +110,7 @@ const Cart = () => {
                         }
                       />
                     </div>
-                    <div className="flex justify-end items-center">
+                    <div className="flex justify-end items-center lg:col-span-1 md:col-span-1 sm:col-span-1">
                       <CurrencyFormat
                         value={item.price * item.quantity}
                         displayType={"text"}
@@ -117,11 +123,11 @@ const Cart = () => {
               })}
             </div>
             <div className="w-[100%] px-5 flex mx-auto md:flex-row sm:flex-col gap-5">
-              <div className="lg:w-1/5 md:w-1/2">
+              <div className="lg:w-1/5 md:w-1/2 justify-center flex">
                 <button
                   type="submit"
                   onClick={clearCartHandle}
-                  className="bg-red-600 w-full hover:shadow-lg py-2 rounded-md text-white mt-5 transition-all duration-500 hover:scale-95 cursor-pointer"
+                  className="bg-red-600 w-[90%] hover:shadow-lg py-2 rounded-md text-white mt-5 transition-all duration-500 hover:scale-95 cursor-pointer"
                 >
                   Xoá toàn bộ sản phẩm
                 </button>

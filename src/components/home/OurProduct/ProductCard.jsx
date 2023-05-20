@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
     >
       <div className="min-h-fit h-[62%] overflow-hidden p-2 ">
         <img
-          className="object-contain rounded-lg"
+          className="object-contain rounded-lg w-full"
           src={product.images[0].url}
           alt={product.name}
         />

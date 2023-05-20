@@ -20,7 +20,7 @@ export const cartReducer = (
           ...state,
           cartItems: state.cartItems.map((i) =>
             i.product === isItemExist.product && i.size === isItemExist.size
-              ? { ...i, quantity: i.quantity + item.quantity }
+              ? item
               : i
           ),
         };

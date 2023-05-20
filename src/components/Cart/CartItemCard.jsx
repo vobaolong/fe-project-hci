@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
+import shoes from "../../assets/shoes.png";
 
 const CartItemCard = ({ item, size, deleteCartItems }) => {
   return (
     <div className="w-24 md:w-full flex flex-col justify-center  md:justify-start md:flex-row gap-6 py-3 h-auto items-start box-border">
       <img
-        className="w-[12vmax] md:w-[6vmax]"
-        src={item.image}
+        className="w-[14vmax] md:w-[8vmax] border rounded-lg"
+        src={item?.image ? item?.image : shoes}
         alt="cartitem"
       />
       <div className="flex flex-col mx-[0.3vmax] my-[1vmax]">

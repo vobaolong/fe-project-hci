@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 import {
   clearErrors,
   getProductDetails,
@@ -20,12 +20,16 @@ import {
   DialogTitle,
   Button,
   TextField,
+  DialogContentText,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import MgSlider from "../../components/Products/MgSlider";
 import CurrencyFormat from "react-currency-format";
 import SizeSelect from "../../components/Products/SizeSelect";
+import OurProduct from "../../components/home/OurProduct/OurProduct";
+import { KeyboardArrowRight } from "@material-ui/icons";
+import sizeBase from "../../assets/size.jpg";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -33,16 +37,17 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
 
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
+  const { products } = useSelector((state) => state.products);
 
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
@@ -94,8 +99,12 @@ const ProductDetails = () => {
     alert.success("Thêm vào giỏ hàng thành công");
   };
 
-  const submitReviewToggle = () => {
+  const openReviewHandler = () => {
     open ? setOpen(false) : setOpen(true);
+  };
+
+  const openDialogHandler = () => {
+    openDialog ? setOpenDialog(false) : setOpenDialog(true);
   };
 
   const reviewSubmitHandler = () => {
@@ -106,7 +115,6 @@ const ProductDetails = () => {
     myForm.set("productId", id);
 
     dispatch(newReview(myForm));
-
     setOpen(false);
   };
 
@@ -115,9 +123,9 @@ const ProductDetails = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="h-full flex mt-28 m-10 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2">
+        <div className="h-full flex mt-28 m-10 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 gap-5">
           <MetaData title={`${product.name} | JAMILA`} />
-          <div className="w-full flex justify-center md:w-1/2 md:p-10 lg:p-0 sm:p-10 overflow-hidden">
+          <div className="w-full flex justify-center md:w-[48%] md:p-10 lg:p-0 sm:p-10 overflow-hidden">
             <MgSlider
               width="500px"
               height="500px"
@@ -125,7 +133,7 @@ const ProductDetails = () => {
             />
           </div>
 
-          <div className="md:w-1/2 md:p-10 lg:p-0 sm:p-10">
+          <div className="md:w-[48%] md:p-10 lg:p-0 sm:p-10">
             <div>
               <h2 className="text-primaryBlue font-bold text-xl text-center mt-5 md:mt-0 md:text-left capitalize">
                 {product.name}
@@ -150,12 +158,43 @@ const ProductDetails = () => {
                   renderText={(value) => <div>{value} đ</div>}
                 />
               </h1>
-              <div className="container mx-auto mt-4  pb-3">
+              <div className="container mx-auto mt-4 pb-3">
                 <SizeSelect
                   valueSize={size}
                   handleSizeClick={handleSizeClick}
                 />
+                <button
+                  onClick={openDialogHandler}
+                  className="lg:w-[50%] md:w-[70%] sm:w-full py-2 outline-none mt-5 underline-offset-4 underline text-left"
+                >
+                  Bảng Quy Đổi Kích Cỡ <KeyboardArrowRight />
+                </button>
+                <Dialog
+                  open={openDialog}
+                  onClose={openDialogHandler}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"Bảng Quy Đổi Kích Cỡ"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      <img src={sizeBase} alt="" />
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={openDialogHandler}
+                    >
+                      Đóng
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
+
               <p className="border-t-2 border-b-2 py-3 border-slate-300 text-slate-600 font-semibold text-center md:text-left">
                 Trạng thái:{" "}
                 <b
@@ -185,12 +224,13 @@ const ProductDetails = () => {
             <div className="py-5 font-semibold text-center md:text-left">
               Mô tả:
               <p className="font-normal text-slate-500 text-sm text-justify">
-                {parse(product.description)}
+                {/* {parse(product.description)} */}
+                {parse(`${product.description}`)}
               </p>
             </div>
             <div className="flex justify-center md:justify-start">
               <button
-                onClick={submitReviewToggle}
+                onClick={openReviewHandler}
                 className="commonBtnStyle w-full sm:w-1/2 md:w-[190px] py-2 px-10 bg-secondaryDark hover:scale-95 outline-none"
               >
                 Thêm đánh giá
@@ -209,7 +249,7 @@ const ProductDetails = () => {
         <Dialog
           aria-label="simple-dialog-title"
           open={open}
-          onClose={submitReviewToggle}
+          onClose={openReviewHandler}
         >
           <DialogTitle>Thêm đánh giá</DialogTitle>
           <DialogContent>
@@ -231,7 +271,7 @@ const ProductDetails = () => {
             ></TextField>
           </DialogContent>
           <DialogActions>
-            <Button onClick={submitReviewToggle} color="secondary">
+            <Button onClick={openReviewHandler} color="secondary">
               Hủy
             </Button>
             <Button onClick={reviewSubmitHandler} color="primary">
@@ -253,6 +293,12 @@ const ProductDetails = () => {
           </p>
         )}
       </div>
+
+      {/* our products */}
+      <OurProduct
+        heading="Sản phẩm liên quan"
+        products={products.slice(0, 8)}
+      />
     </Fragment>
   );
 };
