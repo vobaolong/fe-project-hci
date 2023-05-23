@@ -11,7 +11,7 @@ import {
   Storage,
   Spellcheck,
   AttachMoney,
-  DiscFullOutlined,
+  LocalOffer,
 } from "@material-ui/icons";
 import SideBar from "../../components/admin/Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
@@ -131,8 +131,8 @@ const CreateNewProduct = () => {
                 <InputField
                   type="number"
                   name="discount"
-                  label="Vui lòng nhập giảm giá nếu có"
-                  Icon={DiscFullOutlined}
+                  label="Vui lòng nhập giảm giá (nếu có)"
+                  Icon={LocalOffer}
                   value={discount}
                   onChange={(e) => setDiscount(e.target.value)}
                 />
