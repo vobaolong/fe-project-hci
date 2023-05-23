@@ -205,3 +205,11 @@ input.avatarChoose::file-selector-button:hover {
 .initial-child-container {
   gap: 20px !important;
 }
+
+.MuiDialogContent-root {
+  padding: 10px 12px !important;
+}
+
+.MuiPaper-root {
+  max-width: 1000px !important;
+}

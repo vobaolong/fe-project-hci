@@ -63,8 +63,8 @@ const FilterSlide = ({
             min={0}
             max={50000000}
           />
-          <p className="filterHeadingStyle m-2">Thương hiệu</p>
 
+          <p className="filterHeadingStyle m-2">Thương hiệu</p>
           <select
             className="px-3 py-2 outline-none border-2 w-full rounded-md cursor-pointer focus:ring-blue-500 focus:border-blue-500 block"
             onChange={(e) => setBrand(e.target.value)}

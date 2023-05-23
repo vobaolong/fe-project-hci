@@ -8,6 +8,8 @@ import store from "./store";
 import { loadUser } from "./actions/userAction";
 import ElementWithRoutes from "./routes/ElementWithRoutes";
 import axios from "axios";
+import AdDialog from "./components/home/Banner/AdDialog";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const menuOptions = [
@@ -50,8 +52,28 @@ function App() {
     getStripeApiKey();
   }, []);
 
+  const [showAd, setShowAd] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isAdClosed = localStorage.getItem("adClosed");
+    if (!isAdClosed) {
+      setShowAd(true); // Hiển thị dialog nếu chưa tắt trước đó
+    }
+  }, []);
+
+  const handleAdClose = () => {
+    localStorage.setItem("adClosed", "true");
+    setShowAd(false);
+  };
+
+  const handleProductClick = () => {
+    navigate("/products");
+  };
   return (
     <>
+      {showAd && (
+        <AdDialog onClose={handleAdClose} onProductClick={handleProductClick} />
+      )}
       {/* Navbar components */}
       <Navbar menuOptions={menuOptions} />
 
