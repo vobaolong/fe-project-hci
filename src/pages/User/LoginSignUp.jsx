@@ -33,6 +33,7 @@ const LoginSignUp = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [show, setShow] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const [avatar, setAvatar] = useState("/profile.png");
   const [avatarPreview, setAvatarPreview] = useState(
@@ -48,6 +49,9 @@ const LoginSignUp = () => {
 
   const handleShowHide = () => {
     setShow(!show);
+  };
+  const handleShowHideConfirm = () => {
+    setShowConfirm(!showConfirm);
   };
 
   useEffect(() => {
@@ -269,7 +273,7 @@ const LoginSignUp = () => {
                             value={loginPassword}
                             onChange={(e) => setLoginPassword(e.target.value)}
                           />
-                          {show ? (
+                          {!show ? (
                             <AiFillEye
                               id="show_hide"
                               className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
@@ -339,7 +343,7 @@ const LoginSignUp = () => {
                               setRegisterPassword(e.target.value)
                             }
                           />
-                          {show ? (
+                          {!show ? (
                             <AiFillEye
                               id="show_hide"
                               className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
@@ -355,24 +359,24 @@ const LoginSignUp = () => {
                         </div>
                         <div className="flex">
                           <InputField
-                            type={show ? "text" : "password"}
+                            type={showConfirm ? "text" : "password"}
                             name="cpassword"
                             label="Xác nhận lại mật khẩu"
                             Icon={MdLockOpen}
                             value={cpassword}
                             onChange={(e) => setCpassword(e.target.value)}
                           />
-                          {show ? (
+                          {!showConfirm ? (
                             <AiFillEye
                               id="show_hide"
                               className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
-                              onClick={handleShowHide}
+                              onClick={handleShowHideConfirm}
                             />
                           ) : (
                             <AiFillEyeInvisible
                               id="show_hide"
                               className="cursor-pointer justify-center inline-block mt-4 -ml-9 text-2xl text-primaryBlue z-20"
-                              onClick={handleShowHide}
+                              onClick={handleShowHideConfirm}
                             />
                           )}
                         </div>
