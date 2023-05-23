@@ -14,13 +14,18 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product._id}`}
-      className="shadow flex flex-col justify-between w-64 h-[400px] m-auto rounded-lg bg-white overflow-hidden md:hover:shadow transition-all duration-300 md:hover:scale-95 group decoration-transparent"
+      className="shadow flex flex-col justify-between w-64 h-[400px] m-auto rounded-md bg-white overflow-hidden md:hover:shadow transition-all duration-300 md:hover:scale-95 group decoration-transparent relative"
       title={`Name: ${
         product.name
       } \nPrice: ${product.price.toLocaleString()} đ \nRating: ${
         product.ratings
       } ★`}
     >
+      {product.discount !== 0 && (
+        <span className="absolute bg-red-500 rounded-br-md w-1/5 p-1 text-center text-white">
+          -{product.discount}%
+        </span>
+      )}
       <div className="min-h-fit h-[62%] overflow-hidden p-2 ">
         <img
           className="object-contain rounded-lg w-full"
@@ -36,17 +41,27 @@ const ProductCard = ({ product }) => {
             ({product.numOfReviews} đánh giá)
           </span>
         </div>
-
         <p className="text-primaryBlue font-bold text-base capitalize line-clamp-2">
           {product.name}
         </p>
-        <p className="text-red-500 font-bold">
+        <p className="text-red-500 font-bold flex justify-center">
           <CurrencyFormat
-            value={product.price}
+            value={product.price * (1 - product?.discount / 100)}
             displayType={"text"}
             thousandSeparator={true}
             renderText={(value) => <div>{value} đ</div>}
           />
+           
+          {product?.discount !== 0 && (
+            <del className="text-gray-400">
+              <CurrencyFormat
+                value={product.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                renderText={(value) => <div>{value} đ</div>}
+              />{" "}
+            </del>
+          )}
         </p>
       </div>
     </Link>

@@ -125,11 +125,18 @@ const ProductDetails = () => {
         <div className="h-full flex mt-28 m-10 flex-wrap py-2 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 gap-5">
           <MetaData title={`${product.name} | JAMILA`} />
           <div className="w-full flex justify-center md:w-[50%] md:p-10 lg:p-0 sm:p-10 overflow-hidden">
-            <MgSlider
-              width="550px"
-              height="550px"
-              slides={product.images && product.images}
-            />
+            <div className="relative">
+              {product.discount !== 0 && (
+                <h3 className="p-2 px-3 bg-red-600  rounded-bl-md rounded-tr-md border w-[15%] text-center text-white absolute z-10 right-0">
+                  -{product.discount}%
+                </h3>
+              )}
+              <MgSlider
+                width="550px"
+                height="550px"
+                slides={product.images && product.images}
+              />
+            </div>
           </div>
 
           <div className="md:w-[45%] md:p-10 lg:p-0 sm:p-10">
@@ -151,11 +158,22 @@ const ProductDetails = () => {
             <div>
               <h1 className="text-2xl font-bold text-red-500 border-b-2 border-slate-300 pb-3 text-center md:text-left flex">
                 <CurrencyFormat
-                  value={product.price}
+                  value={product.price * (1 - product?.discount / 100)}
                   displayType={"text"}
                   thousandSeparator={true}
                   renderText={(value) => <div>{value} đ</div>}
-                />{" "}
+                />
+                 
+                {product?.discount !== 0 && (
+                  <del className="text-gray-400">
+                    <CurrencyFormat
+                      value={product.price}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      renderText={(value) => <div>{value} đ</div>}
+                    />{" "}
+                  </del>
+                )}
                 <div className="flex items-center">
                   <p className="text-mainColor">|</p>
                   <p className="text-base font-light italic text-mainColor">

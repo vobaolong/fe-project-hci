@@ -15,6 +15,7 @@ import {
   Storage,
   Spellcheck,
   Money,
+  DiscFullOutlined,
 } from "@material-ui/icons";
 import SideBar from "../../components/admin/Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
@@ -39,6 +40,7 @@ const UpdateProduct = () => {
 
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
@@ -52,6 +54,7 @@ const UpdateProduct = () => {
     } else {
       setProductName(product.name);
       setPrice(product.price);
+      setDiscount(product.discount);
       setDescription(product.description);
       setBrand(product.brand);
       setStock(product.stock);
@@ -83,6 +86,7 @@ const UpdateProduct = () => {
 
     myForm.set("name", productName);
     myForm.set("price", price);
+    myForm.set("discount", discount);
     myForm.set("description", description);
     myForm.set("brand", brand);
     myForm.set("stock", Stock);
@@ -154,6 +158,15 @@ const UpdateProduct = () => {
                   Icon={Money}
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
+                />
+
+                <InputField
+                  type="number"
+                  name="discount"
+                  label="Vui lòng nhập giảm giá nếu có"
+                  Icon={DiscFullOutlined}
+                  value={discount}
+                  onChange={(e) => setDiscount(e.target.value)}
                 />
                 <div className="bg-slate-400 rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <Description className="text-xl text-primaryBlue mx-2" />
