@@ -18,8 +18,19 @@ const CartItemCard = ({ item, size, deleteCartItems }) => {
         >
           {item.name}
         </Link>
+        {item?.discount !== 0 && (
+            <del className="text-gray-400">
+              <CurrencyFormat
+                value={item.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix="Giá: "
+                renderText={(value) => <div>{value} đ</div>}
+              />{" "}
+            </del>
+          )}
         <CurrencyFormat
-          value={item.price}
+          value={item.price * (1 - item?.discount / 100)}
           displayType={"text"}
           thousandSeparator={true}
           prefix="Giá: "

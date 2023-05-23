@@ -12,7 +12,7 @@ const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
 
   const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
+    (acc, item) => acc + item.quantity * (item.price * (1 - item?.discount / 100)),
     0
   );
 
@@ -100,7 +100,7 @@ const ConfirmOrder = () => {
                           </span>
                           <span className="w-[20%] md:w-[20%] sm:w-[20%] ">
                             <CurrencyFormat
-                              value={item?.price}
+                              value={item.price * (1 - item?.discount / 100)}
                               displayType={"text"}
                               thousandSeparator={true}
                               renderText={(value) => (
@@ -108,7 +108,7 @@ const ConfirmOrder = () => {
                                   <p>{value}</p> ​x​ <p>{item.quantity}</p>
                                   <p>
                                     <CurrencyFormat
-                                      value={item.price * item.quantity}
+                                      value={(item.price * (1 - item?.discount / 100)) * item.quantity}
                                       displayType={"text"}
                                       thousandSeparator={true}
                                       renderText={(value) => (

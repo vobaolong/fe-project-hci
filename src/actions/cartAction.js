@@ -21,6 +21,7 @@ export const addItemsToCart =
         stock: data.product.stock,
         quantity: quantity,
         size: size,
+        discount: data.product.discount
       },
     });
     localStorage.setItem(
