@@ -112,7 +112,11 @@ const Cart = () => {
                     </div>
                     <div className="flex justify-end items-center lg:col-span-1 md:col-span-1 sm:col-span-1">
                       <CurrencyFormat
-                        value={(item.price * (1 - item?.discount / 100)) * item.quantity}
+                        value={
+                          item.price *
+                          (1 - item?.discount / 100) *
+                          item.quantity
+                        }
                         displayType={"text"}
                         thousandSeparator={true}
                         renderText={(value) => <div>{value} đ</div>}
@@ -137,7 +141,10 @@ const Cart = () => {
                   <p className="font-bold">Thành tiền:</p>
                   <CurrencyFormat
                     value={cartItems.reduce(
-                      (acc, item) => acc + item.quantity * (item.price * (1 - item?.discount / 100)),
+                      (acc, item) =>
+                        acc +
+                        item.quantity *
+                          (item.price * (1 - item?.discount / 100)),
                       0
                     )}
                     displayType={"text"}
