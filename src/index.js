@@ -22,8 +22,8 @@ export const ScrollToTops = () => {
 ReactDOM.render(
   <Provider store={store}>
     <ToastContainer
-      position="top-right"
-      autoClose={2000}
+      position="bottom-left"
+      autoClose={1000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick

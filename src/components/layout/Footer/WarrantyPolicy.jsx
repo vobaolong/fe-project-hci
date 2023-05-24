@@ -44,24 +44,12 @@ const WarrantyPolicy = () => {
             <strong>2. Không nhận bảo hành tại JAMILA</strong>
             <br />
             <br />
-            - Các sản phẩm, thiết bị có dấu hiệu dung dịch lạ, có nước vào, có
-            vết ẩm ướt, bị đứt mạch, bị trầy xước, bể mẻ, móp méo, biến dạng, có
-            dấu hiệu cháy nổ, nám, phù tụ, gỉ sét hoặc các hiện tượng được cho
-            là do lỗi cá nhân gây ra. Hoặc nếu được nhận BH, khách hàng phải
-            hoàn toàn chịu chi phí phát sinh đối với các lỗi đó..
+            - Các sản phẩm có dấu hiệu dung dịch lạ, có nước vào, có vết ẩm ướt,
+            bị trầy xước, biến dạng hoặc các hiện tượng được cho là do lỗi cá
+            nhân gây ra. Hoặc nếu được nhận BH, khách hàng phải hoàn toàn chịu
+            chi phí phát sinh đối với các lỗi đó..
             <br />
-            <br />
-            - Thiết bị hư hỏng do thiên tai, hỏa hoạn, sử dụng nguồn điện không
-            ổn định hoặc do lắp đặt, vận chuyển không đúng quy cách, …
-            <br />
-            <br />
-            - Không bảo hành đối với quà khuyến mãi của cửa hàng.
-            <br />
-            <br />
-            Đặc biệt: không nhận BH về dữ liệu trong các thiết bị lưu trữ, bản
-            quyền phần mềm.
-            <br />
-            <br />
+            <br />- Không bảo hành đối với quà khuyến mãi của cửa hàng.
           </p>
         </div>
       </div>

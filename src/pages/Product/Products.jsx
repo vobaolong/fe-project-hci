@@ -5,7 +5,6 @@ import Loader from "../../components/layout/Loader/Loader";
 import ProductCard from "../../components/home/OurProduct/ProductCard";
 import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
-import { AiOutlineFrown } from "react-icons/ai";
 import FilterSlide from "../../components/Products/FilterSlide";
 import MetaData from "../../components/layout/MetaData";
 import { brands } from "../../data/brand";
@@ -61,8 +60,8 @@ const Products = () => {
                     return <ProductCard key={index} product={product} />;
                   })
                 ) : (
-                  <h1 className="items-center text-center text-xl flex uppercase text-red-600">
-                    Không tìm thấy sản phẩm <AiOutlineFrown className="mx-1" />!
+                  <h1 className="items-center text-center text-xl flex uppercase text-red-600 font-bold">
+                    Không tìm thấy sản phẩm
                   </h1>
                 )}
               </div>
