@@ -35,12 +35,12 @@ const HomePage = () => {
           <Banner jsonData={companydata} />
 
           {/* our products */}
-          <OurProduct heading="Sản phẩm mới" products={products.slice(0, 8)} />
+          <OurProduct heading="Sản phẩm mới" products={products?.slice(0, 8)} />
 
           {/* our products */}
           <OurProduct
             heading="Sản phẩm bán chạy"
-            products={products.slice(4, 12)}
+            products={products?.slice(4, 12)}
           />
         </Fragment>
       )}
