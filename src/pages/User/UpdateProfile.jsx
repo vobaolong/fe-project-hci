@@ -48,9 +48,9 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     if (user) {
-      setName(user.name);
-      setEmail(user.email);
-      setAvatarPreview(user.avatar.url);
+      setName(user?.name);
+      setEmail(user?.email);
+      setAvatarPreview(user?.avatar.url);
     }
 
     if (error) {

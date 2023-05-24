@@ -34,12 +34,12 @@ const UpdateUser = () => {
   const [role, setRole] = useState("");
 
   useEffect(() => {
-    if (user && user._id !== userId) {
+    if (user && user?._id !== userId) {
       dispatch(getUserDetails(userId));
     } else {
-      setName(user.name);
-      setEmail(user.email);
-      setRole(user.role);
+      setName(user?.name);
+      setEmail(user?.email);
+      setRole(user?.role);
     }
 
     if (error) {

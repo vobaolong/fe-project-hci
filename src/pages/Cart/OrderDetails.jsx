@@ -28,7 +28,6 @@ const OrderDetails = () => {
   const dispatch = useDispatch();
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const params = useParams();
-  console.log(order);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
   const [status] = useState("Cancel");
@@ -112,7 +111,11 @@ const OrderDetails = () => {
                                 </p>
                                 <p>
                                   <CurrencyFormat
-                                    value={(item?.price * (1 - item?.discount / 100)) * item.quantity}
+                                    value={
+                                      item?.price *
+                                      (1 - item?.discount / 100) *
+                                      item.quantity
+                                    }
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     renderText={(value) => (

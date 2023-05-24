@@ -113,7 +113,7 @@ const MyOrders = () => {
             autoHeight
           />
           <p className="bg-secondaryDark py-3 text-center text-xl text-white rounded-b-md">
-            Lịch sử đặt hàng của {user.name}
+            Lịch sử đặt hàng của {user?.name}
           </p>
         </div>
       )}

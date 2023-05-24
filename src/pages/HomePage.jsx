@@ -13,7 +13,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const { loading, error, products } = useSelector((state) => state.products);
-  console.log(products);
+
   useEffect(() => {
     if (error) {
       toast.error(error);

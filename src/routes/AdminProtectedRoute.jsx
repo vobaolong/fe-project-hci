@@ -7,7 +7,7 @@ const AdminProtectedRoute = ({ element: Element, ...rest }) => {
   return (
     <>
       {!loading && (
-        <>{user.role === "admin" ? <Outlet /> : <Navigate to="/login" />} </>
+        <>{user?.role === "admin" ? <Outlet /> : <Navigate to="/login" />} </>
       )}
     </>
   );

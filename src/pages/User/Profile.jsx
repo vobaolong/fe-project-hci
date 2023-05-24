@@ -29,11 +29,11 @@ const Profile = () => {
               <img
                 className="w-60 h-60 rounded-full shadow-xl border-4 border-primaryDarkBlue transition-transform duration-500 hover:scale-105"
                 src={
-                  user.avatar.url
-                    ? user.avatar.url
+                  user?.avatar.url
+                    ? user?.avatar.url
                     : "https://res.cloudinary.com/baolong317/image/upload/v1669743696/avatars/gbgy5z5ovkkl85tgydeu.png"
                 }
-                alt={user.name}
+                alt={user?.name}
               />
               <Link
                 className="profileLinkBtnStyle bg-secondaryDark"
@@ -49,7 +49,7 @@ const Profile = () => {
                   Họ và tên khách hàng:
                 </p>
                 <strong className="inline ml-2 font-medium text-xl text-slate-600">
-                  {user.name}
+                  {user?.name}
                 </strong>
               </div>
               <div className="flex">
@@ -57,7 +57,7 @@ const Profile = () => {
                   Địa chỉ Email:
                 </p>
                 <strong className="inline ml-2 font-medium text-xl text-slate-600">
-                  {user.email}
+                  {user?.email}
                 </strong>
               </div>
               <div className="flex">
@@ -65,7 +65,7 @@ const Profile = () => {
                   Ngày tham gia:
                 </p>
                 <strong className="inline ml-2 font-medium text-xl text-slate-600">
-                  {String(user.createdAt).substring(0, 10)}
+                  {String(user?.createdAt).substring(0, 10)}
                 </strong>
               </div>
               <div className="flex flex-col gap-y-5 w-full md:w-[40%]">

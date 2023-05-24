@@ -70,8 +70,8 @@ const Payment = () => {
         payment_method: {
           card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: user.name,
-            email: user.email,
+            name: user?.name,
+            email: user?.email,
             address: {
               line1: shippingInfo.address,
               city: shippingInfo.city,

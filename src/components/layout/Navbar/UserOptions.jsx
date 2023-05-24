@@ -69,7 +69,7 @@ const UserOptions = ({ user }) => {
     },
   ];
 
-  if (user.role === "admin") {
+  if (user?.role === "admin") {
     options.unshift({
       icon: <Dashboard />,
       name: "Bảng điều khiển",
@@ -92,7 +92,7 @@ const UserOptions = ({ user }) => {
           icon={
             <img
               className="w-full object-cover rounded-full"
-              src={user.avatar.url ? user.avatar.url : "/profile.png"}
+              src={user?.avatar.url ? user?.avatar.url : "/profile.png"}
               alt="Profile"
             />
           }
@@ -120,7 +120,7 @@ const UserOptions = ({ user }) => {
           icon={
             <img
               className="w-full object-cover rounded-full"
-              src={user.avatar.url ? user.avatar.url : "/profile.png"}
+              src={user?.avatar.url ? user?.avatar.url : "/profile.png"}
               alt="Profile"
             />
           }
