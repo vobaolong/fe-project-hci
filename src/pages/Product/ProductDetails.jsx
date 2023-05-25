@@ -127,7 +127,7 @@ const ProductDetails = () => {
           <div className="w-full flex justify-center md:w-[50%] md:p-10 lg:p-0 sm:p-10 overflow-hidden">
             <div className="relative">
               {product.discount !== 0 && (
-                <h3 className="p-2 px-3 bg-red-600  rounded-bl-md rounded-tr-md border w-[15%] text-center text-white absolute z-10 right-0">
+                <h3 className="p-2 px-3 bg-red-600 rounded-bl-md rounded-tr-md border lg:w-[15%] md:w-[15%] text-center text-white absolute z-10 right-0">
                   -{product.discount}%
                 </h3>
               )}
@@ -156,7 +156,7 @@ const ProductDetails = () => {
               </span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-red-500 border-b-2 border-slate-300 pb-3 text-center md:text-left flex">
+              <h1 className="text-2xl font-bold text-red-500 border-b-2 border-slate-300 pb-3 text-center md:text-left flex lg:justify-start md:justify-start sm:justify-center">
                 <CurrencyFormat
                   value={product.price * (1 - product?.discount / 100)}
                   displayType={"text"}

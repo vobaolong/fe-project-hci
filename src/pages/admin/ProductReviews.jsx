@@ -15,6 +15,7 @@ import { Delete, Star } from "@material-ui/icons";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 import InputField from "../../components/user/InputField";
 import { toast } from "react-toastify";
+import { Tooltip } from "@material-ui/core";
 
 const ProductReviews = () => {
   const dispatch = useDispatch();
@@ -75,7 +76,14 @@ const ProductReviews = () => {
       headerName: "Bình luận",
       type: "number",
       minWidth: 300,
-      flex: 0.6,
+      flex: 0.9,
+      renderCell: (params) => {
+        return (
+          <Tooltip title={params.value} placement="top-start" arrow>
+            <span className="cursor-pointer">{params.value}</span>
+          </Tooltip>
+        );
+      },
     },
 
     {
@@ -165,7 +173,6 @@ const ProductReviews = () => {
               <Button disabled={loading ? true : false} label="Xem đánh giá" />
             </div>
           </form>
-
           {reviews?.length > 0 ? (
             <DataGrid
               rows={rows}

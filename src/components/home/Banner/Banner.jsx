@@ -46,23 +46,29 @@ const Banner = () => {
                 className="justify-center items-center flex flex-col gap-2 flex-wrap p-2"
               >
                 <img src={service?.image} className="max-w-fit" alt="" />
-                <h5 className="font-bold lg:text-xl md:text-lg sm:text-base text-primaryBlue">
+                <h5 className="font-bold lg:text-xl md:text-lg sm:text-base text-primaryBlue lg:flex md:flex sm:hidden">
                   {service.title}
                 </h5>
-                <p>{service.subtitle}</p>
+                <p className="lg:flex md:hidden sm:hidden ">
+                  {service.subtitle}
+                </p>
               </div>
             );
           })}
         </div>
       </div>
-      <div className="mt-2 grid-rows-1 bg-slate-50 md:py-3 lg:mx-44 md:mx-4 sm:mx-2 rounded-md drop-shadow-md">
+      <div className="mt-2 grid-rows-1 bg-slate-50 md:py-3 lg:mx-44 md:mx-4 sm:mx-3 rounded-md drop-shadow-md">
         <div className="grid-cols-12 ">
           <div className=" p-4">
             <Marquee className="flex gap-20">
               {brandLogos?.map((index) => {
                 return (
                   <div key={index} className="mx-4">
-                    <img src={index.image} alt="brand" />
+                    <img
+                      className="lg:w-full md:w-1/2 sm:w-1/2"
+                      src={index.image}
+                      alt="brand"
+                    />
                   </div>
                 );
               })}

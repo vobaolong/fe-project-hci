@@ -10,7 +10,7 @@ const Footer = ({ jsonData }) => {
     <div className="bg-primaryDarkBlue w-[100%] top-full ">
       <div className="flex flex-wrap sm:flex-col lg:justify-between md:flex-row mx-4 gap-3 lg:mx-40 md:mx-8 sm:mx-4">
         <div className="md:w-1/4 sm:w-full items-center justify-center py-10">
-          <img className="md:w-[50%] sm:w-[10%]" src={logo} alt="logo" />
+          <img className="lg:w-1/2 md:w-1/2 sm:w-[10%]" src={logo} alt="logo" />
           <p className="text-primaryBlue mt-4">
             Chúng tôi luôn trân trọng và mong đợi nhận được mọi ý kiến đóng góp
             từ khách hàng để có thể nâng cấp trải nghiệm dịch vụ và sản phẩm tốt

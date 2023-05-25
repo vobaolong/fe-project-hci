@@ -24,7 +24,7 @@ const MyOrders = () => {
   }, [dispatch, error]);
 
   const columns = [
-    { field: "id", headerName: "Mã đơn hàng", minWidth: 280, flex: 1 },
+    { field: "id", headerName: "Mã đơn hàng", minWidth: 280, flex: 0.7 },
 
     {
       field: "status",
@@ -60,7 +60,7 @@ const MyOrders = () => {
       field: "actions",
       headerName: "Hành động",
       type: "number",
-      minWidth: 150,
+      minWidth: 120,
       flex: 0.3,
       sortable: false,
       renderCell: (params) => {

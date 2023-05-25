@@ -42,11 +42,11 @@ const AboutUs = () => {
             </p>
           </p>
         </div>
-        <div className="lg:w-[100%] md:w-[100%] sm:w-[100%] mx-10 my-5">
+        <div className="w-full mx-10 my-5">
           <img
             src={aboutUsImg}
             alt="aboutusImg"
-            className="rounded-xl w-[100%] "
+            className="rounded-md w-[100%] "
           />
         </div>
       </div>
