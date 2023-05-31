@@ -12,10 +12,10 @@ const ContactUs = () => {
 
     emailjs
       .sendForm(
-        "service_jrrzssf",
-        "template_jmgmnuj",
+        "service_2qtm328",
+        "template_vdsi5aj",
         form.current,
-        "wj1KVPLMC5fGuwGhv"
+        "sGKnCrCziVNUJzJlw"
       )
       .then(
         (result) => {
@@ -128,6 +128,7 @@ const ContactUs = () => {
               </div>
               <div className="lg:w-[60%] sm:w-[100%] px-3 flex flex-wrap justify-end mb-2">
                 <TextField
+                  name="message"
                   className="w-[100%]"
                   id="outlined-multiline-static"
                   label="Nội dung"

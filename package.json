@@ -74,5 +74,5 @@
     "tailwindcss": "^3.0.15",
     "webpack-dev-middleware": "^5.3.0"
   },
-  "proxy": "https://jamila-api.onrender.com"
+  "proxy": "http://localhost:5000"
 }

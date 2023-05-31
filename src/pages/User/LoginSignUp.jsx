@@ -65,7 +65,7 @@ const LoginSignUp = () => {
     }
   }, [error, dispatch, redirect, isAuthenticated, navigate]);
 
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("login");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -232,6 +232,7 @@ const LoginSignUp = () => {
                     variant="fullWidth"
                     onChange={handleChange}
                     textColor="primary"
+                    value={value}
                     indicatorColor="primary"
                     aria-label="lab API tabs example"
                   >

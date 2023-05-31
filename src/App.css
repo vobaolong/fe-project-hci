@@ -44,6 +44,10 @@ input[type="number"] {
   border: 1px solid #919191ab
 }
 
+.dashboardRightBoxStyle {
+  height: 100vh !important;
+}
+
 .slick-next {
   right: 8px !important;
   z-index: 4;
@@ -228,6 +232,6 @@ input.avatarChoose::file-selector-button:hover {
   padding: 10px 12px !important;
 }
 
-.MuiPaper-root {
+.MuiPaper-elevation {
   max-width: 1000px !important;
 }

@@ -14,8 +14,14 @@ const Products = () => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const params = useParams();
-  const { loading, error, products, productsCount, resultPerPage } =
-    useSelector((state) => state.products);
+  const {
+    loading,
+    error,
+    products,
+    productsCount,
+    resultPerPage,
+    filteredProductsCount,
+  } = useSelector((state) => state.products);
 
   const [price, setPrice] = useState([0, 50000000]);
   const [brand, setBrand] = useState("");
@@ -75,24 +81,28 @@ const Products = () => {
               />
             </div>
           </div>
-          {resultPerPage < productsCount && (
-            <div className="paginationBox">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText=">"
-                prevPageText="<"
-                firstPageText="<<"
-                lastPageText=">>"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
+          {products?.length > 0 ? (
+            <div>
+              {resultPerPage < filteredProductsCount && (
+                <div className="paginationBox">
+                  <Pagination
+                    activePage={currentPage}
+                    itemsCountPerPage={resultPerPage}
+                    totalItemsCount={filteredProductsCount}
+                    onChange={setCurrentPageNo}
+                    nextPageText=">"
+                    prevPageText="<"
+                    firstPageText="<<"
+                    lastPageText=">>"
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    activeClass="pageItemActive"
+                    activeLinkClass="pageLinkActive"
+                  />
+                </div>
+              )}
             </div>
-          )}
+          ) : null}
         </Fragment>
       )}
     </Fragment>

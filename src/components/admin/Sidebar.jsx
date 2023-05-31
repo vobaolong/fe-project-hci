@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 const Sidebar = () => {
   return (
-    <div className="w-full bg-white py-24 flex flex-col gap-10 h-full px-10">
+    <div className="w-full bg-white py-24 flex flex-col gap-10 h-full px-10 sticky top-0 left-0">
       <Link
         className="sidebarLinkStyles text-lg border-b-2 flex gap-2 flex-box"
         to="/admin/dashboard"
