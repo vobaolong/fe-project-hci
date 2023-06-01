@@ -7,7 +7,7 @@
 
 body {
   background-color: #f3f3f3;
-
+  user-select: none;
 }
 
 /* For chrome, safari, Edge, Opera */

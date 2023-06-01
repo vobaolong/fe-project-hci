@@ -33,7 +33,14 @@ import {
 
 // fetching all products
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 50000000], brand, ratings = 0) =>
+  (
+    keyword = "",
+    currentPage = 1,
+    price = [0, 50000000],
+    brand,
+    ratings = 0,
+    discount = false
+  ) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -43,7 +50,10 @@ export const getProduct =
       let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (brand) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&brand=${brand}&ratings[gte]=${ratings}`;
+        link += `&brand=${brand}`;
+      }
+      if (discount) {
+        link += `&discount[gte]=0`;
       }
 
       // getting all the products from api

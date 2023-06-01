@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product._id}`}
-      className="shadow flex flex-col justify-between w-64 h-[400px] m-auto rounded-md bg-white overflow-hidden md:hover:shadow transition-all duration-300 md:hover:scale-95 group decoration-transparent relative"
+      className="shadow flex flex-col justify-between w-64 h-[400px] m-auto rounded-md bg-white overflow-hidden md:hover:shadow transition-all duration-300 md:hover:scale-105 group decoration-transparent relative"
       title={`Name: ${
         product.name
       } \nPrice: ${product.price.toLocaleString()} đ \nRating: ${

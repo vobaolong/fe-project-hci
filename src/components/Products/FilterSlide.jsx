@@ -9,6 +9,8 @@ const FilterSlide = ({
   setBrand,
   ratings,
   setRatings,
+  discount,
+  setDiscount,
 }) => {
   const [showIcon, setShowIcon] = useState(true);
   const [toggleFilterSlider, setToggleFilterSlider] = useState(false);
@@ -54,7 +56,16 @@ const FilterSlide = ({
           />
         </div>
         <div className="pt-5">
-          <p className="filterHeadingStyle m-2">Giá</p>
+          <p className="filterHeadingStyle m-2">
+            <input
+              className="mr-2 cursor-pointer"
+              type="checkbox"
+              checked={discount}
+              onChange={() => setDiscount(!discount)}
+            />
+            Sản phẩm giảm giá
+          </p>
+          <p className="filterHeadingStyle m-2">Giá (đ)</p>
           <Slider
             value={price}
             onChange={priceHandler}
@@ -88,7 +99,7 @@ const FilterSlide = ({
           </select>
           <div>
             <fieldset>
-              <p className="filterHeadingStyle pt-3">Đánh giá</p>
+              <p className="filterHeadingStyle m-2 pt-3">Đánh giá (⭐)</p>
               <Slider
                 value={ratings}
                 onChange={(e, newRatings) => setRatings(newRatings)}

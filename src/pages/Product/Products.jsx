@@ -11,24 +11,17 @@ import { brands } from "../../data/brand";
 import { toast } from "react-toastify";
 
 const Products = () => {
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const params = useParams();
-  const {
-    loading,
-    error,
-    products,
-    productsCount,
-    resultPerPage,
-    filteredProductsCount,
-  } = useSelector((state) => state.products);
+  const { loading, error, products, resultPerPage, filteredProductsCount } =
+    useSelector((state) => state.products);
 
   const [price, setPrice] = useState([0, 50000000]);
   const [brand, setBrand] = useState("");
   const [ratings, setRatings] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [discount, setDiscount] = useState(false);
   const keyword = params.keyword;
-
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
@@ -43,8 +36,8 @@ const Products = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, brand, ratings));
-  }, [dispatch, error, keyword, currentPage, price, brand, ratings]);
+    dispatch(getProduct(keyword, currentPage, price, brand, ratings, discount));
+  }, [dispatch, error, keyword, currentPage, price, brand, ratings, discount]);
 
   return (
     <Fragment>
@@ -66,8 +59,9 @@ const Products = () => {
                     return <ProductCard key={index} product={product} />;
                   })
                 ) : (
-                  <h1 className="items-center text-center text-xl flex uppercase text-red-600 font-bold">
-                    Không tìm thấy sản phẩm
+                  <h1 className="items-center text-center text-xl flex text-primaryBlue font-bold">
+                    Đang tải
+                    <i class="fa-solid fa-spinner fa-spin ml-2"></i>
                   </h1>
                 )}
               </div>
@@ -78,6 +72,8 @@ const Products = () => {
                 setBrand={setBrand}
                 ratings={ratings}
                 setRatings={setRatings}
+                discount={discount}
+                setDiscount={setDiscount}
               />
             </div>
           </div>
