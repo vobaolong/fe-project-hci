@@ -116,7 +116,9 @@ const ProcessOrder = () => {
                               </span>
                               <span className="lg:w-[30%] md:w-[20%] sm:w-[20%] flex text-right lg:text-base md:text-base sm:text-sm justify-end">
                                 <CurrencyFormat
-                                  value={item?.price * (1 - item?.discount / 100)}
+                                  value={
+                                    item?.price * (1 - item?.discount / 100)
+                                  }
                                   displayType={"text"}
                                   thousandSeparator={true}
                                   renderText={(value) => (
@@ -127,7 +129,11 @@ const ProcessOrder = () => {
                                       </p>
                                       <p>
                                         <CurrencyFormat
-                                          value={(item?.price * (1 - item?.discount / 100)) * item.quantity}
+                                          value={
+                                            item?.price *
+                                            (1 - item?.discount / 100) *
+                                            item.quantity
+                                          }
                                           displayType={"text"}
                                           thousandSeparator={true}
                                           renderText={(value) => (
@@ -275,7 +281,7 @@ const ProcessOrder = () => {
                             : order.orderStatus === "Shipped"
                             ? "Đang vận chuyển"
                             : order.orderStatus === "Cancel"
-                            ? "Đã hủy"
+                            ? "Đã huỷ"
                             : "Đang xử lý"}
                         </p>
                       </div>

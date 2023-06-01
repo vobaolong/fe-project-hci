@@ -89,7 +89,7 @@ const MyOrders = () => {
             : item.orderStatus === "Shipped"
             ? "Đang vận chuyển"
             : item.orderStatus === "Cancel"
-            ? "Đã hủy"
+            ? "Đã huỷ"
             : "Đang xử lý",
         amount: `${item.totalPrice} đ`,
       });

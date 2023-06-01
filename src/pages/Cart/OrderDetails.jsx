@@ -257,7 +257,7 @@ const OrderDetails = () => {
                       : order.orderStatus === "Shipped"
                       ? "Đang vận chuyển"
                       : order.orderStatus === "Cancel"
-                      ? "Đã hủy"
+                      ? "Đã huỷ"
                       : "Đang xử lý"}
                   </p>
                 </div>

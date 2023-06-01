@@ -99,7 +99,7 @@ const Payment = () => {
           dispatch(resetCart());
           setLoading(false);
         } else {
-          toast.error("There's some issue while processing payment");
+          toast.error("Xảy ra một số lỗi trong quá trình thanh toán ⚠️");
         }
       }
     } catch (err) {

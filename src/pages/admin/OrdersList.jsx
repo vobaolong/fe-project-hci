@@ -13,6 +13,7 @@ import SideBar from "../../components/admin/Sidebar";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { SwapHorizontalCircle } from "@material-ui/icons";
 
 const OrdersList = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const OrdersList = () => {
   const { error, orders } = useSelector((state) => state.allOrders);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
-
+  console.log(orders);
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -47,11 +48,12 @@ const OrdersList = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Mã đơn hàng", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Mã đơn hàng", minWidth: 100, flex: 0.3 },
+    { field: "date", headerName: "Ngày đặt", minWidth: 100, flex: 0.2 },
     {
       field: "status",
       headerName: "Trạng thái",
-      minWidth: 150,
+      minWidth: 120,
       flex: 0.3,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Đã giao hàng"
@@ -63,38 +65,52 @@ const OrdersList = () => {
           : "text-red-500";
       },
     },
+    { field: "type", headerName: "Thanh toán", minWidth: 100, flex: 0.2 },
     {
       field: "itemsQty",
-      headerName: "Số lượng sản phẩm",
+      headerName: "Số lượng",
       type: "number",
-      minWidth: 150,
-      flex: 0.3,
+      minWidth: 100,
+      flex: 0.2,
     },
 
     {
       field: "amount",
       headerName: "Tổng tiền",
       type: "number",
-      minWidth: 150,
-      flex: 0.3,
+      minWidth: 120,
+      flex: 0.2,
     },
 
     {
       field: "actions",
-      flex: 0.3,
+      flex: 0.2,
       headerName: "Hành động",
-      minWidth: 150,
+      minWidth: 120,
       type: "number",
       sortable: false,
       renderCell: (params) => {
+        const order = params.row;
+        console.log(order);
         return (
           <Fragment>
-            <Link
-              className="text-green-400 hover:text-green-500 transition-all duration-300"
-              to={`/admin/order/${params.getValue(params.id, "id")}`}
-            >
-              <FaEdit className="text-2xl" />
-            </Link>
+            {order.status === "Đã huỷ" && order.type === "Online" ? (
+              <button
+                className="text-green-400 hover:text-green-500 transition-all duration-300"
+                onClick={() =>
+                  deleteOrderHandler(params.getValue(params.id, "id"))
+                }
+              >
+                <SwapHorizontalCircle className="text-2xl" />
+              </button>
+            ) : (
+              <Link
+                className="text-green-400 hover:text-green-500 transition-all duration-300"
+                to={`/admin/order/${params.getValue(params.id, "id")}`}
+              >
+                <FaEdit className="text-2xl" />
+              </Link>
+            )}
 
             <button
               className="text-red-400 mx-7 hover:text-red-500 transition-all duration-300"
@@ -114,16 +130,22 @@ const OrdersList = () => {
 
   orders &&
     orders.forEach((order) => {
+      const formattedDate = new Date(order.createdAt).toLocaleDateString();
       rows.push({
         id: order._id,
+        date: formattedDate,
         itemsQty: order.orderItems.length,
+        type:
+          order.paymentInfo.status && order.paymentInfo.status === "succeeded"
+            ? "Online"
+            : "COD",
         status:
           order.orderStatus && order.orderStatus === "Delivered"
             ? "Đã giao hàng"
             : order.orderStatus === "Shipped"
             ? "Đang vận chuyển"
             : order.orderStatus === "Cancel"
-            ? "Đã hủy"
+            ? "Đã huỷ"
             : "Đang xử lý",
         amount: order.totalPrice,
       });
