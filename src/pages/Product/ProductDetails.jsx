@@ -264,7 +264,7 @@ const ProductDetails = () => {
         </div>
       )}
 
-      <div className="py-5">
+      <div className="py-5 md:py-3 lg:mx-40 md:mx-4 sm:mx-2 gap-5">
         <h1 className="headingStyle uppercase">
           <div className="headingStylesDiv" />
           Đánh giá

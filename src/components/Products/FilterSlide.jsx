@@ -80,10 +80,10 @@ const FilterSlide = ({
             onChange={(e) => setBrand(e.target.value)}
           >
             <option
-              disabled
               className="filterHeadingStyle m-2 pt-5 pb-3 border-b-2 border-primaryBlue/50"
+              value=""
             >
-              Chọn...
+              Tất cả
             </option>
             {brands?.map((brand, index) => {
               return (

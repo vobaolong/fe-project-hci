@@ -17,7 +17,7 @@ const ReviewCard = ({ review }) => {
   };
   return (
     <div
-      className="flex-none flex flex-col items-center border-2 border-primaryBlue w-60 md:w-96 py-10 px-5 rounded-xl shadow-lg group transition-all duration-500"
+      className="flex-none flex flex-col items-center border border-primaryBlue w-60 md:w-[25%] p-5 rounded-xl shadow-lg group transition-all duration-500"
       onClick={showAllCommentText}
       onMouseLeave={() => setIsShowing(false)}
     >
